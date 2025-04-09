@@ -18,7 +18,7 @@ if not secret_key or not isinstance(secret_key, str):
     raise ValueError("SECRET_KEY environment variable not set or not a string")
 
 def encode_token(user: User) -> str:
-    expiration = datetime.now() + timedelta(hours=1)
+    expiration = datetime.now() + timedelta(hours=24)
     payload = {
         "sub": str(user.id),
         "username": user.username,
@@ -37,17 +37,17 @@ async def decode_token(token: str = Depends(oauth2_scheme)) -> User:
                 headers={'WWW-Authenticate': 'Bearer'}
             )
         return user
-    except JWTError:
+    except JWTError as e:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid token",
             headers={"WWW-Authenticate": "Bearer"}
         )
 
+
 @auth_router.post('/login', tags=['Auth'])
 async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
     user = await user_service.get_by_username(form_data.username)
-    print(user)
     if user is None:
         raise HTTPException(status_code=400, detail='Usuario no encontrado')
     if not user.verify_password(form_data.password):
