@@ -67,6 +67,7 @@ class UserCreateSchema(BaseModel):
 class UserResponseSchema(BaseModel):
     id : uuid.UUID
     username : str
+    email: EmailStr
     created_at : datetime
     updated_at : datetime
     deleted_at : Optional[datetime] = None
