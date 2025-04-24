@@ -24,6 +24,7 @@ class User(Model):
     matches_played = fields.IntField(default=0)
     wins = fields.IntField(default=0)
     kills = fields.IntField(default=0)
+    deads = fields.IntField(default=0)
     inventory_capacity = fields.IntField(default=3)
     
     created_at = fields.DatetimeField(auto_now_add=True)

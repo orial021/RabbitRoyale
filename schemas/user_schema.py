@@ -64,10 +64,40 @@ class UserCreateSchema(BaseModel):
         }
     }
     
+class UserUpdateSchema(BaseModel):
+    coins : int = 0
+    las_connection : Optional[datetime] = None
+    is_active : bool = True
+    is_premium : bool = False
+    matches_played: int = 0
+    deads : int = 0
+    wins: int = 0
+    kills: int = 0
+    inventory_capacity: int = 3
+    
+    model_config = {
+        'json_schema_extra':{
+            'example': {
+                'coins': 100,
+                'las_connection': '2023-10-01T12:00:00Z',
+                'is_active': True,
+                'is_premium': False,
+                'matches_played': 0,
+                'wins': 0,
+                'kills': 0,
+                'deads': 0,
+                'inventory_capacity': 100
+
+            }
+        }
+    }
+    
 class UserResponseSchema(BaseModel):
     id : uuid.UUID
     username : str
     email: EmailStr
+    coins: int = 0
+    kills: int = 0
     created_at : datetime
     updated_at : datetime
     deleted_at : Optional[datetime] = None
@@ -77,6 +107,9 @@ class UserResponseSchema(BaseModel):
             'example': {
                 'id' : '123e4567-e89b-12d3-a456-426614174000',
                 'username': 'john_doe',
+                'email': '',
+                'coins': 100,
+                'kills': 0,
                 'created_at': '2023-10-01T12:00:00Z',
                 'updated_at': '2023-10-01T12:00:00Z',
                 'deleted_at': None

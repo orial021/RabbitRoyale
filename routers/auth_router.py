@@ -30,7 +30,9 @@ async def decode_token(token: str = Depends(oauth2_scheme)) -> User:
     try:
         data = jwt.decode(token, secret_key, algorithms=['HS256'])
         user = await user_service.get_by_username(data['username'])
+        print(f"Decoded user: {user}")
         if user is None:
+            print("User not found")
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail='Invalid authentication credentials',
@@ -38,6 +40,7 @@ async def decode_token(token: str = Depends(oauth2_scheme)) -> User:
             )
         return user
     except JWTError as e:
+        print(f"JWTError: {e}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid token",
