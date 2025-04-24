@@ -19,34 +19,44 @@ Este proyecto utiliza Tortoise ORM y Aerich para la gestión de la base de datos
 
 2. Instala las dependencias:
 
+```bash
 pip install -r requirements.txt
+```
 
 ## Configuración de la Base de Datos
 Inicializar Aerich
 Para crear la base de datos, ejecuta el siguiente comando:
 
+```bash
 aerich init -t tortoise_conf.TORTOISE_ORM
+```
 
 ## Crear Migraciones
 Para crear las migraciones iniciales, usa:
 
+```bash
 aerich init-db
+```
 
 ## Ejecutar Migraciones
 Para aplicar las migraciones, ejecuta:
-
+```bash
 aerich migrate
+```
 
 ## Actualizar Migraciones
 Para actualizar la base de datos con las últimas migraciones, usa:
 
+```bash
 aerich upgrade
+```
 
 ## Levantar el Servidor
 Para iniciar el servidor, ejecuta:
 
+```bash
 uvicorn main:app --reload
-
+```
 
 ## Contribuir
 Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
