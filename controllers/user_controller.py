@@ -1,5 +1,5 @@
 from fastapi import HTTPException
-from schemas.user_schema import UserCreateSchema
+from schemas.user_schema import UserCreateSchema, UserUpdateSchema
 from models.user_model import User
 from services.user_service import UserService
 import uuid
@@ -31,7 +31,7 @@ class UserController:
             raise HTTPException(status_code=404, detail='User not found')
         return user
 
-    async def update(self, id: int, data: UserCreateSchema):
+    async def update(self, id: int, data: UserUpdateSchema):
         """
         Update a user by ID.
         :param id: User ID

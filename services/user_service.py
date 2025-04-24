@@ -2,7 +2,7 @@ from typing import Type, TypeVar, Generic
 from pydantic import BaseModel
 from tortoise.models import Model
 from datetime import datetime
-from schemas.user_schema import UserCreateSchema
+from schemas.user_schema import UserCreateSchema, UserUpdateSchema
 from models.user_model import User, hash_password
 import uuid
 
@@ -41,7 +41,7 @@ class CRUDService(Generic[T, M]):
             return None
 
 
-    async def update(self, id: uuid.UUID, data: T):
+    async def update(self, id: uuid.UUID, data: UserUpdateSchema):
         instance = await self.get_by_id(id)
         if instance:
             update_data = data.model_dump()

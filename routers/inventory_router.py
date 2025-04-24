@@ -13,7 +13,7 @@ async def all():
     return await InventoryController.get_all()
 
 @inventory_router.get('/show/{id}', tags=['Inventory'], response_model=InventoryResponseSchema)
-async def show(id: int):
+async def show(id: str):
     return await InventoryController.get(id)
 
 @inventory_router.post('/create', tags=['Inventory'], response_model=InventoryResponseSchema)
@@ -21,7 +21,7 @@ async def creater(data: InventoryCreateSchema):
     return await InventoryController.create(data)
 
 @inventory_router.put('/update/{id}', tags=['Inventory'], response_model=InventoryResponseSchema)
-async def updater(id: int, data: InventoryCreateSchema, current_user: User = Depends(decode_token)):
+async def updater(id: str, data: InventoryCreateSchema, current_user: User = Depends(decode_token)):
     user = await InventoryController.get_owner(id)
     if user != current_user.id:
         raise HTTPException(status_code=403, detail="Not authorized to update this user")

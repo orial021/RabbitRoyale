@@ -8,7 +8,6 @@ from models.error_log_model import ErrorLog
 class HTTPErrorHandler(BaseHTTPMiddleware):  
     async def dispatch(self, request: Request, call_next):
         try:
-            print("no tiene errores http que manejar")
             return await call_next(request)
         except HTTPException as http_exc:
             print("error http_exc")
