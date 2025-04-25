@@ -20,7 +20,7 @@ Este proyecto utiliza Tortoise ORM y Aerich para la gestión de la base de datos
 2. Instala las dependencias:
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## Configuración de la Base de Datos
@@ -58,6 +58,11 @@ Para iniciar el servidor, ejecuta:
 uvicorn main:app --reload
 ```
 
+Para iniciar el servidor con multiples hilos paralelos (no usar con SQLite), ejecuta:
+
+```bash
+gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
+```
 ## Contribuir
 Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
 

@@ -1,36 +1,29 @@
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
-import uuid
-from enum import Enum
+from utils import EMatchStatus, EMapName, EMatchTime
 
-class EMatchStatus(Enum):
-    PENDING = "pending"
-    IN_PROGRESS = "in_progress"
-    COMPLETED = "completed"
-    CANCELLED = "cancelled"
-    
 class Match(BaseModel):
-    id: uuid.UUID
+    id: int
     start_time: datetime
     end_time: Optional[datetime] = None
-    total_time: Optional[int] = None
+    total_time: EMatchTime = EMatchTime.NORMAL
     status: EMatchStatus = EMatchStatus.PENDING
-    map_name: Optional[str] = None
+    map_name: EMapName = EMapName.MAP1
     kills: Optional[int] = None
     deads: Optional[int] = None
-    players: Optional[list[uuid.UUID]] = None
+    players: Optional[list[str]] = None
     creator: Optional[str] = None
     
     class Config:
         from_attributes = True
         
 class MatchCreateSchema(BaseModel):
-    start_time: datetime
-    end_time: Optional[datetime] = None
     status: EMatchStatus = EMatchStatus.PENDING
-    map_name: Optional[str] = None
+    total_time: EMatchTime = EMatchTime.NORMAL
+    map_name: EMapName = EMapName.MAP1
     creator: Optional[str] = None
+    players: Optional[list[str]] = None
     
     class Config:
         from_attributes = True
@@ -40,13 +33,13 @@ class MatchUpdateSchema(BaseModel):
     status: Optional[EMatchStatus] = None
     kills: Optional[int] = None
     deads: Optional[int] = None
-    players: Optional[list[uuid.UUID]] = None
+    players: Optional[list[str]] = None
     
     class Config:
         from_attributes = True
         
 class MatchResponseSchema(BaseModel):
-    id: uuid.UUID
+    id: int
     start_time: datetime
     end_time: Optional[datetime] = None
     total_time: Optional[int] = None
@@ -54,7 +47,7 @@ class MatchResponseSchema(BaseModel):
     map_name: Optional[str] = None
     kills: Optional[int] = None
     deads: Optional[int] = None
-    players: Optional[list[uuid.UUID]] = None
+    players: Optional[list[str]] = None
     creator: Optional[str] = None
     
     class Config:

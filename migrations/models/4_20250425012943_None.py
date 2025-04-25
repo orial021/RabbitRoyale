@@ -24,6 +24,20 @@ CREATE TABLE IF NOT EXISTS "items" (
     "updated_at" TIMESTAMP NOT NULL  DEFAULT CURRENT_TIMESTAMP,
     "deleted_at" TIMESTAMP
 );
+CREATE TABLE IF NOT EXISTS "matches" (
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    "start_time" TIMESTAMP,
+    "end_time" TIMESTAMP,
+    "total_time" INT NOT NULL  DEFAULT 300,
+    "status" VARCHAR(20) NOT NULL  DEFAULT 'pending',
+    "map_name" VARCHAR(100) NOT NULL  DEFAULT 'Normal',
+    "kills" INT,
+    "deads" INT,
+    "players" JSON,
+    "creator" VARCHAR(100),
+    "created_at" TIMESTAMP NOT NULL  DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP NOT NULL  DEFAULT CURRENT_TIMESTAMP
+);
 CREATE TABLE IF NOT EXISTS "users" (
     "id" CHAR(36) NOT NULL  PRIMARY KEY,
     "username" VARCHAR(50) NOT NULL UNIQUE,
@@ -38,6 +52,7 @@ CREATE TABLE IF NOT EXISTS "users" (
     "matches_played" INT NOT NULL  DEFAULT 0,
     "wins" INT NOT NULL  DEFAULT 0,
     "kills" INT NOT NULL  DEFAULT 0,
+    "deads" INT NOT NULL  DEFAULT 0,
     "inventory_capacity" INT NOT NULL  DEFAULT 3,
     "created_at" TIMESTAMP NOT NULL  DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP NOT NULL  DEFAULT CURRENT_TIMESTAMP,

@@ -11,7 +11,7 @@ async def all():
     return await MatchController.get_all()
 
 @match_router.get('/show/{id}', tags=['Item'], response_model=MatchResponseSchema)
-async def show(id: str):
+async def show(id: int):
     return await MatchController.get(id)
 
 @match_router.post('/create', tags=['Item'], response_model=MatchResponseSchema)
@@ -19,9 +19,9 @@ async def creater(data: MatchCreateSchema):
     return await MatchController.create(data)
 
 @match_router.put('/update/{id}', tags=['Item'], response_model=MatchResponseSchema)
-async def updater(id: str, data: MatchUpdateSchema):
+async def updater(id: int, data: MatchUpdateSchema):
     return await MatchController.update(id, data)
 
-@match_router.delete('/delete/{id}', tags=['Item'], response_model=MatchResponseSchema)
-async def delete(id: str):
-    return await MatchController.delete(id)
+@match_router.get('/time', tags=['Item'])
+async def time_remaining():
+    return await MatchController.get_time()
