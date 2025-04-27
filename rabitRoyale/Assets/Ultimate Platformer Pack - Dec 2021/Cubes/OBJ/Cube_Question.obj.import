@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bra4t2tos28bi"
+path="res://.godot/imported/Cube_Question.obj-5e18084b77a6ff8c15d1014734a2ec08.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Cube_Question.obj-5e18084b77a6ff8c15d1014734a2ec08.mesh"]
+
+source_file="res://Assets/Ultimate Platformer Pack - Dec 2021/Cubes/OBJ/Cube_Question.obj"
+dest_files=["res://.godot/imported/Cube_Question.obj-5e18084b77a6ff8c15d1014734a2ec08.mesh", "res://.godot/imported/Cube_Question.obj-5e18084b77a6ff8c15d1014734a2ec08.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

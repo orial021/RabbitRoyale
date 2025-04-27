@@ -5,6 +5,7 @@
 # para levantar el servidor uvicorn main:app --reload
 
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from routers import routers
 from tortoise.contrib.fastapi import register_tortoise
 from utils.http_error_handler import HTTPErrorHandler
@@ -34,3 +35,8 @@ register_tortoise(
 
 for router, prefix in routers:
     app.include_router(router, prefix=prefix)
+
+
+@app.get("/", include_in_schema=False)
+async def root():
+    return RedirectResponse(url="/docs")
