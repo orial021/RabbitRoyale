@@ -1,27 +1,31 @@
 from typing import List
 from fastapi import APIRouter
 from schemas.matches_schema import MatchCreateSchema, MatchUpdateSchema, MatchResponseSchema
-from controllers.matches_controller import MatchController
+from controllers.matches_controller import match_controller
 
 
 match_router = APIRouter()
 
-@match_router.get('/all', tags=['Item'], response_model=List[MatchResponseSchema])
+@match_router.get('/all', tags=['Matches'], response_model=List[MatchResponseSchema])
 async def all():
-    return await MatchController.get_all()
+    return await match_controller.get_all()
 
-@match_router.get('/show/{id}', tags=['Item'], response_model=MatchResponseSchema)
+@match_router.get('/show/{id}', tags=['Matches'], response_model=MatchResponseSchema)
 async def show(id: int):
-    return await MatchController.get(id)
+    return await match_controller.get(id)
 
-@match_router.post('/create', tags=['Item'], response_model=MatchResponseSchema)
+@match_router.post('/create/', tags=['Matches'], response_model=MatchResponseSchema)
 async def creater(data: MatchCreateSchema):
-    return await MatchController.create(data)
+    return await match_controller.create(data)
 
-@match_router.put('/update/{id}', tags=['Item'], response_model=MatchResponseSchema)
+@match_router.put('/update/{id}', tags=['Matches'], response_model=MatchResponseSchema)
 async def updater(id: int, data: MatchUpdateSchema):
-    return await MatchController.update(id, data)
+    return await match_controller.update(id, data)
 
-@match_router.get('/time', tags=['Item'])
+@match_router.get('/last', tags=['Matches'])
+async def last():
+    return await match_controller.get_last()
+
+@match_router.get('/time', tags=['Matches'])
 async def time_remaining():
-    return await MatchController.get_time()
+    return await match_controller.get_time()

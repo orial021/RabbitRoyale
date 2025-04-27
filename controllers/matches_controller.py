@@ -1,5 +1,5 @@
 from fastapi import HTTPException
-from datetime import datetime
+from datetime import datetime, timezone
 from schemas.matches_schema import MatchCreateSchema, MatchUpdateSchema
 from models.matches_model import Match
 from services.matches_service import matchService
@@ -26,13 +26,22 @@ class MatchController:
             raise HTTPException(status_code=404, detail='Item not found')
         return Item
     
+    async def get_last(self):
+        Item = await self.service.get_last()
+        if Item is None:
+            raise HTTPException(status_code=404, detail='Item not found')
+        return Item.id
+    
     async def get_time(self):
-        match = await self.service.get_active_match()
+        match = await self.service.get_last()
         if not match:
             raise HTTPException(status_code=404, detail='No hay partidas activas')
-        
-        time_remaining = (match.end_time - datetime.now()).total_seconds()
-        return {"time_remaining_seconds": max(time_remaining, 0)}
+        if match.status == "in_progress":
+            time_remaining = (match.end_time - datetime.now(timezone.utc)).total_seconds()
+            return {"time_remaining_seconds": max(time_remaining, 0)}
+        if match.status == "pending":
+            return {"time_remaining_seconds": -1}
+        raise HTTPException(status_code=404, detail='No hay partidas activas')
 
 
 match_controller = MatchController()

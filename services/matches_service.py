@@ -1,9 +1,10 @@
 from typing import Type, TypeVar, Generic
 from pydantic import BaseModel
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+from tortoise.expressions import Q
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from tortoise.models import Model
-from schemas.matches_schema import MatchCreateSchema, MatchUpdateSchema
+from schemas.matches_schema import Match, MatchCreateSchema, MatchUpdateSchema
 from models.matches_model import Match
 
 T = TypeVar('T', bound=BaseModel)
@@ -17,37 +18,52 @@ class CRUDService(Generic[T, M]):
         self.schema = schema
 
     async def create(self, data: T):
-        active_matches = await self.model.filter(
-            status="in_progress",
-            deleted_at=None
-        ).all()
-        for match in active_matches:
-            match.status = "completed"
-            await match.save()
-            scheduler.remove_job(match.id)
-        if 'players' in data.model_dump(exclude_unset=True):
-            data.players = [player for player in data.players]
-        if 'status' in data.model_dump(exclude_unset=True):
-            data.status = data.status.value
+        await self._end_existing_matches()
+        
+        data.players = {
+            player: {
+                'kills': stats['kills'] or 0,
+                'deads': stats['deads'] or 0
+            } for player, stats in data.players.items()
+        }
+        data.status = data.status.value
         return await self.model.create(**data.model_dump())
 
     async def get_all(self):
-        return await self.model.filter(deleted_at=None)
+        return await self.model.all().order_by('-created_at').limit(5)
 
     async def get_by_id(self, id: int):
-        return await self.model.get_or_none(id=id, deleted_at=None)
+        return await self.model.get_or_none(id=id)
 
     async def update(self, id: int, data: MatchUpdateSchema):
-        instance = await self.get_by_id(id)
+        instance : Match = await self.get_by_id(id)
         if instance:
             if 'players' in data.model_dump(exclude_unset=True):
-                data.players = [player for player in data.players]
-            if 'status' in data.model_dump(exclude_unset=True):
-                data.status = data.status.value
-            if data.status.value == "pending":
+                current_players = instance.players or {}
+                kills : int = 0
+                deads : int = 0
+                data.kills = 0
+                data.deads = 0 
+                for player, stats in data.model_dump()['players'].items():
+                    print(player, stats)
+                    if player in current_players:
+                        current_players[player]['kills'] = stats['kills']
+                        current_players[player]['deads'] = stats['deads']
+                        kills += stats['kills']
+                        deads += stats['deads']
+                    else:
+                        current_players[player] = {
+                            'kills': stats['kills'] or 0,
+                            'deads': stats['deads'] or 0
+                        }
+                data.kills += kills
+                data.deads += deads
+                data.players = current_players
+            
+            if instance.status == "pending":
                 instance.status = "in_progress"
-                instance.start_time = datetime.now()
-                instance.end_time = instance.start_time + instance.total_time
+                instance.start_time = datetime.now(timezone.utc)
+                instance.end_time = instance.start_time + timedelta(seconds=instance.total_time)
                 try:
                     scheduler.add_job(self.end_match, 'date', run_date=instance.end_time, args=[instance.id])
                 except Exception as e:
@@ -57,22 +73,39 @@ class CRUDService(Generic[T, M]):
             return instance
         return None
     
+
     async def get_last(self):
-        return await self.model.filter(
-            status="in_progress",
-            deleted_at=None
-        ).order_by('-created_at').first()
+        instance = await self.model.filter(
+            Q(status="in_progress") | Q(status="pending")
+            ).order_by('-created_at').first()
+        return instance
+
 
     async def end_match(self, id: int):
-        instance = await self.get_by_id(id)
-        if instance and instance.status == "in_progress":
-            instance.status = "completed"
-            instance.end_time = datetime.now()
-            instance.total_time = (instance.end_time - instance.start_time).seconds
-            await instance.save()
+        instance : Match = await self.get_by_id(id)
+        if instance:
+            now = datetime.now(timezone.utc)
+            if instance.status == "in_progress":
+                instance.status = "completed"
+                instance.end_time = now
+                if instance.start_time.tzinfo is None:
+                    instance.start_time = instance.start_time.replace(tzinfo=timezone.utc)
+                instance.total_time = (instance.end_time - instance.start_time).seconds
+                await instance.save()
+                
+            elif instance.status == "pending":
+                instance.status = "cancelled"
+                instance.total_time = 0
+                await instance.save()
             return instance
         return None
 
+    async def _end_existing_matches(self):
+        active_matches = await self.model.filter(Q(status="pending") | Q(status="in_progress"))
+        
+        for match in active_matches:
+            await self.end_match(match.id)
+            
 class matchService(CRUDService[MatchCreateSchema, Match]):
     pass
 
