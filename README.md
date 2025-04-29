@@ -15,6 +15,10 @@ Este proyecto utiliza Tortoise ORM y Aerich para la gestión de la base de datos
    ```bash
    git clone https://github.com/orial021/RabbitRoyale.git
    cd RabbitRoyale
+   git checkout -b juanpabon
+   git add . 
+   git commit -m "first commit"
+   git pusho origin 
    ```
 
 2. Instala las dependencias:
@@ -76,3 +80,5 @@ Abre un Pull Request.
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
 ¡Gracias por contribuir y aprender con nosotros!
+
+esta es la rama de Juan Pabon
