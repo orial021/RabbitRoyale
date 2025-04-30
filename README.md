@@ -18,7 +18,7 @@ Este proyecto utiliza Tortoise ORM y Aerich para la gestión de la base de datos
    git checkout -b juanpabon
    git add . 
    git commit -m "first commit"
-   git pusho origin 
+   git pusho origin juanpabon
    ```
 
 2. Instala las dependencias:
