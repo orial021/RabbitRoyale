@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://baeordbg1uh38"]
+
+[ext_resource type="PackedScene" uid="uid://nqian85nbat2" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Fruit.gltf" id="1_j7r1e"]
+[ext_resource type="PackedScene" uid="uid://2mnhuh6pymar" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Tree_Fruit.gltf" id="2_8inha"]
+[ext_resource type="PackedScene" uid="uid://dnbjn3blfknxx" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Bush.gltf" id="3_n2mnh"]
+[ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="4_x5f3s"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uwxxs"]
+noise_type = 5
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qwfkq"]
+noise = SubResource("FastNoiseLite_uwxxs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i081d"]
+albedo_color = Color(0.176471, 0.407843, 0.160784, 1)
+albedo_texture = SubResource("NoiseTexture2D_qwfkq")
+
+[sub_resource type="BoxMesh" id="BoxMesh_m6csd"]
+size = Vector3(16, 1, 16)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qok0p"]
+panorama = ExtResource("4_x5f3s")
+
+[sub_resource type="Sky" id="Sky_hgg7c"]
+sky_material = SubResource("PanoramaSkyMaterial_qok0p")
+
+[sub_resource type="Environment" id="Environment_3fcxt"]
+background_mode = 2
+sky = SubResource("Sky_hgg7c")
+
+[node name="Menu" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.412059, -0.570303, 0.948689)
+material_override = SubResource("StandardMaterial3D_i081d")
+mesh = SubResource("BoxMesh_m6csd")
+
+[node name="Ornament" type="Node3D" parent="."]
+
+[node name="Fruit2" parent="Ornament" instance=ExtResource("1_j7r1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.27532, 0, -1.35185)
+
+[node name="Fruit3" parent="Ornament" instance=ExtResource("1_j7r1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.11661, -1.19209e-07, -2.33791)
+
+[node name="Fruit4" parent="Ornament" instance=ExtResource("1_j7r1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34518, 1.19209e-07, -5.22797)
+
+[node name="Tree_Fruit2" parent="Ornament" instance=ExtResource("2_8inha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.49819, 0, -4.96028)
+
+[node name="Bush2" parent="Ornament" instance=ExtResource("3_n2mnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.180304, 0, -4.35898)
+
+[node name="Settings" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
+environment = SubResource("Environment_3fcxt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 4.43269, 0)
+shadow_enabled = true
