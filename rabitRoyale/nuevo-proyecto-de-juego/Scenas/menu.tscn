@@ -1,0 +1,112 @@
+[gd_scene load_steps=22 format=3 uid="uid://02hp07r2qhpb"]
+
+[ext_resource type="PackedScene" uid="uid://nqian85nbat2" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Fruit.gltf" id="1_73pq6"]
+[ext_resource type="PackedScene" uid="uid://cryxlmgbdbqdd" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_1.gltf" id="2_r82sn"]
+[ext_resource type="PackedScene" uid="uid://n34c2ynkw7hs" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_2.gltf" id="3_bqh11"]
+[ext_resource type="PackedScene" uid="uid://cfhplgrcgg04d" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_3.gltf" id="4_js07r"]
+[ext_resource type="PackedScene" uid="uid://bkqpsbv32hiaw" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_Large.gltf" id="5_83nux"]
+[ext_resource type="PackedScene" uid="uid://mqpmggsdx6y1" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_Medium.gltf" id="6_14mlv"]
+[ext_resource type="PackedScene" uid="uid://bycnv3ckf7t2m" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatform_Tall.gltf" id="7_vx8jo"]
+[ext_resource type="PackedScene" uid="uid://dyrcay505xci4" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Rock_1.gltf" id="8_n218s"]
+[ext_resource type="PackedScene" uid="uid://e80umn3xvue0" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Rock_2.gltf" id="9_yjrjb"]
+[ext_resource type="PackedScene" uid="uid://j0hn8au13ddw" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Tree.gltf" id="10_sxkyq"]
+[ext_resource type="PackedScene" uid="uid://2mnhuh6pymar" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Tree_Fruit.gltf" id="11_yoe2o"]
+[ext_resource type="PackedScene" uid="uid://dnbjn3blfknxx" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Bush.gltf" id="12_wr0ft"]
+[ext_resource type="PackedScene" uid="uid://ddrsgawl4cb6f" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Bush_Fruit.gltf" id="13_y3cp0"]
+[ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="14_bsvwp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g18rc"]
+noise_type = 4
+frequency = 0.7104
+offset = Vector3(0, 0, 0.45)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r45v4"]
+noise = SubResource("FastNoiseLite_g18rc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4el1"]
+albedo_color = Color(0, 0.352941, 0.188235, 1)
+albedo_texture = SubResource("NoiseTexture2D_r45v4")
+
+[sub_resource type="BoxMesh" id="BoxMesh_mgxst"]
+size = Vector3(16, 1, 16)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_c8te3"]
+panorama = ExtResource("14_bsvwp")
+
+[sub_resource type="Sky" id="Sky_p2twt"]
+sky_material = SubResource("PanoramaSkyMaterial_c8te3")
+
+[sub_resource type="Environment" id="Environment_om6fn"]
+background_mode = 2
+sky = SubResource("Sky_p2twt")
+
+[node name="Menu" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_y4el1")
+mesh = SubResource("BoxMesh_mgxst")
+
+[node name="Ornament" type="Node3D" parent="."]
+
+[node name="Fruit2" parent="Ornament" instance=ExtResource("1_73pq6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.98136, 0.813288, -2.33035)
+
+[node name="Fruit3" parent="Ornament" instance=ExtResource("1_73pq6")]
+transform = Transform3D(-0.909047, -0.202443, 0.364212, -1.66868e-08, 0.874052, 0.485832, -0.416693, 0.441644, -0.794555, 1.77857, 0.813288, -3.38298)
+
+[node name="RockPlatforms_12" parent="Ornament" instance=ExtResource("2_r82sn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9979, 0, -6.1113)
+
+[node name="RockPlatforms_22" parent="Ornament" instance=ExtResource("3_bqh11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.33674, 0, -3.08119)
+
+[node name="RockPlatforms_32" parent="Ornament" instance=ExtResource("4_js07r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226198, 0, -5.97954)
+
+[node name="RockPlatforms_Large2" parent="Ornament" instance=ExtResource("5_83nux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49341, 0, 1.58215)
+
+[node name="RockPlatforms_Medium2" parent="Ornament" instance=ExtResource("6_14mlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85874, 0, 5.55289)
+
+[node name="RockPlatform_Tall2" parent="Ornament" instance=ExtResource("7_vx8jo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.87914, 0, 4.50956)
+
+[node name="Rock_12" parent="Ornament" instance=ExtResource("8_n218s")]
+transform = Transform3D(0.82192, -0.0598533, 0.566449, 0.072629, 0.997359, 0, -0.564953, 0.0411406, 0.824097, -4.60165, 0, 1.43898)
+
+[node name="Rock_13" parent="Ornament" instance=ExtResource("8_n218s")]
+transform = Transform3D(0.55689, 0, 0.830586, 0, 1, 0, -0.830586, 0, 0.55689, -4.47011, 0, 0.497467)
+
+[node name="Rock_22" parent="Ornament" instance=ExtResource("9_yjrjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8964, 0, 6.88483)
+
+[node name="Rock_23" parent="Ornament" instance=ExtResource("9_yjrjb")]
+transform = Transform3D(0.00813316, 0, -0.999967, 0, 1, 0, 0.999967, 0, 0.00813316, 5.51978, 0, -3.86246)
+
+[node name="Rock_24" parent="Ornament" instance=ExtResource("9_yjrjb")]
+transform = Transform3D(0.00813316, 3.71708e-10, -0.999967, 0.999005, 0.0438635, 0.00812533, 0.043862, -0.999038, 0.000356749, -7.50698, 3.52785, -2.43407)
+
+[node name="Tree2" parent="Ornament" instance=ExtResource("10_sxkyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08283, 0, 3.59899)
+
+[node name="Tree_Fruit2" parent="Ornament" instance=ExtResource("11_yoe2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55583, 0, -3.94014)
+
+[node name="Bush2" parent="Ornament" instance=ExtResource("12_wr0ft")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29021, 2.92992, -5.63305)
+
+[node name="Bush3" parent="Ornament" instance=ExtResource("12_wr0ft")]
+transform = Transform3D(0.816369, 0, -0.57753, -0.206686, 0.933768, -0.292162, 0.539279, 0.357879, 0.7623, 2.63169, 2.92992, -7.42778)
+
+[node name="Bush_Fruit2" parent="Ornament" instance=ExtResource("13_y3cp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63282, 2.05842, -7.23677)
+
+[node name="Settings" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
+environment = SubResource("Environment_om6fn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0.121757, 0.302314, 0.9454, -0.484949, 0.84918, -0.209089, 0, 8.55543, -5.33695)
+shadow_enabled = true
