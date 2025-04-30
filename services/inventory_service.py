@@ -16,7 +16,7 @@ class CRUDService(Generic[T, M]):
         return await self.model.create(**data.model_dump())
 
     async def get_all(self):
-        return await self.model.filter(deleted_at=None)
+        return await self.model.all()
     
     async def get_owner(self, id: int):
         instance = await self.get_by_id(id)
