@@ -15,6 +15,11 @@ Este proyecto utiliza Tortoise ORM y Aerich para la gestión de la base de datos
    ```bash
    git clone https://github.com/orial021/RabbitRoyale.git
    cd RabbitRoyale
+   git add . 
+   git commint -m "first commit"
+   git push origin nombre-de-la-rama
+   git clone 
+   git switch David
    ```
 
 2. Instala las dependencias:
