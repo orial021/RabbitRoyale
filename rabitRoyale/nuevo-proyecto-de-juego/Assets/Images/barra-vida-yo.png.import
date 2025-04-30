@@ -2,18 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t8k6vnodedvw"
-path.s3tc="res://.godot/imported/Landscape.png-a7f642dcb6583172bc4127e4f372ce8b.s3tc.ctex"
-path.etc2="res://.godot/imported/Landscape.png-a7f642dcb6583172bc4127e4f372ce8b.etc2.ctex"
+uid="uid://do8mg3eossv6g"
+path.s3tc="res://.godot/imported/barra-vida-yo.png-b3538721a79279f1570cda01da9ab0dc.s3tc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
-source_file="res://Assets/Images/Landscape.png"
-dest_files=["res://.godot/imported/Landscape.png-a7f642dcb6583172bc4127e4f372ce8b.s3tc.ctex", "res://.godot/imported/Landscape.png-a7f642dcb6583172bc4127e4f372ce8b.etc2.ctex"]
+source_file="res://Assets/Images/barra-vida-yo.png"
+dest_files=["res://.godot/imported/barra-vida-yo.png-b3538721a79279f1570cda01da9ab0dc.s3tc.ctex"]
 
 [params]
 
