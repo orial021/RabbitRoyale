@@ -2,18 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do8mg3eossv6g"
-path.s3tc="res://.godot/imported/barra-vida-yo.png-b3538721a79279f1570cda01da9ab0dc.s3tc.ctex"
-path.etc2="res://.godot/imported/barra-vida-yo.png-b3538721a79279f1570cda01da9ab0dc.etc2.ctex"
+uid="uid://bl2h2vqlg0evc"
+path.s3tc="res://.godot/imported/SMO_Coin_SHD_baseColor.png-4013a0b41d4d5a065b95b97d3340abeb.s3tc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
-source_file="res://Assets/Images/barra-vida-yo.png"
-dest_files=["res://.godot/imported/barra-vida-yo.png-b3538721a79279f1570cda01da9ab0dc.s3tc.ctex", "res://.godot/imported/barra-vida-yo.png-b3538721a79279f1570cda01da9ab0dc.etc2.ctex"]
+source_file="res://Assets/Models/coin_-_super_mario_odyssey/textures/SMO_Coin_SHD_baseColor.png"
+dest_files=["res://.godot/imported/SMO_Coin_SHD_baseColor.png-4013a0b41d4d5a065b95b97d3340abeb.s3tc.ctex"]
 
 [params]
 
