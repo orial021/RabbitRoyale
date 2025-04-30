@@ -1,0 +1,41 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Rabbit Royal"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://Scripts/GLOBAL.gd"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=720
+window/size/window_width_override=960
+window/size/window_height_override=540
+
+[filesystem]
+
+import/blender/enabled=false
+
+[input]
+
+ui_scope={
+"deadzone": 0.2,
+"events": []
+}
+ui_shot={
+"deadzone": 0.2,
+"events": []
+}
