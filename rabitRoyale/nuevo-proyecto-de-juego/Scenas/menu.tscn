@@ -133,13 +133,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08283, 0, 3.59899)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55583, 0, -3.94014)
 
 [node name="Bush2" parent="Ornament" instance=ExtResource("12_wr0ft")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29021, 2.92992, -7.3091)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29021, 2.57548, -7.3091)
 
 [node name="Bush3" parent="Ornament" instance=ExtResource("12_wr0ft")]
 transform = Transform3D(0.816369, 0, -0.57753, -0.206686, 0.933768, -0.292162, 0.539279, 0.357879, 0.7623, 2.63169, 2.92992, -7.42778)
 
 [node name="Bush_Fruit2" parent="Ornament" instance=ExtResource("13_y3cp0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62017, 2.05842, -7.23677)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37838, 2.41817, -7.23677)
 
 [node name="Settings" type="Node3D" parent="."]
 
