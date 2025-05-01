@@ -16,6 +16,7 @@ Este proyecto utiliza Tortoise ORM y Aerich para la gestión de la base de datos
    git clone https://github.com/orial021/RabbitRoyale.git
    cd RabbitRoyale
    ```
+   git  clone https://github.com/orial021/RabbitRoyale.git -b haylimartinez
 
 2. Instala las dependencias:
 
@@ -76,3 +77,5 @@ Abre un Pull Request.
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
 ¡Gracias por contribuir y aprender con nosotros!
+
+esta es la rama de Hayli Martinez 
