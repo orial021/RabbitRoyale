@@ -15,6 +15,14 @@ Este proyecto utiliza Tortoise ORM y Aerich para la gestión de la base de datos
    ```bash
    git clone https://github.com/orial021/RabbitRoyale.git
    cd RabbitRoyale
+   git checkout -b manuel-b
+   git add .
+   git commit.-m."first.commit"
+   git push origin manuel-b
+   git config --global user.email "manuelbarrerar98@gmail.com"
+   git config --global user.name "Manuel Barrera"
+   git clone https://github.com/orial021/RabbitRoyale.git -b manuel-b
+   git switch manuel-b
    ```
 
 2. Instala las dependencias:
@@ -76,3 +84,5 @@ Abre un Pull Request.
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
 ¡Gracias por contribuir y aprender con nosotros!
+
+Esta es la rama de Manuel Barrera
