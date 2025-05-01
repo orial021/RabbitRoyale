@@ -31,10 +31,4 @@ class InventoryController:
             raise HTTPException(status_code=404, detail='Inventory not found')
         return Item
 
-    async def delete(self, id: int):
-        Item = await self.service.delete(id)
-        if Item is None:
-            raise HTTPException(status_code=404, detail='Inventory not found')
-        return Item
-
-InventoryController = InventoryController()
+inventory_controller = InventoryController()
