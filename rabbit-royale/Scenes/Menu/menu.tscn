@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://baeordbg1uh38"]
+[gd_scene load_steps=13 format=3 uid="uid://baeordbg1uh38"]
 
 [ext_resource type="PackedScene" uid="uid://nqian85nbat2" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Fruit.gltf" id="1_j7r1e"]
 [ext_resource type="PackedScene" uid="uid://2mnhuh6pymar" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Tree_Fruit.gltf" id="2_8inha"]
 [ext_resource type="PackedScene" uid="uid://dnbjn3blfknxx" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Bush.gltf" id="3_n2mnh"]
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="4_x5f3s"]
+[ext_resource type="PackedScene" uid="uid://dh41o6khjonig" path="res://Scenes/Menu/character_menu.tscn" id="5_8inha"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uwxxs"]
 noise_type = 5
@@ -61,3 +62,9 @@ environment = SubResource("Environment_3fcxt")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 4.43269, 0)
 shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="Settings"]
+transform = Transform3D(0.719267, 0, 0.694734, 0, 1, 0, -0.694734, 0, 0.719267, 9.4333, 1.78766, 10.8571)
+
+[node name="Character_menu" parent="." instance=ExtResource("5_8inha")]
+transform = Transform3D(0.627668, 0.423923, -0.652934, -0.729172, 0.0263893, -0.683822, -0.272657, 0.905314, 0.325676, 4.73008, -0.937593, 5.66682)
