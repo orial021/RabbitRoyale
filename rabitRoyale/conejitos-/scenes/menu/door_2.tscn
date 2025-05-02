@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=4 uid="uid://3nrirmrmcsgm"]
+[gd_scene load_steps=14 format=4 uid="uid://3nrirmrmcsgm"]
 
+[ext_resource type="Script" uid="uid://dwqdwatw7ae5g" path="res://Scripts/menu/door_2.gd" id="1_nxe1k"]
 [ext_resource type="Shader" uid="uid://bn38uv62e4b48" path="res://Resources/Shaders/Landscape.gdshader" id="2_n5xsx"]
 [ext_resource type="Texture2D" uid="uid://t8k6vnodedvw" path="res://Assets/Images/Landscape.png" id="3_oswa3"]
 
@@ -148,6 +149,7 @@ shader_parameter/TEXTURE = ExtResource("3_oswa3")
 font_names = PackedStringArray("Lucida Calligraphy")
 
 [node name="Door2" type="Node3D"]
+script = ExtResource("1_nxe1k")
 
 [node name="Door" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21069, 2.21013, 0.360042)
