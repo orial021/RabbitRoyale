@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://5t75brqtyga3"]
+[gd_scene load_steps=25 format=3 uid="uid://5t75brqtyga3"]
 
 [ext_resource type="PackedScene" uid="uid://dx8k42pe5r54s" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_1.gltf" id="1_g8i7c"]
+[ext_resource type="Script" uid="uid://cnan1kjj8b77h" path="res://Scripts/MENU/menu.gd" id="1_ix2cr"]
 [ext_resource type="PackedScene" uid="uid://dlurtr0vo03bs" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_3.gltf" id="2_23t3j"]
 [ext_resource type="PackedScene" uid="uid://dnbjn3blfknxx" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Bush.gltf" id="3_8ph6h"]
 [ext_resource type="PackedScene" uid="uid://cfhplgrcgg04d" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_3.gltf" id="4_5ti5v"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dvobh6jcmngc3" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Cloud_1.gltf" id="11_owyel"]
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="12_h63v2"]
 [ext_resource type="PackedScene" uid="uid://bmk2b5vm0jqbt" path="res://Scenes/character_menu.tscn" id="13_23t3j"]
+[ext_resource type="PackedScene" uid="uid://drv7jrlowguof" path="res://Scenes/door.tscn" id="14_x3j1o"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l6llh"]
 seed = 7
@@ -43,7 +45,14 @@ sky_material = SubResource("PanoramaSkyMaterial_nakb8")
 background_mode = 2
 sky = SubResource("Sky_pde1v")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nqlk8"]
+size = Vector3(4, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jqn0i"]
+size = Vector3(4, 4, 1)
+
 [node name="menu" type="Node3D"]
+script = ExtResource("1_ix2cr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_i37ye")
@@ -105,5 +114,28 @@ environment = SubResource("Environment_747ic")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0.484497, -0.603204, 0.633567, -0.123542, 0.66981, 0.732183, -6.84025, 29.3212, -5.56986)
 shadow_enabled = true
 
+[node name="Camera3D" type="Camera3D" parent="settings"]
+transform = Transform3D(0.681998, 0.442176, -0.582545, -1.6688e-09, 0.79653, 0.604599, 0.731354, -0.412336, 0.543232, -9.35441, 9.20798, 10.1266)
+
+[node name="DoorCreate" parent="settings" instance=ExtResource("14_x3j1o")]
+transform = Transform3D(1.00335, 0, 0, 0, 1.00335, 0, 0, 0, 1.00335, -1, 1, -3)
+label = "Create"
+
+[node name="Area3D" type="Area3D" parent="settings/DoorCreate"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="settings/DoorCreate/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75747, -0.996661)
+shape = SubResource("BoxShape3D_nqlk8")
+
+[node name="DoorJoin" parent="settings" instance=ExtResource("14_x3j1o")]
+transform = Transform3D(-4.38578e-08, 0, -1.00335, 0, 1.00335, 0, 1.00335, 0, -4.38578e-08, 4, 1, 3)
+label = "Unirse"
+
+[node name="Area3D" type="Area3D" parent="settings/DoorJoin"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="settings/DoorJoin/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99332, -0.996661)
+shape = SubResource("BoxShape3D_jqn0i")
+
 [node name="Character_menu" parent="." instance=ExtResource("13_23t3j")]
-transform = Transform3D(0.766044, -0.642788, 2.80971e-08, 0, -4.37114e-08, -1, 0.642788, 0.766044, -3.34849e-08, -3.6282, 0.611156, 3.94577)
+transform = Transform3D(0.679441, -0.73373, 3.20724e-08, 0, -4.37114e-08, -1, 0.73373, 0.679441, -2.96993e-08, -3.6282, 0.611156, 3.94577)

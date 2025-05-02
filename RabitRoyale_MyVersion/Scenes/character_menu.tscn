@@ -1,5 +1,6 @@
-[gd_scene load_steps=33 format=4 uid="uid://bmk2b5vm0jqbt"]
+[gd_scene load_steps=34 format=4 uid="uid://bmk2b5vm0jqbt"]
 
+[ext_resource type="Script" uid="uid://bgvs4h7xc236w" path="res://Scripts/MENU/character_menu.gd" id="1_k8yv0"]
 [ext_resource type="Animation" uid="uid://cr3sy34pirj10" path="res://Resources/Utils/Dance.res" id="1_n6mxt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rlnm"]
@@ -4691,6 +4692,7 @@ height = 4.0
 
 [node name="Character_menu" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_k8yv0")
 
 [node name="CharacterArmature" type="Node3D" parent="."]
 transform = Transform3D(0.969964, 0.111524, 0.216174, -0.220565, 0.0285123, 0.974955, 0.102567, -0.993353, 0.0522542, -0.12143, -0.140297, -0.163934)
