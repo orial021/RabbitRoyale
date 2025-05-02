@@ -1,5 +1,6 @@
-[gd_scene load_steps=34 format=4 uid="uid://l2e7i7mchsl8"]
+[gd_scene load_steps=35 format=4 uid="uid://l2e7i7mchsl8"]
 
+[ext_resource type="Script" uid="uid://c4m6gnavtjav1" path="res://Scripts/ScriptsMenu/character_menu.gd" id="1_430fi"]
 [ext_resource type="Animation" uid="uid://b1hjosytefgo8" path="res://Resources/Utils/mixamo_com.res" id="1_wuo60"]
 [ext_resource type="Animation" uid="uid://bdeiwpm4fva1d" path="res://Utils/Dance.res" id="2_430fi"]
 
@@ -4693,6 +4694,7 @@ height = 3.14367
 
 [node name="Character_Menu" type="CharacterBody3D"]
 transform = Transform3D(0.941935, 1.46781e-08, 0.335797, 0.335797, -4.11733e-08, -0.941935, 0, 1, -4.37114e-08, 0, 0.0425562, 0)
+script = ExtResource("1_430fi")
 
 [node name="CharacterArmature" type="Node3D" parent="."]
 transform = Transform3D(0.974118, 0.225253, -0.0188691, 0.0527751, -0.14547, 0.987954, 0.219794, -0.963379, -0.153592, 0.0269112, -0.30922, -0.0394361)
