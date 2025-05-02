@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://0hervqawh4va"]
+[gd_scene load_steps=14 format=4 uid="uid://0hervqawh4va"]
 
+[ext_resource type="Script" uid="uid://b4wv2kuh1ovy0" path="res://Scrips/door.gd" id="1_djd8s"]
 [ext_resource type="Shader" uid="uid://bn38uv62e4b48" path="res://Resources/Shaders/Landscape.gdshader" id="2_7e3op"]
 [ext_resource type="Texture2D" uid="uid://t8k6vnodedvw" path="res://Assets/Images/Landscape.png" id="3_u17w6"]
 
@@ -144,11 +145,14 @@ render_priority = 0
 shader = ExtResource("2_7e3op")
 shader_parameter/TEXTURE = ExtResource("3_u17w6")
 
+[sub_resource type="SystemFont" id="SystemFont_k4hv0"]
+font_names = PackedStringArray("Comic Sans MS")
+
 [node name="Door2" type="Node3D"]
+script = ExtResource("1_djd8s")
 
 [node name="Door" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21069, 2.21013, 0.360042)
-visible = false
 mesh = SubResource("ArrayMesh_fryxo")
 skeleton = NodePath("")
 
@@ -160,3 +164,9 @@ skeleton = NodePath("")
 transform = Transform3D(0.309442, 0, 0, 0, 0.488927, 0, 0, 0, 1, 0, 1.82269, 0)
 material_override = SubResource("ShaderMaterial_6vv7x")
 texture = ExtResource("3_u17w6")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+text = "CREAR PARTIDA"
+font = SubResource("SystemFont_k4hv0")
+font_size = 100
