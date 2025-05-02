@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2epop7vfcv2b"]
+[gd_scene load_steps=17 format=3 uid="uid://b2epop7vfcv2b"]
 
 [ext_resource type="PackedScene" uid="uid://2mnhuh6pymar" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Tree_Fruit.gltf" id="1_x5f3s"]
 [ext_resource type="PackedScene" uid="uid://nqian85nbat2" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Fruit.gltf" id="2_uwxxs"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bkqpsbv32hiaw" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_Large.gltf" id="6_qok0p"]
 [ext_resource type="PackedScene" uid="uid://dlurtr0vo03bs" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_3.gltf" id="7_hgg7c"]
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="8_uwxxs"]
+[ext_resource type="PackedScene" uid="uid://bkosbbmx8lrx1" path="res://Scenes/Menu/character_menu.tscn" id="9_qwfkq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3fcxt"]
 noise_type = 2
@@ -34,9 +35,6 @@ background_mode = 2
 sky = SubResource("Sky_i081d")
 
 [node name="Menu" type="Node3D"]
-
-[node name="Tree_Fruit2" parent="." instance=ExtResource("1_x5f3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.67345, 0, 6.87613)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_wxa3f")
@@ -80,6 +78,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04428, 0.685027, 5.19086)
 [node name="Fruit4" parent="Ornament" instance=ExtResource("2_uwxxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7702, 0.685229, -4.19744)
 
+[node name="Tree_Fruit3" parent="Ornament" instance=ExtResource("1_x5f3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.67345, 0, 6.87613)
+
 [node name="Settings" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
@@ -88,3 +89,9 @@ environment = SubResource("Environment_m6csd")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
 transform = Transform3D(-0.74935, 0.261314, 0.608433, 0.610546, 0.628356, 0.482081, -0.256338, 0.732724, -0.630403, 0, 8.74461, 0)
 shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="Settings"]
+transform = Transform3D(0.751437, -0.320413, 0.576782, 0, 0.874171, 0.485618, -0.659805, -0.364912, 0.656884, 9.91851, 5.76431, 9.69109)
+
+[node name="Character_menu" parent="." instance=ExtResource("9_qwfkq")]
+transform = Transform3D(0.730484, 0.68293, -2.98518e-08, 0, -4.37114e-08, -1, -0.68293, 0.730484, -3.19305e-08, 3.76923, 0.602607, 3.49363)
