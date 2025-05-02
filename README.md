@@ -76,3 +76,5 @@ Abre un Pull Request.
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
 ¡Gracias por contribuir y aprender con nosotros!
+
+solucionado el problema de la rama de Hayli
