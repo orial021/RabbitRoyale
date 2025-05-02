@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dxv8vd30spgr0"]
+[gd_scene load_steps=25 format=3 uid="uid://dxv8vd30spgr0"]
 
 [ext_resource type="PackedScene" uid="uid://dccq306hysssm" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_2.gltf" id="1_wxa3f"]
 [ext_resource type="PackedScene" uid="uid://dx8k42pe5r54s" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_1.gltf" id="2_0401g"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://crtppkg5yx3b8" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Cloud_3.gltf" id="14_wdypo"]
 [ext_resource type="PackedScene" uid="uid://n34c2ynkw7hs" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_2.gltf" id="15_hwu5y"]
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="16_fey7x"]
+[ext_resource type="PackedScene" uid="uid://bd4yyupffymr0" path="res://Scenes/Menu/character_menu.tscn" id="17_0401g"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rte3l"]
 frequency = 0.4262
@@ -114,3 +115,10 @@ environment = SubResource("Environment_30yoo")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
 transform = Transform3D(0.4112, 0.798862, -0.439015, -0.164695, 0.538801, 0.826178, 0.896544, -0.26742, 0.353123, 0, 7.78946, 0)
 shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="Settings"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 9.71241, 4, -9.13912)
+fov = 89.1212
+
+[node name="Character Menu" parent="." instance=ExtResource("17_0401g")]
+transform = Transform3D(-0.258819, 0.965457, 0.0300708, 0, 0.0311316, -0.999515, -0.965926, -0.258694, -0.00805745, 3.49796, 0.464608, -5.51033)
