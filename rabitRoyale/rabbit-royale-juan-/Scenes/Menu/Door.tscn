@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=4 uid="uid://5kockuc15ddu"]
+[gd_scene load_steps=14 format=4 uid="uid://5kockuc15ddu"]
 
+[ext_resource type="Script" uid="uid://dr4d1vtcaqvhc" path="res://Scripts/Menu/door.gd" id="1_bgmov"]
 [ext_resource type="Shader" uid="uid://bn38uv62e4b48" path="res://Resources/Shaders/Landscape.gdshader" id="2_lp815"]
 [ext_resource type="Texture2D" uid="uid://t8k6vnodedvw" path="res://Assets/Images/Landscape.png" id="3_o4w1l"]
 
@@ -148,6 +149,7 @@ shader_parameter/TEXTURE = ExtResource("3_o4w1l")
 font_names = PackedStringArray("Comic Sans MS")
 
 [node name="Door2" type="Node3D"]
+script = ExtResource("1_bgmov")
 
 [node name="Door" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21069, 2.21013, 0.360042)

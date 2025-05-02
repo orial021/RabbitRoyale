@@ -1,5 +1,6 @@
-[gd_scene load_steps=33 format=4 uid="uid://bd4yyupffymr0"]
+[gd_scene load_steps=34 format=4 uid="uid://bd4yyupffymr0"]
 
+[ext_resource type="Script" uid="uid://bb1f0k50uobjv" path="res://Scripts/Menu/character_menu.gd" id="1_wuo60"]
 [ext_resource type="Animation" uid="uid://crs74x8crv1un" path="res://Resources/Utils/GangnamStyle.res" id="1_ypjo8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rlnm"]
@@ -4693,6 +4694,7 @@ height = 3.50471
 
 [node name="Character Menu" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.0311316, -0.999515, 0, 0.999515, 0.0311316, 0, 0, 0)
+script = ExtResource("1_wuo60")
 
 [node name="CharacterArmature" type="Node3D" parent="."]
 transform = Transform3D(0.994521, 0.0912238, 0.051042, -0.045181, -0.0651986, 0.996849, 0.0942643, -0.993694, -0.0607198, 0.0338805, -0.092415, 0.0455532)

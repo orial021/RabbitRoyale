@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://dxv8vd30spgr0"]
+[gd_scene load_steps=29 format=3 uid="uid://dxv8vd30spgr0"]
 
+[ext_resource type="Script" uid="uid://cw40javf8k3s2" path="res://Scripts/Menu/menu.gd" id="1_wv7rd"]
 [ext_resource type="PackedScene" uid="uid://dccq306hysssm" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_2.gltf" id="1_wxa3f"]
 [ext_resource type="PackedScene" uid="uid://dx8k42pe5r54s" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_1.gltf" id="2_0401g"]
 [ext_resource type="PackedScene" uid="uid://2mnhuh6pymar" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Tree_Fruit.gltf" id="3_lnqkc"]
@@ -17,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://n34c2ynkw7hs" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_2.gltf" id="15_hwu5y"]
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="16_fey7x"]
 [ext_resource type="PackedScene" uid="uid://bd4yyupffymr0" path="res://Scenes/Menu/character_menu.tscn" id="17_0401g"]
+[ext_resource type="PackedScene" uid="uid://5kockuc15ddu" path="res://Scenes/Menu/Door.tscn" id="18_lnqkc"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rte3l"]
 frequency = 0.4262
@@ -48,7 +50,14 @@ sky_material = SubResource("PanoramaSkyMaterial_cnl06")
 background_mode = 2
 sky = SubResource("Sky_dm81m")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0qon"]
+size = Vector3(1.87256, 4.16418, 1.59778)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jqvb7"]
+size = Vector3(1, 3.98132, 3.03247)
+
 [node name="Menu" type="Node3D"]
+script = ExtResource("1_wv7rd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_gy5e5")
@@ -87,7 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.01539, 5.12078, 2.54941)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.602908, 0, 6.6401)
 
 [node name="Tree_Fruit3" parent="Ornament" instance=ExtResource("3_lnqkc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90357, -1.47342, -5.08561)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.36551, -1.47342, -5.08561)
 
 [node name="Tree2" parent="Ornament" instance=ExtResource("11_4a7rt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.27903, 4.76837e-07, 6.63759)
@@ -117,8 +126,30 @@ transform = Transform3D(0.4112, 0.798862, -0.439015, -0.164695, 0.538801, 0.8261
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="Settings"]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 9.71241, 4, -9.13912)
+transform = Transform3D(-0.608457, 0, 0.793587, 0, 1, 0, -0.793587, 0, -0.608457, 10.8298, 4, -8.68388)
 fov = 89.1212
+
+[node name="DoorCreate" parent="Settings" instance=ExtResource("18_lnqkc")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -0.342141, -9.53674e-07, 3.2578)
+label = "Create Game"
+
+[node name="Area3D" type="Area3D" parent="Settings/DoorCreate"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.25356, 9.53674e-07, -0.347758)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/DoorCreate/Area3D"]
+transform = Transform3D(0.706502, 0, -0.707711, 0, 1, 0, 0.707711, 0, 0.706502, 0.436279, 1.58209, 0.298889)
+shape = SubResource("BoxShape3D_k0qon")
+
+[node name="DoorJoin" parent="Settings" instance=ExtResource("18_lnqkc")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -3.36438, 0, -2.67926)
+label = "Join Game"
+
+[node name="Area3D2" type="Area3D" parent="Settings/DoorJoin"]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -0.139398, 0, 0.249846)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/DoorJoin/Area3D2"]
+transform = Transform3D(0.872274, 0, 0.489017, 0, 1, 0, -0.489017, 0, 0.872274, -0.47814, 1.49066, 0.129322)
+shape = SubResource("BoxShape3D_jqvb7")
 
 [node name="Character Menu" parent="." instance=ExtResource("17_0401g")]
 transform = Transform3D(-0.258819, 0.965457, 0.0300708, 0, 0.0311316, -0.999515, -0.965926, -0.258694, -0.00805745, 3.49796, 0.464608, -5.51033)
