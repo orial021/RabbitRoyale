@@ -1,159 +1,114 @@
-[gd_scene load_steps=22 format=3 uid="uid://02hp07r2qhpb"]
+[gd_scene load_steps=26 format=3 uid="uid://02hp07r2qhpb"]
 
-[ext_resource type="PackedScene" uid="uid://nqian85nbat2" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Fruit.gltf" id="1_73pq6"]
-[ext_resource type="PackedScene" uid="uid://cryxlmgbdbqdd" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_1.gltf" id="2_r82sn"]
-[ext_resource type="PackedScene" uid="uid://n34c2ynkw7hs" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_2.gltf" id="3_bqh11"]
-[ext_resource type="PackedScene" uid="uid://cfhplgrcgg04d" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_3.gltf" id="4_js07r"]
-[ext_resource type="PackedScene" uid="uid://bkqpsbv32hiaw" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_Large.gltf" id="5_83nux"]
-[ext_resource type="PackedScene" uid="uid://mqpmggsdx6y1" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_Medium.gltf" id="6_14mlv"]
-[ext_resource type="PackedScene" uid="uid://bycnv3ckf7t2m" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatform_Tall.gltf" id="7_vx8jo"]
-[ext_resource type="PackedScene" uid="uid://dyrcay505xci4" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Rock_1.gltf" id="8_n218s"]
-[ext_resource type="PackedScene" uid="uid://e80umn3xvue0" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Rock_2.gltf" id="9_yjrjb"]
-[ext_resource type="PackedScene" uid="uid://j0hn8au13ddw" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Tree.gltf" id="10_sxkyq"]
-[ext_resource type="PackedScene" uid="uid://2mnhuh6pymar" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Tree_Fruit.gltf" id="11_yoe2o"]
-[ext_resource type="PackedScene" uid="uid://dnbjn3blfknxx" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Bush.gltf" id="12_wr0ft"]
-[ext_resource type="PackedScene" uid="uid://ddrsgawl4cb6f" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Bush_Fruit.gltf" id="13_y3cp0"]
+[ext_resource type="PackedScene" uid="uid://bbbyugg1dhv4" path="res://Scenas/Character_menu.tscn" id="2_fxkq6"]
+[ext_resource type="PackedScene" uid="uid://b42knj4qk0orx" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Bush.fbx" id="3_83nux"]
+[ext_resource type="PackedScene" uid="uid://dqv8bv8r5cxij" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Bush_Fruit.fbx" id="4_14mlv"]
+[ext_resource type="PackedScene" uid="uid://c8r013ftbrspi" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Cloud_1.fbx" id="5_vx8jo"]
+[ext_resource type="PackedScene" uid="uid://dw4m8buscfixk" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Cloud_2.fbx" id="6_n218s"]
+[ext_resource type="PackedScene" uid="uid://fds360rj1qkq" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Cloud_3.fbx" id="7_yjrjb"]
+[ext_resource type="PackedScene" uid="uid://sbvjd5viesgo" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Fruit.fbx" id="8_sxkyq"]
+[ext_resource type="PackedScene" uid="uid://de3t00frg704p" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/RockPlatforms_1.fbx" id="9_yoe2o"]
+[ext_resource type="PackedScene" uid="uid://cpdsbv7n2np52" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/RockPlatforms_2.fbx" id="10_wr0ft"]
+[ext_resource type="PackedScene" uid="uid://7l2w0xyajnhb" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/RockPlatforms_3.fbx" id="11_y3cp0"]
+[ext_resource type="PackedScene" uid="uid://dppvjl2lnfe3" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/RockPlatforms_Large.fbx" id="12_bsvwp"]
+[ext_resource type="PackedScene" uid="uid://bqdso1hk3onpo" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/RockPlatforms_Medium.fbx" id="13_g18rc"]
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="14_bsvwp"]
+[ext_resource type="PackedScene" uid="uid://cp8xcetc3m3s2" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/RockPlatform_Tall.fbx" id="14_r45v4"]
+[ext_resource type="PackedScene" uid="uid://18iw3am7tnyj" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Rock_1.fbx" id="15_y4el1"]
+[ext_resource type="PackedScene" uid="uid://ddlv7eahpe1tx" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Rock_2.fbx" id="16_mgxst"]
+[ext_resource type="PackedScene" uid="uid://dmd84i48cu101" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Tree.fbx" id="17_c8te3"]
+[ext_resource type="PackedScene" uid="uid://eyyo3fqka2vr" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Tree_Fruit.fbx" id="18_p2twt"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_g18rc"]
-noise_type = 4
-frequency = 0.7104
-offset = Vector3(0, 0, 0.45)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r45v4"]
-noise = SubResource("FastNoiseLite_g18rc")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4el1"]
-albedo_color = Color(0, 0.352941, 0.188235, 1)
-albedo_texture = SubResource("NoiseTexture2D_r45v4")
-
-[sub_resource type="BoxMesh" id="BoxMesh_mgxst"]
-size = Vector3(16, 1, 16)
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_c8te3"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_leyge"]
 panorama = ExtResource("14_bsvwp")
 
-[sub_resource type="Sky" id="Sky_p2twt"]
-sky_material = SubResource("PanoramaSkyMaterial_c8te3")
+[sub_resource type="Sky" id="Sky_vbty5"]
+sky_material = SubResource("PanoramaSkyMaterial_leyge")
 
-[sub_resource type="Environment" id="Environment_om6fn"]
+[sub_resource type="Environment" id="Environment_40saq"]
 background_mode = 2
-sky = SubResource("Sky_p2twt")
+sky = SubResource("Sky_vbty5")
 
-[node name="Menu" type="Node3D"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cmv2v"]
+frequency = 0.2715
+fractal_type = 3
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_y4el1")
-mesh = SubResource("BoxMesh_mgxst")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sv1ck"]
+noise = SubResource("FastNoiseLite_cmv2v")
 
-[node name="Ornament" type="Node3D" parent="."]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0v07r"]
+albedo_color = Color(0, 1, 0.294118, 1)
+albedo_texture = SubResource("NoiseTexture2D_sv1ck")
 
-[node name="Fruit2" parent="Ornament" instance=ExtResource("1_73pq6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.98136, 0.813288, -2.33035)
+[sub_resource type="BoxMesh" id="BoxMesh_v5gp2"]
+material = SubResource("StandardMaterial3D_0v07r")
+size = Vector3(16, 1, 16)
 
-[node name="Fruit3" parent="Ornament" instance=ExtResource("1_73pq6")]
-transform = Transform3D(-0.909047, -0.202443, 0.364212, -1.66868e-08, 0.874052, 0.485832, -0.416693, 0.441644, -0.794555, 1.77857, 0.813288, -3.38298)
-
-[node name="RockPlatforms_12" parent="Ornament" instance=ExtResource("2_r82sn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9979, 0, -6.1113)
-
-[node name="RockPlatforms_22" parent="Ornament" instance=ExtResource("3_bqh11")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.204284, 0, -3.08119)
-
-[node name="RockPlatforms_23" parent="Ornament" instance=ExtResource("3_bqh11")]
-transform = Transform3D(-0.999996, 0, -0.00272265, 0, 1, 0, 0.00272265, 0, -0.999996, -6.06419, -3.42569, 7.33862)
-
-[node name="RockPlatforms_24" parent="Ornament" instance=ExtResource("3_bqh11")]
-transform = Transform3D(0.116411, 0, 0.993201, 0, 1, 0, -0.993201, 0, 0.116411, 6.60982, -3.42569, -5.21938)
-
-[node name="RockPlatforms_32" parent="Ornament" instance=ExtResource("4_js07r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226198, 0, -5.97954)
-
-[node name="RockPlatforms_34" parent="Ornament" instance=ExtResource("4_js07r")]
-transform = Transform3D(-0.999064, 0, -0.0432532, 0, 1, 0, 0.0432532, 0, -0.999064, -4.54931, 0, -4.97095)
-
-[node name="RockPlatforms_33" parent="Ornament" instance=ExtResource("4_js07r")]
-transform = Transform3D(-0.948826, 0, -0.315798, 0, 1, 0, 0.315798, 0, -0.948826, 0.226198, -3.76563, 7.34009)
-
-[node name="RockPlatforms_Large2" parent="Ornament" instance=ExtResource("5_83nux")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49341, 0, 1.58215)
-
-[node name="RockPlatforms_Large3" parent="Ornament" instance=ExtResource("5_83nux")]
-transform = Transform3D(0.0139273, 0, 0.999903, 0, 1, 0, -0.999903, 0, 0.0139273, 6.81078, -3.78196, 2.6691)
-
-[node name="RockPlatforms_Large4" parent="Ornament" instance=ExtResource("5_83nux")]
-transform = Transform3D(-0.999765, 0, 0.0216928, 0, 1, 0, -0.0216928, 0, -0.999765, 3.60173, -3.78196, 6.8703)
-
-[node name="RockPlatforms_Medium2" parent="Ornament" instance=ExtResource("6_14mlv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85874, 0, 5.55289)
-
-[node name="RockPlatforms_Medium3" parent="Ornament" instance=ExtResource("6_14mlv")]
-transform = Transform3D(1.35799, 0, 0, 0, 1, 0, 0, 0, 1, -1.8713, -2.66449, 7.03407)
-
-[node name="RockPlatforms_Medium4" parent="Ornament" instance=ExtResource("6_14mlv")]
-transform = Transform3D(0.0996267, 0, -0.995608, 0, 1, 0, 1.05947, 0, 0.0936218, 7.00481, -2.93443, 6.78502)
-
-[node name="RockPlatforms_Medium5" parent="Ornament" instance=ExtResource("6_14mlv")]
-transform = Transform3D(0.0996267, 0, -0.995608, 0, 1, 0, 1.05947, 0, 0.0936218, -6.13202, 0.430923, -2.01427)
-
-[node name="RockPlatform_Tall2" parent="Ornament" instance=ExtResource("7_vx8jo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.87914, 0, 4.50956)
-
-[node name="Rock_12" parent="Ornament" instance=ExtResource("8_n218s")]
-transform = Transform3D(0.82192, -0.0598533, 0.566449, 0.072629, 0.997359, 0, -0.564953, 0.0411406, 0.824097, -4.60165, 0, 1.43898)
-
-[node name="Rock_14" parent="Ornament" instance=ExtResource("8_n218s")]
-transform = Transform3D(0.82192, -0.0598533, 0.566449, 0.072629, 0.997359, 0, -0.564953, 0.0411406, 0.824097, 5.91142, -1.63195, 8.49147)
-
-[node name="Rock_13" parent="Ornament" instance=ExtResource("8_n218s")]
-transform = Transform3D(0.55689, 0, 0.830586, 0, 1, 0, -0.830586, 0, 0.55689, -4.47011, 0, 0.497467)
-
-[node name="Rock_22" parent="Ornament" instance=ExtResource("9_yjrjb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8964, 0, 6.88483)
-
-[node name="Rock_25" parent="Ornament" instance=ExtResource("9_yjrjb")]
-transform = Transform3D(-0.174989, 0.98457, 0, -0.98457, -0.174989, 0, 0, 0, 1, -3.00745, -0.570131, 8.70176)
-
-[node name="Rock_23" parent="Ornament" instance=ExtResource("9_yjrjb")]
-transform = Transform3D(0.00813316, 0, -0.999967, 0, 1, 0, 0.999967, 0, 0.00813316, 5.51978, 0, -3.86246)
-
-[node name="Rock_26" parent="Ornament" instance=ExtResource("9_yjrjb")]
-transform = Transform3D(0.00813316, 0, -0.999967, 0, 1, 0, 0.999967, 0, 0.00813316, 8.71843, -1.99999, -0.0351579)
-
-[node name="Rock_27" parent="Ornament" instance=ExtResource("9_yjrjb")]
-transform = Transform3D(0.00813316, 0, -0.999967, 0.99707, 0.0760578, 0.0081096, 0.0760553, -0.997103, 0.00061859, 8.71843, -1.99999, 5.82581)
-
-[node name="Rock_24" parent="Ornament" instance=ExtResource("9_yjrjb")]
-transform = Transform3D(0.00813316, 3.71708e-10, -0.999967, 0.999005, 0.0438635, 0.00812533, 0.043862, -0.999038, 0.000356749, -6.26335, 3.52785, -1.37861)
-
-[node name="Tree2" parent="Ornament" instance=ExtResource("10_sxkyq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08283, 0, 3.59899)
-
-[node name="Tree_Fruit2" parent="Ornament" instance=ExtResource("11_yoe2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55583, 0, -3.94014)
-
-[node name="Bush2" parent="Ornament" instance=ExtResource("12_wr0ft")]
-<<<<<<< HEAD
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29021, 2.57548, -7.3091)
-=======
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29021, 2.92992, -7.3091)
->>>>>>> 5d2addadf3d6f2406a0e1253470e5ac1390ee7c6
-
-[node name="Bush3" parent="Ornament" instance=ExtResource("12_wr0ft")]
-transform = Transform3D(0.816369, 0, -0.57753, -0.206686, 0.933768, -0.292162, 0.539279, 0.357879, 0.7623, 2.63169, 2.92992, -7.42778)
-
-[node name="Bush_Fruit2" parent="Ornament" instance=ExtResource("13_y3cp0")]
-<<<<<<< HEAD
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37838, 2.41817, -7.23677)
-=======
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62017, 2.05842, -7.23677)
->>>>>>> 5d2addadf3d6f2406a0e1253470e5ac1390ee7c6
+[node name="Node3D" type="Node3D"]
 
 [node name="Settings" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
-environment = SubResource("Environment_om6fn")
+environment = SubResource("Environment_40saq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0.121757, 0.302314, 0.9454, -0.484949, 0.84918, -0.209089, 0, 8.55543, -5.33695)
-shadow_enabled = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.32907, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Settings"]
+transform = Transform3D(0.56452, -0.644794, 0.515322, 0, 0.624316, 0.781172, -0.825419, -0.440988, 0.352439, 6.90401, 6.82037, 7.61052)
+
+[node name="Ornament" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_v5gp2")
+
+[node name="Dance" parent="." instance=ExtResource("2_fxkq6")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.90873, 0.774197, 2.74935)
+
+[node name="Bush" parent="." instance=ExtResource("3_83nux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.62375, 1.19209e-07, 2.36665)
+
+[node name="Bush_Fruit" parent="." instance=ExtResource("4_14mlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6427, 0, -1.23506)
+
+[node name="Cloud_1" parent="." instance=ExtResource("5_vx8jo")]
+transform = Transform3D(-0.813101, 0, 0.582123, 0, 1, 0, -0.582123, 0, -0.813101, -6.08918, -9.53674e-07, 12.5767)
+
+[node name="Cloud_2" parent="." instance=ExtResource("6_n218s")]
+transform = Transform3D(-0.440347, 0, 0.897828, 0, 1, 0, -0.897828, 0, -0.440347, -3.68208, 1.76134, 9.81606)
+
+[node name="Cloud_3" parent="." instance=ExtResource("7_yjrjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0763, 0.7956, -0.00264549)
+
+[node name="Fruit" parent="." instance=ExtResource("8_sxkyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.30121, 0.859265, -2.10594)
+
+[node name="RockPlatforms_1" parent="." instance=ExtResource("9_yoe2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84521, 0, -3.88206)
+
+[node name="RockPlatforms_2" parent="." instance=ExtResource("10_wr0ft")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 7.41684, -3.58654, 1.55006)
+
+[node name="RockPlatforms_3" parent="." instance=ExtResource("11_y3cp0")]
+transform = Transform3D(-0.987718, 0, -0.156245, 0, 0.3, 0, 0.156245, 0, -0.987718, 1.28638, -0.807222, 8.13457)
+
+[node name="RockPlatforms_Large" parent="." instance=ExtResource("12_bsvwp")]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 5.84998, -1.39206, 6.65167)
+
+[node name="RockPlatforms_Medium" parent="." instance=ExtResource("13_g18rc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87291, -1.19209e-07, -2.69695)
+
+[node name="RockPlatform_Tall" parent="." instance=ExtResource("14_r45v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00643, 0, 1.42988)
+
+[node name="Rock_1" parent="." instance=ExtResource("15_y4el1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.852919, 0, 2.55905)
+
+[node name="Rock_2" parent="." instance=ExtResource("16_mgxst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14453, 0, 3.16905)
+
+[node name="Tree" parent="." instance=ExtResource("17_c8te3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.714746, 0, 2.47206)
+
+[node name="Tree_Fruit" parent="." instance=ExtResource("18_p2twt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21812, -0.154249, 4.49028)
