@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=4 uid="uid://b6irxecvmt1vy"]
+[gd_scene load_steps=14 format=4 uid="uid://b6irxecvmt1vy"]
 
+[ext_resource type="Script" uid="uid://d1yl40wi8nus5" path="res://Scenes/Menu/laporta.gd" id="1_3yq3y"]
 [ext_resource type="Shader" uid="uid://bn38uv62e4b48" path="res://Resources/Shaders/Landscape.gdshader" id="2_gqruc"]
 [ext_resource type="Texture2D" uid="uid://t8k6vnodedvw" path="res://Assets/Images/Landscape.png" id="3_fvit2"]
 
@@ -150,6 +151,7 @@ font_weight = 500
 font_stretch = 200
 
 [node name="Door2" type="Node3D"]
+script = ExtResource("1_3yq3y")
 
 [node name="Door" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21069, 2.21013, 0.360042)

@@ -1,6 +1,8 @@
-[gd_scene load_steps=33 format=4 uid="uid://dh41o6khjonig"]
+[gd_scene load_steps=35 format=4 uid="uid://dh41o6khjonig"]
 
+[ext_resource type="Script" uid="uid://cwdmc16j0b8g3" path="res://Scenes/Menu/character_menu.gd" id="1_430fi"]
 [ext_resource type="Animation" uid="uid://bwco24ix4p7s1" path="res://Resources/Utils/getting jiggy with it.res" id="1_ypjo8"]
+[ext_resource type="Script" uid="uid://ctygut5hd2nas" path="res://Scenes/Menu/collision_shape_3d.gd" id="3_22626"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rlnm"]
 resource_name = "Main"
@@ -4691,6 +4693,7 @@ radius = 1.02832
 
 [node name="Character_menu" type="CharacterBody3D"]
 transform = Transform3D(0.684331, 0.0281185, -0.728629, -0.729172, 0.0263893, -0.683822, 0, 0.999256, 0.0385622, 0, -0.778335, 0)
+script = ExtResource("1_430fi")
 
 [node name="CharacterArmature" type="Node3D" parent="."]
 transform = Transform3D(0.6942, -0.719141, -0.0303648, 0.0151058, -0.0276209, 0.999504, -0.719623, -0.694315, -0.00831124, -1.21092, -0.297094, -0.0636629)
@@ -4925,3 +4928,4 @@ autoplay = "getting jiggy with it"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.48193, -0.709641, -0.513959, 0.74714, 0.0263891, 0.664142, -0.45774, -0.704069, 0.542918, -2.36986, -0.260573, -1.25734)
 shape = SubResource("CylinderShape3D_ypjo8")
+script = ExtResource("3_22626")
