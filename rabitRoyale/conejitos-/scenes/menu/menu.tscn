@@ -1,0 +1,91 @@
+[gd_scene load_steps=19 format=3 uid="uid://ybw2t1jprbq0"]
+
+[ext_resource type="Script" uid="uid://cjm40eufu1it7" path="res://Scripts/menu.gd" id="1_k48pe"]
+[ext_resource type="PackedScene" uid="uid://n34c2ynkw7hs" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_2.gltf" id="2_f2fum"]
+[ext_resource type="PackedScene" uid="uid://ddrsgawl4cb6f" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Bush_Fruit.gltf" id="3_kaijy"]
+[ext_resource type="PackedScene" uid="uid://nqian85nbat2" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Fruit.gltf" id="4_y4i35"]
+[ext_resource type="PackedScene" uid="uid://cryxlmgbdbqdd" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_1.gltf" id="5_rcuxh"]
+[ext_resource type="PackedScene" uid="uid://e80umn3xvue0" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Rock_2.gltf" id="6_64m6r"]
+[ext_resource type="PackedScene" uid="uid://2mnhuh6pymar" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Tree_Fruit.gltf" id="7_pjdsv"]
+[ext_resource type="PackedScene" uid="uid://dx8k42pe5r54s" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_1.gltf" id="8_2j8sj"]
+[ext_resource type="PackedScene" uid="uid://dccq306hysssm" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_2.gltf" id="9_55a8x"]
+[ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="10_rrod7"]
+[ext_resource type="PackedScene" uid="uid://dptjjgmqhpqq7" path="res://scenes/menu/character_menu.tscn" id="11_f2fum"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_faisu"]
+noise_type = 4
+frequency = 0.055
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t2e6u"]
+noise = SubResource("FastNoiseLite_faisu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fb4qf"]
+albedo_color = Color(0.12549, 0.666667, 0.184314, 1)
+albedo_texture = SubResource("NoiseTexture2D_t2e6u")
+
+[sub_resource type="BoxMesh" id="BoxMesh_riv3r"]
+size = Vector3(16, 1, 16)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ns7vx"]
+panorama = ExtResource("10_rrod7")
+
+[sub_resource type="Sky" id="Sky_a0fu0"]
+sky_material = SubResource("PanoramaSkyMaterial_ns7vx")
+
+[sub_resource type="Environment" id="Environment_pafgo"]
+background_mode = 2
+sky = SubResource("Sky_a0fu0")
+
+[node name="Menu" type="Node3D"]
+script = ExtResource("1_k48pe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_fb4qf")
+mesh = SubResource("BoxMesh_riv3r")
+
+[node name="RockPlatforms_22" parent="." instance=ExtResource("2_f2fum")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -5.10547, 4.76837e-07, -1.07942)
+
+[node name="ornament" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.18577, 0.983708, 0.35451)
+
+[node name="Bush_Fruit2" parent="ornament" instance=ExtResource("3_kaijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8239, -0.801365, 6.20599)
+
+[node name="Fruit2" parent="ornament" instance=ExtResource("4_y4i35")]
+transform = Transform3D(0.997668, 0, 0.0682591, 0, 1, 0, -0.0682591, 0, 0.997668, -9.26721, 1.37271, -2.81557)
+
+[node name="RockPlatforms_12" parent="ornament" instance=ExtResource("5_rcuxh")]
+transform = Transform3D(0.0980055, 0, 0.642569, 0, 0.65, 0, -0.642569, 0, 0.0980055, -9.63735, -0.582793, -4.10783)
+
+[node name="Rock_22" parent="ornament" instance=ExtResource("6_64m6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.90672, -0.983708, -6.79373)
+
+[node name="Bush_Fruit3" parent="ornament" instance=ExtResource("3_kaijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8693, -0.988889, 2.68792)
+
+[node name="Tree_Fruit2" parent="ornament" instance=ExtResource("7_pjdsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.88054, -1.8685, -7.31546)
+
+[node name="Grass_12" parent="ornament" instance=ExtResource("8_2j8sj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5068, -1.55789, 4.19685)
+
+[node name="Grass_22" parent="ornament" instance=ExtResource("9_55a8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.67147, -1.53985, 6.83147)
+
+[node name="RockPlatforms_13" parent="ornament" instance=ExtResource("5_rcuxh")]
+transform = Transform3D(0.0399533, 0, 0.648771, 0, 0.65, 0, -0.648771, 0, 0.0399533, -5.20557, -1.02178, -6.93406)
+
+[node name="settings" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="settings"]
+environment = SubResource("Environment_pafgo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="settings"]
+transform = Transform3D(-0.284271, -0.940603, -0.185625, 0.787566, -0.33951, 0.51427, -0.546745, -3.34323e-09, 0.837299, 0, 6.48484, 0.0204515)
+
+[node name="Camera3D" type="Camera3D" parent="settings"]
+transform = Transform3D(0.717555, -0.199122, 0.667432, 7.66352e-09, 0.958263, 0.285889, -0.696502, -0.205141, 0.687606, 9.15026, 3.97206, 9.46717)
+
+[node name="Character_menu" parent="." instance=ExtResource("11_f2fum")]
+transform = Transform3D(0.691412, 0.72234, 0.0131887, 1.43635e-09, 0.0182552, -0.999833, -0.72246, 0.691297, 0.0126219, 4.18232, 0.817309, 4.55491)
