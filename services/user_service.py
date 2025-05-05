@@ -44,7 +44,7 @@ class CRUDService(Generic[T, M]):
     async def update(self, id: uuid.UUID, data: UserUpdateSchema):
         instance = await self.get_by_id(id)
         if instance:
-            update_data = data.model_dump()
+            update_data = data.model_dump(exclude_unset=True)
             if 'password' in update_data:
                 update_data['password'] = hash_password(update_data['password'])
             await instance.update_from_dict(update_data)

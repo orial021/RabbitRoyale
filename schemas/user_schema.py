@@ -20,6 +20,8 @@ class User(BaseModel):
     las_connection : Optional[datetime] = None
     is_active : bool = True
     is_premium : bool = False
+    experience : Optional[int] = 0
+    level : Optional[int] = 1
     matches_played: int = 0
     wins: int = 0
     kills: int = 0
@@ -65,16 +67,18 @@ class UserCreateSchema(BaseModel):
     }
     
 class UserUpdateSchema(BaseModel):
-    coins : int = 0
+    coins : int = None
     las_connection : Optional[datetime] = None
     is_active : bool = True
     is_premium : bool = False
-    matches_played: int = 0
-    deads : int = 0
-    wins: int = 0
-    kills: int = 0
-    inventory_capacity: int = 3
-    
+    matches_played: int = None
+    deads : int = None
+    wins: int = None
+    kills: int = None
+    inventory_capacity: int = None
+    experience : Optional[int] = None
+    level : Optional[int] = None
+     
     model_config = {
         'json_schema_extra':{
             'example': {
@@ -98,6 +102,10 @@ class UserResponseSchema(BaseModel):
     email: EmailStr
     coins: int = 0
     kills: int = 0
+    experience: int = 0
+    level: int = 1
+    matches_played: int = 0
+    wins: int = 0
     created_at : datetime
     updated_at : datetime
     deleted_at : Optional[datetime] = None

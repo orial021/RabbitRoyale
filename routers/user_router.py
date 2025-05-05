@@ -8,7 +8,8 @@ from .auth_router import decode_token
 user_router = APIRouter()
 
 @user_router.get('/all', tags=['User'], response_model=List[UserResponseSchema])
-async def all(current_user: User = Depends(decode_token)):
+#async def all(current_user: User = Depends(decode_token)):
+async def all():
     return await user_controller.get_all()
 
 @user_router.get('/show/{id}', tags=['User'], response_model=UserResponseSchema)

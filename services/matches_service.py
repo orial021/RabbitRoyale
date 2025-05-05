@@ -30,7 +30,7 @@ class CRUDService(Generic[T, M]):
         return await self.model.create(**data.model_dump())
 
     async def get_all(self):
-        return await self.model.all().order_by('-created_at').limit(5)
+        return await self.model.all().order_by('-created_at').limit(6)
 
     async def get_by_id(self, id: int):
         return await self.model.get_or_none(id=id)

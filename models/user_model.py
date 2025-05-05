@@ -20,6 +20,8 @@ class User(Model):
     las_connection = fields.DatetimeField(null=True)
     is_active = fields.BooleanField(default=True)
     is_premium = fields.BooleanField(default=False)
+    experience = fields.IntField(null=True, default=0)
+    level = fields.IntField(null=True, default=1)
     
     matches_played = fields.IntField(default=0)
     wins = fields.IntField(default=0)
