@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Nuevo Proyecto de Juego"
+config/name="RabbitRoyaleVivo1"
+run/main_scene="uid://b2epop7vfcv2b"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -70,3 +71,21 @@ ui_scope={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(99, 14),"global_position":Vector2(108, 62),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_render/layer_1="Player"
+3d_render/layer_2="Enemy"
+3d_render/layer_3="Item"
+3d_render/layer_4="Environment"
+3d_render/layer_5="bullet"
+3d_physics/layer_1="Player"
+3d_navigation/layer_1="Player"
+3d_physics/layer_2="Enemy"
+3d_navigation/layer_2="Enemy"
+3d_physics/layer_3="Item"
+3d_navigation/layer_3="Item"
+3d_physics/layer_4="Environment"
+3d_navigation/layer_4="Environment"
+3d_physics/layer_5="Bullet"
+3d_navigation/layer_5="Bullet"

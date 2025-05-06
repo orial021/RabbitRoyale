@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b2epop7vfcv2b"]
+[gd_scene load_steps=22 format=3 uid="uid://b2epop7vfcv2b"]
 
 [ext_resource type="Script" uid="uid://bgetprrg1k4ar" path="res://Scripts/Menu/menu.gd" id="1_m6csd"]
 [ext_resource type="PackedScene" uid="uid://2mnhuh6pymar" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Tree_Fruit.gltf" id="1_x5f3s"]
@@ -26,6 +26,12 @@ albedo_texture = SubResource("NoiseTexture2D_u2ioa")
 [sub_resource type="BoxMesh" id="BoxMesh_0401g"]
 size = Vector3(16, 1, 16)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m6csd"]
+points = PackedVector3Array(-8, -0.5, -8, -8, 0.5, -8, 8, -0.5, -8, -8, -0.5, 8, -8, 0.5, 8, 8, 0.5, -8, 8, -0.5, 8, 8, 0.5, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m6csd"]
+size = Vector3(4.59229, 7.35114, 18.206)
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qwfkq"]
 panorama = ExtResource("8_uwxxs")
 
@@ -43,10 +49,34 @@ size = Vector3(1, 4.63098, 4.1571)
 script = ExtResource("1_m6csd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.893588, 0, -0.410497)
 material_override = SubResource("StandardMaterial3D_wxa3f")
 mesh = SubResource("BoxMesh_0401g")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_m6csd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3186, 3.17557, -0.62323)
+shape = SubResource("BoxShape3D_m6csd")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3238, 3.17557, -0.62323)
+shape = SubResource("BoxShape3D_m6csd")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.119601, 3.17557, -10.3681)
+shape = SubResource("BoxShape3D_m6csd")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.29852, 3.17557, 10.3441)
+shape = SubResource("BoxShape3D_m6csd")
+
 [node name="Ornament" type="Node3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.893588, 0, -0.410497)
 
 [node name="Fruit2" parent="Ornament" instance=ExtResource("2_uwxxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109076, 0.602131, 5.59329)
@@ -88,6 +118,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7702, 0.685229, -4.19744)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.67345, 0, 6.87613)
 
 [node name="Settings" type="Node3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.893588, 0, -0.410497)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
 environment = SubResource("Environment_m6csd")
@@ -105,6 +136,7 @@ label = "CREAR"
 
 [node name="Area3D" type="Area3D" parent="Settings/DoorCreate"]
 transform = Transform3D(0.433266, 0, -0.901266, 0, 1, 0, 0.901266, 0, 0.433266, 3.83515, -0.418986, -0.259411)
+collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/DoorCreate/Area3D"]
 transform = Transform3D(0.906057, 0, -0.423156, 0, 1, 0, 0.423156, 0, 0.906057, -2.47734, 1.81549, 3.29869)
@@ -124,4 +156,6 @@ shape = SubResource("BoxShape3D_qok0p")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="Character_menu" parent="." instance=ExtResource("9_qwfkq")]
-transform = Transform3D(0.730484, 0.68293, -2.98518e-08, 0, -4.37114e-08, -1, -0.68293, 0.730484, -3.19305e-08, 3.76923, 0.602607, 3.49363)
+transform = Transform3D(0.999435, -0.0336258, 1.46986e-09, -2.42625e-15, -4.37114e-08, -1, 0.0336258, 0.999435, -4.36867e-08, 1.08847, 0.602607, 4.72512)
+
+[connection signal="body_entered" from="Settings/DoorCreate/Area3D" to="." method="_on_area_3d_body_entered"]
