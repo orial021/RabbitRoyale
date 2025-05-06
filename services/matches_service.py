@@ -18,7 +18,7 @@ class CRUDService(Generic[T, M]):
         self.schema = schema
 
     async def create(self, data: T):
-        await self._end_existing_matches()
+        # await self._end_existing_matches()
         
         data.players = {
             player: {
@@ -35,6 +35,10 @@ class CRUDService(Generic[T, M]):
     async def get_by_id(self, id: int):
         return await self.model.get_or_none(id=id)
 
+    async def get_all_actives(self, page: int = 1, limit: int = 6):
+        offset = (page - 1) * 6
+        return await self.model.filter(Q(status="pending") | Q(status="in_progress")).order_by('-created_at').offset(offset).limit(limit)
+    
     async def update(self, id: int, data: MatchUpdateSchema):
         instance : Match = await self.get_by_id(id)
         if instance:
@@ -45,7 +49,6 @@ class CRUDService(Generic[T, M]):
                 data.kills = 0
                 data.deads = 0 
                 for player, stats in data.model_dump()['players'].items():
-                    print(player, stats)
                     if player in current_players:
                         current_players[player]['kills'] = stats['kills']
                         current_players[player]['deads'] = stats['deads']
@@ -104,7 +107,24 @@ class CRUDService(Generic[T, M]):
         active_matches = await self.model.filter(Q(status="pending") | Q(status="in_progress"))
         
         for match in active_matches:
-            await self.end_match(match.id)
+        #     if match.status == "in_progress":
+        #         now = datetime.now(timezone.utc)
+        #         if match.end_time < now:
+        #             match.status = "completed"
+        #             match.end_time = now
+        #             match.total_time = (match.end_time - match.start_time).seconds
+        #             await match.save()
+        
+        
+            if match.status == "pending":
+                now = datetime.now(timezone.utc)
+                match.start_time = match.created_at
+                match.end_time = match.start_time + timedelta(seconds=match.total_time)
+                if match.end_time < now:
+                    match.status = "cancelled"
+                    match.total_time = 0
+                    await match.save()
+            #await self.end_match(match.id)
             
 class matchService(CRUDService[MatchCreateSchema, Match]):
     pass

@@ -1,14 +1,13 @@
 from datetime import datetime
 from typing import Optional, Dict
 from pydantic import BaseModel
-from utils import EMatchStatus
 
 class Match(BaseModel):
     id: int
     start_time: Optional[datetime] = None
     end_time: Optional[datetime] = None
     total_time: int = 300
-    status: EMatchStatus = EMatchStatus.PENDING
+    status: Optional[str] = "pending"
     map_name: Optional[str] = "Normal"
     kills: Optional[int] = None
     deads: Optional[int] = None
@@ -19,7 +18,7 @@ class Match(BaseModel):
         from_attributes = True
         
 class MatchCreateSchema(BaseModel):
-    status: EMatchStatus = EMatchStatus.PENDING
+    status: Optional[str] = "pending"
     total_time: int = 300
     map_name: Optional[str] = "Normal"
     creator: Optional[str] = None
@@ -32,6 +31,7 @@ class MatchUpdateSchema(BaseModel):
     kills: Optional[int] = None
     deads: Optional[int] = None
     players: Optional[Dict[str, Dict[str, int]]] = None
+    status: Optional[str] = "pending"
     
     model_config = {
         'json_schema_extra': {
@@ -52,7 +52,7 @@ class MatchResponseSchema(BaseModel):
     start_time: Optional[datetime] = None
     end_time: Optional[datetime] = None
     total_time: Optional[int] = None
-    status: EMatchStatus = EMatchStatus.PENDING
+    status: Optional[str] = "pending"
     map_name: Optional[str] = None
     kills: Optional[int] = None
     deads: Optional[int] = None

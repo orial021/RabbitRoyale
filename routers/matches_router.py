@@ -14,6 +14,10 @@ async def all():
 async def show(id: int):
     return await match_controller.get(id)
 
+@match_router.get('/active', tags=['Matches'], response_model=List[MatchResponseSchema])
+async def active(page: int = 1, limit: int = 6):
+    return await match_controller.get_all_actives(page, limit)
+
 @match_router.post('/create/', tags=['Matches'], response_model=MatchResponseSchema)
 async def creater(data: MatchCreateSchema):
     return await match_controller.create(data)

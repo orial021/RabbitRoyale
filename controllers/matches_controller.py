@@ -13,6 +13,9 @@ class MatchController:
 
     async def get_all(self):
         return await self.service.get_all()
+    
+    async def get_all_actives(self, page: int = 1, limit: int = 6):
+        return await self.service.get_all_actives(page, limit)
 
     async def get(self, id: str):
         Item = await self.service.get_by_id(id)
