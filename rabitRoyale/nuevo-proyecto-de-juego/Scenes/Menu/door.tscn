@@ -147,6 +147,7 @@ shader_parameter/TEXTURE = ExtResource("3_wbv27")
 
 [sub_resource type="SystemFont" id="SystemFont_ioyib"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [node name="Door2" type="Node3D"]
 script = ExtResource("1_0p6fn")

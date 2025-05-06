@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dpi46dujfu8ib"]
+[gd_scene load_steps=23 format=3 uid="uid://dpi46dujfu8ib"]
 
 [ext_resource type="Script" uid="uid://cv553wnm3pxxi" path="res://Scripts/ScriptsMenu/menu.gd" id="1_qok0p"]
 [ext_resource type="PackedScene" uid="uid://ddrsgawl4cb6f" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Bush_Fruit.gltf" id="1_qwfkq"]
@@ -27,6 +27,12 @@ noise = SubResource("FastNoiseLite_wv7rd")
 albedo_color = Color(0.0651419, 0.463151, 0.101102, 1)
 albedo_texture = SubResource("NoiseTexture2D_k0qon")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qok0p"]
+points = PackedVector3Array(-8, -0.5, -8, -8, 0.5, -8, 8, -0.5, -8, -8, -0.5, 8, -8, 0.5, 8, 8, 0.5, -8, 8, -0.5, 8, 8, 0.5, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hgg7c"]
+size = Vector3(2, 9, 17)
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6j47b"]
 panorama = ExtResource("9_0401g")
 
@@ -41,11 +47,34 @@ sky = SubResource("Sky_m7ue0")
 size = Vector3(0.840942, 4.90479, 3.41479)
 
 [node name="Menu" type="Node3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
 script = ExtResource("1_qok0p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_lnqkc")
 surface_material_override/0 = SubResource("StandardMaterial3D_jqvb7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_qok0p")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 4, 0)
+shape = SubResource("BoxShape3D_hgg7c")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 4, 8.2882)
+shape = SubResource("BoxShape3D_hgg7c")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.15793, 4, 9.53674e-07)
+shape = SubResource("BoxShape3D_hgg7c")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.592434, 4, -8.5655)
+shape = SubResource("BoxShape3D_hgg7c")
 
 [node name="Ornament" type="Node3D" parent="."]
 
@@ -86,8 +115,8 @@ transform = Transform3D(-0.54866, -0.739918, 0.389222, 0.836006, -0.490097, 0.24
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="Settings"]
-transform = Transform3D(0.688547, -0.300573, 0.659968, -0.0280048, 0.898361, 0.438364, -0.72465, -0.320317, 0.610147, 8.96356, 5.65395, 8.85275)
-fov = 52.1034
+transform = Transform3D(0.687386, -0.261693, 0.677508, -0.0264141, 0.923207, 0.383395, -0.725812, -0.281436, 0.627687, 9.43904, 5.69906, 9.15568)
+fov = 64.6875
 
 [node name="Crear Partida" parent="Settings" instance=ExtResource("10_m6csd")]
 transform = Transform3D(0.3577, 0, 0.933837, 0, 1, 0, -0.933837, 0, 0.3577, -2.15741, -0.0207844, 1.5041)
@@ -95,6 +124,7 @@ label = "Crear Partida"
 
 [node name="Area3D" type="Area3D" parent="Settings/Crear Partida"]
 transform = Transform3D(0.3577, 0, -0.933837, 0, 1, 0, 0.933837, 0, 0.3577, 1.30462, 0.0207844, 3.16331)
+collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/Crear Partida/Area3D"]
 transform = Transform3D(0.955129, 0, -0.296192, 0, 1, 0, 0.296192, 0, 0.955129, -4.23419, 2.04761, -0.201961)
@@ -107,6 +137,7 @@ label = "Unirse"
 
 [node name="Area3D2" type="Area3D" parent="Settings/Unirse"]
 transform = Transform3D(0.888353, 0, -0.459161, 0, 1, 0, 0.459161, 0, 0.888353, -1.83368, 0, 3.23669)
+collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/Unirse/Area3D2"]
 transform = Transform3D(0.432023, 0, -0.901863, 0, 1, 0, 0.901863, 0, 0.432023, -0.228779, 2.04761, -4.52475)
@@ -114,4 +145,7 @@ shape = SubResource("BoxShape3D_qok0p")
 debug_color = Color(0.995959, 0, 0.204185, 1)
 
 [node name="Character_Menu" parent="." instance=ExtResource("10_i081d")]
-transform = Transform3D(0.666049, 0.707107, 0.237444, 0.335797, -4.11733e-08, -0.941935, -0.666049, 0.707107, -0.237444, 5.34426, 0.654199, 4.75228)
+transform = Transform3D(0.778638, 0.627474, -2.74278e-08, 0, -4.37114e-08, -1, -0.627475, 0.778638, -3.40353e-08, 5.34426, 0.654199, 4.75228)
+
+[connection signal="body_entered" from="Settings/Crear Partida/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Settings/Unirse/Area3D2" to="." method="_on_area_3d_2_body_entered"]
