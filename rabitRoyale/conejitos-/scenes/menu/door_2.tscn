@@ -147,6 +147,7 @@ shader_parameter/TEXTURE = ExtResource("3_oswa3")
 
 [sub_resource type="SystemFont" id="SystemFont_li0qt"]
 font_names = PackedStringArray("Lucida Calligraphy")
+subpixel_positioning = 0
 
 [node name="Door2" type="Node3D"]
 script = ExtResource("1_nxe1k")
