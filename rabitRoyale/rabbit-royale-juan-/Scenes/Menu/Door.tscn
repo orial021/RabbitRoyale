@@ -147,6 +147,7 @@ shader_parameter/TEXTURE = ExtResource("3_o4w1l")
 
 [sub_resource type="SystemFont" id="SystemFont_8hpba"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [node name="Door2" type="Node3D"]
 script = ExtResource("1_bgmov")

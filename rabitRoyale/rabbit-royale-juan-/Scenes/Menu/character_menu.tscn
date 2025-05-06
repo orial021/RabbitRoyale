@@ -4694,6 +4694,7 @@ height = 3.50471
 
 [node name="Character Menu" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.0311316, -0.999515, 0, 0.999515, 0.0311316, 0, 0, 0)
+collision_mask = 8
 script = ExtResource("1_wuo60")
 
 [node name="CharacterArmature" type="Node3D" parent="."]
@@ -4775,14 +4776,14 @@ bones/10/parent = 9
 bones/10/rest = Transform3D(0.906839, -0.241789, -0.345227, 0.421465, 0.513926, 0.74716, -0.00323391, -0.823054, 0.567953, 9.60089e-08, 0.694606, -7.54911e-08)
 bones/10/enabled = true
 bones/10/position = Vector3(9.60089e-08, 0.694606, -7.54911e-08)
-bones/10/rotation = Quaternion(-0.454136, -0.098911, 0.191826, 0.864395)
+bones/10/rotation = Quaternion(-0.454136, -0.0989111, 0.191826, 0.864395)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "Ear1.R"
 bones/11/parent = 7
 bones/11/rest = Transform3D(0.920256, -0.367957, 0.133179, 0.386719, 0.90717, -0.165802, -0.059808, 0.204083, 0.977125, -0.458162, 0.695689, -0.131307)
 bones/11/enabled = true
 bones/11/position = Vector3(-0.458162, 0.695689, -0.131307)
-bones/11/rotation = Quaternion(0.104306, 0.0474565, 0.194722, 0.974142)
+bones/11/rotation = Quaternion(0.104306, 0.0474565, 0.194722, 0.974141)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "Ear2.R"
 bones/12/parent = 11
@@ -4817,21 +4818,21 @@ bones/16/parent = 15
 bones/16/rest = Transform3D(0.760352, 0.422379, 0.493418, -0.440231, 0.893695, -0.0866352, -0.477558, -0.151345, 0.865467, -1.027e-08, 0.528271, -4.94593e-08)
 bones/16/enabled = true
 bones/16/position = Vector3(-1.027e-08, 0.528271, -4.94593e-08)
-bones/16/rotation = Quaternion(0.00223344, 0.272572, -0.0124787, 0.962052)
+bones/16/rotation = Quaternion(0.00223343, 0.272572, -0.0124787, 0.962052)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/name = "Fist.L"
 bones/17/parent = 16
 bones/17/rest = Transform3D(0.999252, 0.0135389, 0.0362167, -0.0126264, 0.9996, -0.0253072, -0.0365448, 0.024831, 0.999023, 4.9723e-08, 0.425347, 5.53556e-08)
 bones/17/enabled = true
 bones/17/position = Vector3(4.9723e-08, 0.425347, 5.53556e-08)
-bones/17/rotation = Quaternion(-0.0170491, -0.268161, -0.0485173, 0.962001)
+bones/17/rotation = Quaternion(-0.0170491, -0.268161, -0.0485174, 0.962001)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "Shoulder.R"
 bones/18/parent = 5
 bones/18/rest = Transform3D(0.663087, -0.746803, -0.0509975, 0.748513, 0.660914, 0.0540386, -0.00665121, -0.0740045, 0.997236, -0.130234, 0.141128, 0.014703)
 bones/18/enabled = true
 bones/18/position = Vector3(-0.130234, 0.141128, 0.014703)
-bones/18/rotation = Quaternion(0.0224717, 0.0752763, 0.429033, 0.899866)
+bones/18/rotation = Quaternion(0.0224717, 0.0752762, 0.429033, 0.899866)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/name = "UpperArm.R"
 bones/19/parent = 18
@@ -4929,3 +4930,5 @@ autoplay = "GangnamStyle"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.28408e-08, 1, 0, -1, -4.28408e-08, 0.118035, 0.0412856, -1.32552)
 shape = SubResource("CapsuleShape3D_wuo60")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
