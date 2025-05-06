@@ -15,6 +15,13 @@ Este proyecto utiliza Tortoise ORM y Aerich para la gestión de la base de datos
    ```bash
    git clone https://github.com/orial021/RabbitRoyale.git
    cd RabbitRoyale
+   git checkout -b esteban-proyecto
+   git add
+   git commit -m "first commit"
+   git push origin esteban-proyecto
+   git config --global user.email "you@example.com"
+   git clone https://github.com/orial021/RabbitRoyale.git -b Esteban-Proyecto
+   git swicth Esteban_Proyecto
    ```
 
 2. Instala las dependencias:
@@ -76,3 +83,5 @@ Abre un Pull Request.
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
 ¡Gracias por contribuir y aprender con nosotros!
+
+esta rama es de esteban en lvl 3.
