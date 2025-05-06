@@ -148,6 +148,7 @@ shader_parameter/TEXTURE = ExtResource("3_a43ba")
 [sub_resource type="SystemFont" id="SystemFont_p0e35"]
 font_names = PackedStringArray("Javanese Text")
 font_italic = true
+subpixel_positioning = 0
 msdf_size = 50
 
 [node name="Door2" type="Node3D"]
