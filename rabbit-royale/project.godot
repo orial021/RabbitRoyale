@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Rabbit Royal"
+run/main_scene="uid://baeordbg1uh38"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -39,3 +40,21 @@ ui_shot={
 "deadzone": 0.2,
 "events": []
 }
+
+[layer_names]
+
+3d_render/layer_1="Player"
+3d_render/layer_2="Enemy"
+3d_render/layer_3="Item"
+3d_render/layer_4="Enviroment"
+3d_render/layer_5="Bullet"
+3d_physics/layer_1="Player"
+3d_navigation/layer_1="Player"
+3d_physics/layer_2="Enemy"
+3d_navigation/layer_2="Enemy"
+3d_physics/layer_3="Item"
+3d_navigation/layer_3="Item"
+3d_physics/layer_4="Enviroment"
+3d_navigation/layer_4="Enviroment"
+3d_physics/layer_5="Bullet"
+3d_navigation/layer_5="Bullet"
