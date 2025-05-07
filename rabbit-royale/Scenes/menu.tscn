@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://baeordbg1uh38"]
+[gd_scene load_steps=26 format=3 uid="uid://baeordbg1uh38"]
 
 [ext_resource type="PackedScene" uid="uid://nqian85nbat2" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Fruit.gltf" id="1_j7r1e"]
 [ext_resource type="Script" uid="uid://dglecgyll5me8" path="res://Scripts/menu.gd" id="1_x5f3s"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="4_x5f3s"]
 [ext_resource type="PackedScene" uid="uid://dh41o6khjonig" path="res://Scenes/character_menu.tscn" id="5_8inha"]
 [ext_resource type="PackedScene" uid="uid://b6irxecvmt1vy" path="res://Scenes/laporta.tscn" id="5_n2mnh"]
+[ext_resource type="FontFile" uid="uid://dx16jxvxpikku" path="res://Resources/Utils/chalkboard.ttf" id="8_7qvly"]
+[ext_resource type="StyleBox" uid="uid://t43ed07sxino" path="res://Resources/Utils/HoverButton.tres" id="9_rfqti"]
+[ext_resource type="StyleBox" uid="uid://co4lgbj6366pm" path="res://Resources/Utils/enterButton.tres" id="10_g8i7c"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uwxxs"]
 noise_type = 5
@@ -28,12 +31,12 @@ points = PackedVector3Array(-8, -0.5, -8, -8, 0.5, -8, 8, -0.5, -8, -8, -0.5, 8,
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qok0p"]
 panorama = ExtResource("4_x5f3s")
 
-[sub_resource type="Sky" id="Sky_hgg7c"]
+[sub_resource type="Sky" id="Sky_7qvly"]
 sky_material = SubResource("PanoramaSkyMaterial_qok0p")
 
 [sub_resource type="Environment" id="Environment_3fcxt"]
 background_mode = 2
-sky = SubResource("Sky_hgg7c")
+sky = SubResource("Sky_7qvly")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uwxxs"]
 size = Vector3(4.01804, 1, 1.69434)
@@ -44,8 +47,25 @@ size = Vector3(3.91742, 1, 1.29492)
 [sub_resource type="BoxShape3D" id="BoxShape3D_x5f3s"]
 size = Vector3(16.1448, 4.95682, 1.97363)
 
+[sub_resource type="FontVariation" id="FontVariation_23t3j"]
+base_font = ExtResource("8_7qvly")
+variation_embolden = 2.0
+
+[sub_resource type="SystemFont" id="SystemFont_7qvly"]
+font_names = PackedStringArray("Ebrima")
+
+[sub_resource type="FontVariation" id="FontVariation_rfqti"]
+base_font = SubResource("SystemFont_7qvly")
+
+[sub_resource type="Theme" id="Theme_5ti5v"]
+default_font = SubResource("FontVariation_rfqti")
+Button/font_sizes/font_size = 22
+Label/colors/font_color = Color(1, 1, 0.152941, 1)
+Label/colors/font_outline_color = Color(0.856494, 1.97336e-06, 1.92523e-07, 1)
+Label/fonts/font = SubResource("FontVariation_23t3j")
+
 [node name="Menu" type="Node3D"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+transform = Transform3D(0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_x5f3s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -130,6 +150,63 @@ transform = Transform3D(-0.00123922, 0, -0.999999, 0, 1, 0, 0.999999, 0, -0.0012
 shape = SubResource("BoxShape3D_x5f3s")
 
 [node name="Character_menu" parent="." instance=ExtResource("5_8inha")]
-transform = Transform3D(0.771727, 0.632531, 0.0659036, 0.103841, -0.023093, -0.994326, -0.62742, 0.774191, -0.083504, 4.20832, 1.60057, 6.10377)
+transform = Transform3D(0.771727, 0.632531, 0.0659036, 0.103841, -0.023093, -0.994326, -0.62742, 0.774191, -0.083504, 4.20832, -0.0555897, 6.10377)
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_5ti5v")
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="GUI/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RABBIT ROYALE
+SUPER TURBO 
+CHAMPIONSHIP
+EDITION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Entré" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = ExtResource("9_rfqti")
+theme_override_styles/normal = ExtResource("10_g8i7c")
+text = "Entrele"
+
+[node name="Obtions" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = ExtResource("9_rfqti")
+theme_override_styles/normal = ExtResource("10_g8i7c")
+text = "Opcionele"
+
+[node name="Sortir" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = ExtResource("9_rfqti")
+theme_override_styles/normal = ExtResource("10_g8i7c")
+text = "Salgase ¡CHU! ¡CHU!"
 
 [connection signal="body_entered" from="Settings/DoorCreate/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Entré" to="." method="_on_entré_pressed"]
+[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Obtions" to="." method="_on_obtion_pressed"]
+[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Sortir" to="." method="_on_sortir_pressed"]

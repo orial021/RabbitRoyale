@@ -4691,7 +4691,7 @@ height = 3.42456
 radius = 1.02832
 
 [node name="Character_menu" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
 collision_mask = 8
 script = ExtResource("1_430fi")
 

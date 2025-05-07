@@ -1,3 +1,44 @@
-[gd_scene format=3 uid="uid://bimxuopune8n3"]
+[gd_scene load_steps=9 format=3 uid="uid://bimxuopune8n3"]
+
+[ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="1_k5f4k"]
+[ext_resource type="Texture2D" uid="uid://dnkhxalg2pvbr" path="res://addons/kenney_prototype_textures/dark/texture_06.png" id="2_6phgx"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_81xng"]
+panorama = ExtResource("1_k5f4k")
+
+[sub_resource type="Sky" id="Sky_hgg7c"]
+sky_material = SubResource("PanoramaSkyMaterial_81xng")
+
+[sub_resource type="Environment" id="Environment_wqkje"]
+background_mode = 2
+sky = SubResource("Sky_hgg7c")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0f350"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8c0lf"]
+albedo_texture = ExtResource("2_6phgx")
+uv1_triplanar = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_754fn"]
+points = PackedVector3Array(20.3173, 1.0873, 20.3095, -20.3175, -0.81746, -20.3095, -20.3175, -0.81746, 20.3095, -20.3175, 1.0873, -20.3095, 20.3173, -0.81746, -20.3095, -20.3175, 1.0873, 20.3095, 20.3173, -0.81746, 20.3095, 20.3173, 1.0873, -20.3095)
 
 [node name="Node3D" type="Node3D"]
+
+[node name="Settings" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
+environment = SubResource("Environment_wqkje")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 4.43269, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Settings"]
+mesh = SubResource("BoxMesh_0f350")
+surface_material_override/0 = SubResource("StandardMaterial3D_8c0lf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Settings/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_754fn")
