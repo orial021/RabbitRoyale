@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://02hp07r2qhpb"]
+[gd_scene load_steps=40 format=3 uid="uid://02hp07r2qhpb"]
 
 [ext_resource type="Script" uid="uid://bwiisroy67887" path="res://Scenas/menu.gd" id="1_vx8jo"]
 [ext_resource type="PackedScene" uid="uid://0hervqawh4va" path="res://Scenas/door.tscn" id="2_14mlv"]
@@ -20,9 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://ddlv7eahpe1tx" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Rock_2.fbx" id="16_mgxst"]
 [ext_resource type="PackedScene" uid="uid://dmd84i48cu101" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Tree.fbx" id="17_c8te3"]
 [ext_resource type="PackedScene" uid="uid://eyyo3fqka2vr" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/FBX/Tree_Fruit.fbx" id="18_p2twt"]
-[ext_resource type="FontFile" uid="uid://dx16jxvxpikku" path="res://Resources/Utils/chalkboard.ttf" id="21_yjrjb"]
-[ext_resource type="StyleBox" uid="uid://co4lgbj6366pm" path="res://Resources/Utils/enterButton.tres" id="22_sxkyq"]
-[ext_resource type="StyleBox" uid="uid://t43ed07sxino" path="res://Resources/Utils/HoverButton.tres" id="22_yoe2o"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_leyge"]
 panorama = ExtResource("14_bsvwp")
@@ -213,15 +210,6 @@ points = PackedVector3Array(-8, -0.5, -8, -8, 0.5, -8, 8, -0.5, -8, -8, -0.5, 8,
 [sub_resource type="BoxShape3D" id="BoxShape3D_n218s"]
 size = Vector3(3.54285, 8.46106, 15.4651)
 
-[sub_resource type="Theme" id="Theme_yoe2o"]
-Button/font_sizes/font_size = 45
-Label/font_sizes/font_size = 40
-Label/fonts/font = ExtResource("21_yjrjb")
-
-[sub_resource type="FontVariation" id="FontVariation_wr0ft"]
-base_font = ExtResource("21_yjrjb")
-variation_embolden = 2.0
-
 [node name="Menu" type="Node3D"]
 script = ExtResource("1_vx8jo")
 
@@ -239,7 +227,6 @@ transform = Transform3D(0.817919, -0.22164, 0.530928, 0.0115729, 0.928969, 0.369
 
 [node name="Door_Create" parent="Settings" instance=ExtResource("2_14mlv")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.98003, 0.493363, 1.66243)
-label = "Crear Partida"
 
 [node name="Area3D" type="Area3D" parent="Settings/Door_Create"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.57561, -0.493363, 0.224579)
@@ -250,7 +237,6 @@ shape = SubResource("BoxShape3D_vx8jo")
 
 [node name="Door_Join" parent="Settings" instance=ExtResource("2_14mlv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.47792, 0.493363, -0.660182)
-label = "Unirse"
 
 [node name="Area3D2" type="Area3D" parent="Settings/Door_Join"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47792, -0.493363, 0.660182)
@@ -383,73 +369,4 @@ shape = SubResource("BoxShape3D_n218s")
 transform = Transform3D(0.986107, 0.166115, 0, -0.166115, 0.986106, 0, 0, 0, 1, 0, 0.58983, 5.1061)
 collision_mask = 8
 
-[node name="GUI" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="GUI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_yoe2o")
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 103.0
-offset_right = -722.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="GUI/Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 6
-theme_override_constants/shadow_offset_y = 6
-theme_override_fonts/font = SubResource("FontVariation_wr0ft")
-theme_override_font_sizes/font_size = 40
-text = "RABBIT
-ROYALE"
-horizontal_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Enter" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-theme_override_styles/hover = ExtResource("22_yoe2o")
-theme_override_styles/normal = ExtResource("22_sxkyq")
-text = "Enter
-"
-
-[node name="Option" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-theme_override_styles/hover = ExtResource("22_yoe2o")
-theme_override_styles/normal = ExtResource("22_sxkyq")
-text = "Options
-"
-
-[node name="Exit" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-theme_override_styles/hover = ExtResource("22_yoe2o")
-theme_override_styles/normal = ExtResource("22_sxkyq")
-text = "Exit
-"
-
 [connection signal="body_entered" from="Settings/Door_Create/Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Enter" to="." method="_on_enter_pressed"]
-[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Option" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

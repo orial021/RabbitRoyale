@@ -1,3 +1,43 @@
-[gd_scene format=3 uid="uid://dh281oqehsc7y"]
+[gd_scene load_steps=9 format=3 uid="uid://dh281oqehsc7y"]
+
+[ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="1_oioc7"]
+[ext_resource type="Texture2D" uid="uid://qu57gp28m4fh" path="res://addons/kenney_prototype_textures/green/texture_09.png" id="2_3nfp7"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3nfp7"]
+panorama = ExtResource("1_oioc7")
+
+[sub_resource type="Sky" id="Sky_vbty5"]
+sky_material = SubResource("PanoramaSkyMaterial_3nfp7")
+
+[sub_resource type="Environment" id="Environment_trg4v"]
+background_mode = 2
+sky = SubResource("Sky_vbty5")
+
+[sub_resource type="BoxMesh" id="BoxMesh_28att"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trg4v"]
+albedo_texture = ExtResource("2_3nfp7")
+uv1_triplanar = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rdvgw"]
+points = PackedVector3Array(-20, -0.5, -20, -20, 0.5, -20, 20, -0.5, -20, -20, -0.5, 20, -20, 0.5, 20, 20, 0.5, -20, 20, -0.5, 20, 20, 0.5, 20)
 
 [node name="level" type="Node3D"]
+
+[node name="settings" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="settings"]
+environment = SubResource("Environment_trg4v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="settings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.32907, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_28att")
+surface_material_override/0 = SubResource("StandardMaterial3D_trg4v")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_rdvgw")
