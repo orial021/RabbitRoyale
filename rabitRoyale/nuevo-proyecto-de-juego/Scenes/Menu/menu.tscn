@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dpi46dujfu8ib"]
+[gd_scene load_steps=26 format=3 uid="uid://dpi46dujfu8ib"]
 
 [ext_resource type="Script" uid="uid://cv553wnm3pxxi" path="res://Scripts/ScriptsMenu/menu.gd" id="1_qok0p"]
 [ext_resource type="PackedScene" uid="uid://ddrsgawl4cb6f" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Bush_Fruit.gltf" id="1_qwfkq"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="9_0401g"]
 [ext_resource type="PackedScene" uid="uid://l2e7i7mchsl8" path="res://Scenes/Menu/character_menu.tscn" id="10_i081d"]
 [ext_resource type="PackedScene" uid="uid://cqirv3pjpkwdd" path="res://Scenes/Menu/door.tscn" id="10_m6csd"]
+[ext_resource type="Theme" uid="uid://cbaf64cm2n3qx" path="res://Resources/Utils/menu.tres" id="13_hgg7c"]
+[ext_resource type="StyleBox" uid="uid://t43ed07sxino" path="res://Resources/Utils/HoverButton.tres" id="14_u2ioa"]
+[ext_resource type="StyleBox" uid="uid://co4lgbj6366pm" path="res://Resources/Utils/enterButton.tres" id="15_wxa3f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lnqkc"]
 size = Vector3(16, 1, 16)
@@ -36,12 +39,12 @@ size = Vector3(2, 9, 17)
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6j47b"]
 panorama = ExtResource("9_0401g")
 
-[sub_resource type="Sky" id="Sky_m7ue0"]
+[sub_resource type="Sky" id="Sky_u2ioa"]
 sky_material = SubResource("PanoramaSkyMaterial_6j47b")
 
 [sub_resource type="Environment" id="Environment_ihsho"]
 background_mode = 2
-sky = SubResource("Sky_m7ue0")
+sky = SubResource("Sky_u2ioa")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qok0p"]
 size = Vector3(0.840942, 4.90479, 3.41479)
@@ -145,7 +148,64 @@ shape = SubResource("BoxShape3D_qok0p")
 debug_color = Color(0.995959, 0, 0.204185, 1)
 
 [node name="Character_Menu" parent="." instance=ExtResource("10_i081d")]
-transform = Transform3D(0.778638, 0.627474, -2.74278e-08, 0, -4.37114e-08, -1, -0.627475, 0.778638, -3.40353e-08, 5.34426, 0.654199, 4.75228)
+transform = Transform3D(0.704841, 0.683857, 0.188524, 0.325252, -0.0753726, -0.942619, -0.630407, 0.725714, -0.275551, 5.91723, 0.452977, 5.69173)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("13_hgg7c")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -688.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Rabbit
+Royale"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = ExtResource("14_u2ioa")
+theme_override_styles/normal = ExtResource("15_wxa3f")
+text = "Enter"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = ExtResource("14_u2ioa")
+theme_override_styles/normal = ExtResource("15_wxa3f")
+text = "Options"
+
+[node name="Button3" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = ExtResource("14_u2ioa")
+theme_override_styles/normal = ExtResource("15_wxa3f")
+text = "Exit"
 
 [connection signal="body_entered" from="Settings/Crear Partida/Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="Settings/Unirse/Area3D2" to="." method="_on_area_3d_2_body_entered"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

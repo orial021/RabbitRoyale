@@ -16,8 +16,19 @@ func _process(delta: float) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
+	enter_game = true
+	
+
+
+func _on_button_pressed() -> void:
+	door_create.open()
+	door_join.open()
+	$Character_Menu.anim("Wave")
+
+
+func _on_button_2_pressed() -> void:
 	pass # Replace with function body.
 
 
-func _on_area_3d_2_body_entered(body: Node3D) -> void:
-	pass # Replace with function body.
+func _on_button_3_pressed() -> void:
+	get_tree().quit()

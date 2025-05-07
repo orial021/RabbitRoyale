@@ -1,3 +1,36 @@
-[gd_scene format=3 uid="uid://bmoxpxkt6puoj"]
+[gd_scene load_steps=8 format=3 uid="uid://bmoxpxkt6puoj"]
+
+[ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="1_tumq0"]
+[ext_resource type="Texture2D" uid="uid://w5xq402t1pt7" path="res://addons/kenney_prototype_textures/green/texture_09.png" id="2_k5f4k"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_k5f4k"]
+panorama = ExtResource("1_tumq0")
+
+[sub_resource type="Sky" id="Sky_m7ue0"]
+sky_material = SubResource("PanoramaSkyMaterial_k5f4k")
+
+[sub_resource type="Environment" id="Environment_6phgx"]
+background_mode = 2
+sky = SubResource("Sky_m7ue0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6phgx"]
+albedo_texture = ExtResource("2_k5f4k")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_81xng"]
+material = SubResource("StandardMaterial3D_6phgx")
+size = Vector3(40, 1, 40)
 
 [node name="Level" type="Node3D"]
+
+[node name="Settings" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
+environment = SubResource("Environment_6phgx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
+transform = Transform3D(-0.54866, -0.739918, 0.389222, 0.836006, -0.490097, 0.246778, 0.00816064, 0.460789, 0.887472, 0, 11.3354, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_81xng")
