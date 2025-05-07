@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://5t75brqtyga3"]
+[gd_scene load_steps=30 format=3 uid="uid://5t75brqtyga3"]
 
 [ext_resource type="PackedScene" uid="uid://dx8k42pe5r54s" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_1.gltf" id="1_g8i7c"]
 [ext_resource type="Script" uid="uid://cnan1kjj8b77h" path="res://Scripts/MENU/menu.gd" id="1_ix2cr"]
@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="12_h63v2"]
 [ext_resource type="PackedScene" uid="uid://bmk2b5vm0jqbt" path="res://Scenes/character_menu.tscn" id="13_23t3j"]
 [ext_resource type="PackedScene" uid="uid://drv7jrlowguof" path="res://Scenes/door.tscn" id="14_x3j1o"]
+[ext_resource type="Theme" uid="uid://cbaf64cm2n3qx" path="res://Resources/Utils/menu.tres" id="16_jqn0i"]
+[ext_resource type="StyleBox" uid="uid://co4lgbj6366pm" path="res://Resources/Utils/enterButton.tres" id="17_ssii2"]
+[ext_resource type="StyleBox" uid="uid://t43ed07sxino" path="res://Resources/Utils/HoverButton.tres" id="18_lpwac"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l6llh"]
 seed = 7
@@ -44,12 +47,12 @@ size = Vector3(18, 10, 1)
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nakb8"]
 panorama = ExtResource("12_h63v2")
 
-[sub_resource type="Sky" id="Sky_pde1v"]
+[sub_resource type="Sky" id="Sky_jqn0i"]
 sky_material = SubResource("PanoramaSkyMaterial_nakb8")
 
 [sub_resource type="Environment" id="Environment_747ic"]
 background_mode = 2
-sky = SubResource("Sky_pde1v")
+sky = SubResource("Sky_jqn0i")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nqlk8"]
 size = Vector3(4, 4, 1)
@@ -150,7 +153,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0.484497, -0.603204, 0.63356
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="settings"]
-transform = Transform3D(0.67536, 0.246255, -0.69516, 0.0582216, 0.92186, 0.383125, 0.735187, -0.29922, 0.60825, -8.35441, 6.20798, 9.1266)
+transform = Transform3D(0.67536, 0.246255, -0.69516, 0.0582216, 0.92186, 0.383125, 0.735187, -0.29922, 0.60825, -9.72044, 7.20798, 8.76058)
 
 [node name="DoorCreate" parent="settings" instance=ExtResource("14_x3j1o")]
 transform = Transform3D(1.00335, 0, 0, 0, 1.00335, 0, 0, 0, 1.00335, -1, 1, -3)
@@ -172,5 +175,70 @@ label = "Unirse"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99332, -0.996661)
 shape = SubResource("BoxShape3D_jqn0i")
 
-[node name="Character_menu2" parent="." instance=ExtResource("13_23t3j")]
+[node name="Character_menu" parent="." instance=ExtResource("13_23t3j")]
 transform = Transform3D(0.965926, 0.258819, -1.13133e-08, 0, -4.37114e-08, -1, -0.258819, 0.965926, -4.2222e-08, 2, 1, 6)
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("16_jqn0i")
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 521.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 18
+
+[node name="Label" type="Label" parent="GUI/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RABBIT
+ROYALE"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Enter" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = ExtResource("18_lpwac")
+theme_override_styles/pressed = ExtResource("18_lpwac")
+theme_override_styles/normal = ExtResource("17_ssii2")
+text = "ENTER"
+
+[node name="options" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = ExtResource("18_lpwac")
+theme_override_styles/pressed = ExtResource("18_lpwac")
+theme_override_styles/normal = ExtResource("17_ssii2")
+text = "OPTION"
+
+[node name="exit" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = ExtResource("18_lpwac")
+theme_override_styles/pressed = ExtResource("18_lpwac")
+theme_override_styles/normal = ExtResource("17_ssii2")
+text = "EXIT"
+
+[connection signal="body_entered" from="settings/DoorCreate/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Enter" to="." method="_on_enter_pressed"]
+[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]

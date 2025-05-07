@@ -4773,7 +4773,7 @@ bones/10/parent = 9
 bones/10/rest = Transform3D(0.906839, -0.241789, -0.345227, 0.421465, 0.513926, 0.74716, -0.00323391, -0.823054, 0.567953, 9.60089e-08, 0.694606, -7.54911e-08)
 bones/10/enabled = true
 bones/10/position = Vector3(-0.0713049, 0.652434, -0.0183688)
-bones/10/rotation = Quaternion(0.961337, 0.206573, 0.181586, 0.0136478)
+bones/10/rotation = Quaternion(-0.413553, -0.0899068, 0.196207, 0.88453)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "Ear1.R"
 bones/11/parent = 7
@@ -4922,7 +4922,7 @@ skin = SubResource("Skin_p70xp")
 libraries = {
 &"": SubResource("AnimationLibrary_htl42")
 }
-autoplay = "Wave"
+autoplay = "Idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -6.95337e-08, -1.59075)
