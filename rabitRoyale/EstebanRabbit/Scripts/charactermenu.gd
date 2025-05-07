@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Charactermenu
 
-var can_move : bool = true
+var can_move : bool = false
 var rot : Vector3
 var angle : float
 const  SPEED = 6
@@ -34,6 +34,9 @@ func motion_ctrl() -> void:
 			rot = get_rotation()
 			rot.y = angle
 			set_rotation(rot)
+
+func anin(anin_name : String) -> void:
+	$AnimationPlayer.play(anin_name)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Wave":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b2epop7vfcv2b"]
+[gd_scene load_steps=25 format=3 uid="uid://b2epop7vfcv2b"]
 
 [ext_resource type="Script" uid="uid://cecrp3lk8uei8" path="res://Scripts/menu.gd" id="1_m6csd"]
 [ext_resource type="PackedScene" uid="uid://2mnhuh6pymar" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Tree_Fruit.gltf" id="1_x5f3s"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="8_uwxxs"]
 [ext_resource type="PackedScene" uid="uid://bqj0kmee5q0q0" path="res://Scenes/menu/door_2.tscn" id="9_i081d"]
 [ext_resource type="PackedScene" uid="uid://b606olqb4dcop" path="res://Scenes/menu/charactermenu.tscn" id="9_qwfkq"]
+[ext_resource type="Theme" uid="uid://cbaf64cm2n3qx" path="res://Resources/Utils/menu.tres" id="12_tumgr"]
+[ext_resource type="StyleBox" uid="uid://t43ed07sxino" path="res://Resources/Utils/HoverButton.tres" id="13_fpwaj"]
+[ext_resource type="StyleBox" uid="uid://co4lgbj6366pm" path="res://Resources/Utils/enterButton.tres" id="13_pofsc"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3fcxt"]
 noise_type = 2
@@ -156,3 +159,63 @@ debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="Character_menu" parent="." instance=ExtResource("9_qwfkq")]
 transform = Transform3D(0.999435, -0.0336258, 1.46986e-09, -2.42625e-15, -4.37114e-08, -1, 0.0336258, 0.999435, -4.36867e-08, 1.08847, 0.602607, 4.72512)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = -47.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_tumgr")
+text = "ESTBAN 
+RABBITROYALE"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("12_tumgr")
+
+[node name="enter" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = ExtResource("13_fpwaj")
+theme_override_styles/normal = ExtResource("13_pofsc")
+text = "Enter"
+
+[node name="options" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = ExtResource("13_fpwaj")
+theme_override_styles/normal = ExtResource("13_pofsc")
+text = "optiond"
+
+[node name="exit" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = ExtResource("13_fpwaj")
+theme_override_styles/normal = ExtResource("13_pofsc")
+text = "exit"
+
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer/enter" to="." method="_on_enter_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]
