@@ -35,12 +35,12 @@ size = Vector3(4.59229, 7.35114, 18.206)
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qwfkq"]
 panorama = ExtResource("8_uwxxs")
 
-[sub_resource type="Sky" id="Sky_i081d"]
+[sub_resource type="Sky" id="Sky_m6csd"]
 sky_material = SubResource("PanoramaSkyMaterial_qwfkq")
 
 [sub_resource type="Environment" id="Environment_m6csd"]
 background_mode = 2
-sky = SubResource("Sky_i081d")
+sky = SubResource("Sky_m6csd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qok0p"]
 size = Vector3(1, 4.63098, 4.1571)
