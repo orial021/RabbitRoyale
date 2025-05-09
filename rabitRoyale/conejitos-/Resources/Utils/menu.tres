@@ -1,4 +1,14 @@
-[gd_resource type="Theme" format=3 uid="uid://cbaf64cm2n3qx"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cbaf64cm2n3qx"]
+
+[ext_resource type="FontFile" uid="uid://dx16jxvxpikku" path="res://Resources/Utils/chalkboard.ttf" id="1_ormrd"]
+
+[sub_resource type="FontVariation" id="FontVariation_7gep0"]
+base_font = ExtResource("1_ormrd")
+variation_embolden = 1.1
 
 [resource]
 default_font_size = 48
+Label/colors/font_color = Color(0.878169, 8.05709e-05, 0.189788, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 5
+Label/fonts/font = SubResource("FontVariation_7gep0")

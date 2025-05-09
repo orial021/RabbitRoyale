@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="conejitosnew"
-run/main_scene="uid://dptjjgmqhpqq7"
+run/main_scene="uid://ybw2t1jprbq0"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
