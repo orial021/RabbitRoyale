@@ -8,7 +8,6 @@ Este proyecto utiliza Tortoise ORM y Aerich para la gestión de la base de datos
 - Tortoise ORM
 - Aerich
 - Uvicorn
-
 ## Instalación
 
 1. Clona el repositorio:
