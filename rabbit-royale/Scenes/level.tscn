@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bimxuopune8n3"]
+[gd_scene load_steps=10 format=3 uid="uid://bimxuopune8n3"]
 
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="1_k5f4k"]
 [ext_resource type="Texture2D" uid="uid://dnkhxalg2pvbr" path="res://addons/kenney_prototype_textures/dark/texture_06.png" id="2_6phgx"]
+[ext_resource type="PackedScene" uid="uid://be6lr0eprme43" path="res://Scenes/player.tscn" id="3_6phgx"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_81xng"]
 panorama = ExtResource("1_k5f4k")
@@ -42,3 +43,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8c0lf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_754fn")
+
+[node name="Player" parent="." instance=ExtResource("3_6phgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.622953, 0)

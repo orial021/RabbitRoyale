@@ -3091,19 +3091,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node3D/Camera3D:position")
+tracks/1/path = NodePath("Head/Camera3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.245, 2.05403, 0.00357237)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Node3D/Camera3D:rotation")
+tracks/2/path = NodePath("Head/Camera3D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -3122,12 +3122,12 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Node3D/Camera3D:scale")
+tracks/4/path = NodePath("Head/Camera3D:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -3637,7 +3637,7 @@ tracks/34/keys = {
 tracks/35/type = "value"
 tracks/35/imported = false
 tracks/35/enabled = true
-tracks/35/path = NodePath("Node3D/Camera3D:position")
+tracks/35/path = NodePath("Head/Camera3D:position")
 tracks/35/interp = 1
 tracks/35/loop_wrap = true
 tracks/35/keys = {
@@ -3649,7 +3649,7 @@ tracks/35/keys = {
 tracks/36/type = "value"
 tracks/36/imported = false
 tracks/36/enabled = true
-tracks/36/path = NodePath("Node3D/Camera3D:rotation")
+tracks/36/path = NodePath("Head/Camera3D:rotation")
 tracks/36/interp = 1
 tracks/36/loop_wrap = true
 tracks/36/keys = {
@@ -3915,7 +3915,7 @@ tracks/34/keys = {
 tracks/35/type = "value"
 tracks/35/imported = false
 tracks/35/enabled = true
-tracks/35/path = NodePath("Node3D/Camera3D:rotation")
+tracks/35/path = NodePath("Head/Camera3D:rotation")
 tracks/35/interp = 1
 tracks/35/loop_wrap = true
 tracks/35/keys = {
@@ -3927,7 +3927,7 @@ tracks/35/keys = {
 tracks/36/type = "value"
 tracks/36/imported = false
 tracks/36/enabled = true
-tracks/36/path = NodePath("Node3D/Camera3D:scale")
+tracks/36/path = NodePath("Head/Camera3D:scale")
 tracks/36/interp = 1
 tracks/36/loop_wrap = true
 tracks/36/keys = {
@@ -3939,7 +3939,7 @@ tracks/36/keys = {
 tracks/37/type = "value"
 tracks/37/imported = false
 tracks/37/enabled = true
-tracks/37/path = NodePath("Node3D/Camera3D:position")
+tracks/37/path = NodePath("Head/Camera3D:position")
 tracks/37/interp = 1
 tracks/37/loop_wrap = true
 tracks/37/keys = {
@@ -5020,6 +5020,7 @@ transitions = ["Start", "Wave", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-4.03181, 5.62132)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6t5aa"]
+graph_offset = Vector2(-229.226, 126.548)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_vgqql")
 nodes/Animation/position = Vector2(80.9214, 331.421)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6t5aa")
@@ -5285,11 +5286,19 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48778, 0.289042)
 shape = SubResource("CapsuleShape3D_fkybt")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01811, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(-0.996006, -0.0155411, -0.0879188, -0.0157777, 0.999874, 0.00199662, 0.0878766, 0.0033758, -0.996126, -0.245, 2.05403, 0.00357237)
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(-0.996006, -0.0155411, -0.0879188, -0.0157777, 0.999874, 0.00199662, 0.0878766, 0.0033758, -0.996126, 0, 0, 0)
 current = true
+
+[node name="Label3D" type="Label3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27112, 0.0224049)
+billboard = 2
+double_sided = false
+text = "USERNAME"
+font_size = 200
 
 [node name="Settings" type="Node3D" parent="."]
 
