@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://baeordbg1uh38"]
+[gd_scene load_steps=30 format=3 uid="uid://baeordbg1uh38"]
 
 [ext_resource type="PackedScene" uid="uid://nqian85nbat2" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Fruit.gltf" id="1_j7r1e"]
 [ext_resource type="Script" uid="uid://dglecgyll5me8" path="res://Scripts/menu.gd" id="1_x5f3s"]
@@ -10,6 +10,9 @@
 [ext_resource type="FontFile" uid="uid://dx16jxvxpikku" path="res://Resources/Utils/chalkboard.ttf" id="8_7qvly"]
 [ext_resource type="StyleBox" uid="uid://t43ed07sxino" path="res://Resources/Utils/HoverButton.tres" id="9_rfqti"]
 [ext_resource type="StyleBox" uid="uid://co4lgbj6366pm" path="res://Resources/Utils/enterButton.tres" id="10_g8i7c"]
+[ext_resource type="Script" uid="uid://c1abfw33g2gp5" path="res://Scripts/register.gd" id="11_g8i7c"]
+[ext_resource type="Script" uid="uid://dffbky8es8gbq" path="res://Scripts/login.gd" id="12_23t3j"]
+[ext_resource type="Texture2D" uid="uid://xi355g67hqmx" path="res://Assets/Images/ICONO CARGA.png" id="13_23t3j"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uwxxs"]
 noise_type = 5
@@ -63,6 +66,15 @@ Button/font_sizes/font_size = 22
 Label/colors/font_color = Color(1, 1, 0.152941, 1)
 Label/colors/font_outline_color = Color(0.856494, 1.97336e-06, 1.92523e-07, 1)
 Label/fonts/font = SubResource("FontVariation_23t3j")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qvly"]
+bg_color = Color(0.876538, 0.426891, 0.620823, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.231373, 0.203922, 0.00784314, 0)
+border_blend = true
 
 [node name="Menu" type="Node3D"]
 transform = Transform3D(0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.5, 0, 0, 0)
@@ -156,14 +168,17 @@ transform = Transform3D(0.771727, 0.632531, 0.0659036, 0.103841, -0.023093, -0.9
 
 [node name="Control" type="Control" parent="GUI"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_5ti5v")
 
 [node name="MarginContainer" type="MarginContainer" parent="GUI/Control"]
+z_index = 3
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -206,7 +221,149 @@ theme_override_styles/hover = ExtResource("9_rfqti")
 theme_override_styles/normal = ExtResource("10_g8i7c")
 text = "Salgase ¡CHU! ¡CHU!"
 
+[node name="Register" type="MarginContainer" parent="GUI/Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.5
+offset_top = -130.0
+offset_right = 207.5
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_g8i7c")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Control/Register"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7qvly")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/Register/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "REGISTRA"
+
+[node name="usernameRegister" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "TU NOMBRE HEROICO"
+
+[node name="passwordRegister" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "TU CONTRASEÑA HEROICA"
+
+[node name="email" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "TU CORREO... HEROICO"
+
+[node name="Gender" type="OptionButton" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "TU GENERO HEROICO"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "CABALLERO HEROICO"
+popup/item_1/id = 1
+popup/item_2/text = "CABALLERA HEROICA"
+popup/item_2/id = 2
+popup/item_3/text = "HELICOPTERO DE ASALTO APACHE"
+popup/item_3/id = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Register" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "REGISTRESE"
+
+[node name="ExitRegister" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "VAYASE"
+
+[node name="HTTPRegister" type="HTTPRequest" parent="GUI/Control/Register"]
+
+[node name="Login" type="MarginContainer" parent="GUI/Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -71.5
+offset_right = 88.5
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_23t3j")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Control/Login"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/Login/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "LOGIN"
+
+[node name="Username" type="LineEdit" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "USERNAME"
+
+[node name="Password" type="LineEdit" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PASSWORD"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Login" type="Button" parent="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "LOGIN"
+
+[node name="Register" type="Button" parent="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "REGISTER"
+
+[node name="HTTPLogin" type="HTTPRequest" parent="GUI/Control/Login"]
+
+[node name="HTTPProfile" type="HTTPRequest" parent="GUI/Control/Login"]
+
+[node name="Charge_icon" type="Sprite2D" parent="GUI/Control"]
+visible = false
+position = Vector2(550, 380)
+texture = ExtResource("13_23t3j")
+
 [connection signal="body_entered" from="Settings/DoorCreate/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Entré" to="." method="_on_entré_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Obtions" to="." method="_on_obtion_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Sortir" to="." method="_on_sortir_pressed"]
+[connection signal="pressed" from="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer/Register" to="GUI/Control/Register" method="_on_register_pressed"]
+[connection signal="request_completed" from="GUI/Control/Register/HTTPRegister" to="GUI/Control/Register" method="_on_http_register_request_completed"]
+[connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/Login" to="GUI/Control/Login" method="_on_login_pressed"]
+[connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/Register" to="." method="_on_register_pressed"]
