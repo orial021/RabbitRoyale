@@ -83,7 +83,7 @@ func motion_ctrl(delta) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		HEAD.rotation_degrees.x -= event.relative.y * mouse_sensitivity
+		HEAD.rotation_degrees.x -= event.relative.y * -mouse_sensitivity
 		if not is_dead:
 			rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		else:

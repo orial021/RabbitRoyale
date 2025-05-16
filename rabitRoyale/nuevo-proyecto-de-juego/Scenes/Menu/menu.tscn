@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dpi46dujfu8ib"]
+[gd_scene load_steps=35 format=3 uid="uid://dpi46dujfu8ib"]
 
 [ext_resource type="Script" uid="uid://cv553wnm3pxxi" path="res://Scripts/ScriptsMenu/menu.gd" id="1_qok0p"]
 [ext_resource type="PackedScene" uid="uid://ddrsgawl4cb6f" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Bush_Fruit.gltf" id="1_qwfkq"]
@@ -15,6 +15,9 @@
 [ext_resource type="Theme" uid="uid://cbaf64cm2n3qx" path="res://Resources/Utils/menu.tres" id="13_hgg7c"]
 [ext_resource type="StyleBox" uid="uid://t43ed07sxino" path="res://Resources/Utils/HoverButton.tres" id="14_u2ioa"]
 [ext_resource type="StyleBox" uid="uid://co4lgbj6366pm" path="res://Resources/Utils/enterButton.tres" id="15_wxa3f"]
+[ext_resource type="Script" uid="uid://bjfw3758hl4d7" path="res://Scripts/ScriptsMenu/register.gd" id="16_0401g"]
+[ext_resource type="Script" uid="uid://b0o4v4p6xn7ve" path="res://Scripts/ScriptsMenu/login.gd" id="17_lnqkc"]
+[ext_resource type="Texture2D" uid="uid://xi355g67hqmx" path="res://Assets/Images/ICONO CARGA.png" id="18_lnqkc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lnqkc"]
 size = Vector3(16, 1, 16)
@@ -48,6 +51,94 @@ sky = SubResource("Sky_u2ioa")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qok0p"]
 size = Vector3(0.840942, 4.90479, 3.41479)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2ioa"]
+bg_color = Color(0.113725, 0.65098, 1, 0.545098)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.62306, 0.65006, 0.824615, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="FontFile" id="FontFile_u2ioa"]
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_wxa3f"]
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_0401g"]
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_lnqkc"]
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_wv7rd"]
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
 [node name="Menu" type="Node3D"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
@@ -150,18 +241,20 @@ debug_color = Color(0.995959, 0, 0.204185, 1)
 [node name="Character_Menu" parent="." instance=ExtResource("10_i081d")]
 transform = Transform3D(0.704841, 0.683857, 0.188524, 0.325252, -0.0753726, -0.942619, -0.630407, 0.725714, -0.275551, 5.91723, 0.452977, 5.69173)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="GUI"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("13_hgg7c")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,42 +263,199 @@ offset_right = -688.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="GUI/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Rabbit
 Royale"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Enter" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/hover = ExtResource("14_u2ioa")
 theme_override_styles/normal = ExtResource("15_wxa3f")
 text = "Enter"
 
-[node name="Button2" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/hover = ExtResource("14_u2ioa")
 theme_override_styles/normal = ExtResource("15_wxa3f")
 text = "Options"
 
-[node name="Button3" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/hover = ExtResource("14_u2ioa")
 theme_override_styles/normal = ExtResource("15_wxa3f")
 text = "Exit"
 
+[node name="Register" type="MarginContainer" parent="GUI/Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.5
+offset_top = -230.0
+offset_right = 241.5
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_0401g")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Control/Register"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u2ioa")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/Register/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Register"
+horizontal_alignment = 1
+
+[node name="UsernameRegister" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Username"
+alignment = 1
+
+[node name="PasswordRegister" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Password"
+alignment = 1
+secret = true
+
+[node name="Email" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Email"
+alignment = 1
+
+[node name="Gender" type="OptionButton" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = SubResource("FontFile_u2ioa")
+theme_override_font_sizes/font_size = 64
+alignment = 1
+selected = 0
+item_count = 4
+popup/item_0/text = "Gender"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "Female"
+popup/item_1/id = 1
+popup/item_2/text = "Male"
+popup/item_2/id = 2
+popup/item_3/text = "45 Gay types"
+popup/item_3/id = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="RegisterButton" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_wxa3f")
+theme_override_font_sizes/font_size = 64
+text = "Register"
+
+[node name="ExitButton" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_0401g")
+theme_override_font_sizes/font_size = 64
+text = "Exit"
+
+[node name="HTTPRegister" type="HTTPRequest" parent="GUI/Control/Register"]
+
+[node name="Login" type="MarginContainer" parent="GUI/Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -123.0
+offset_right = 94.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_lnqkc")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Control/Login"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/Login/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Login"
+horizontal_alignment = 1
+
+[node name="Username" type="LineEdit" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Username"
+alignment = 1
+
+[node name="Password" type="LineEdit" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Password"
+alignment = 1
+secret = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Login" type="Button" parent="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_lnqkc")
+theme_override_font_sizes/font_size = 64
+text = "Login
+"
+
+[node name="Register" type="Button" parent="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_wv7rd")
+theme_override_font_sizes/font_size = 64
+text = "Register"
+
+[node name="HTTPLogin" type="HTTPRequest" parent="GUI/Control/Login"]
+
+[node name="HTTPProfile" type="HTTPRequest" parent="GUI/Control/Login"]
+
+[node name="Charge_icon" type="Sprite2D" parent="GUI/Control"]
+visible = false
+texture = ExtResource("18_lnqkc")
+
 [connection signal="body_entered" from="Settings/Crear Partida/Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Enter" to="." method="_on_Enter_pressed"]
+[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer/RegisterButton" to="GUI/Control/Register" method="_on_register_button_pressed"]
+[connection signal="request_completed" from="GUI/Control/Register/HTTPRegister" to="GUI/Control/Register" method="_on_http_register_request_completed"]
+[connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/Login" to="GUI/Control/Login" method="_on_login_pressed"]
+[connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/Register" to="." method="_on_register_pressed"]
