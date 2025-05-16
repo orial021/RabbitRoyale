@@ -14,7 +14,6 @@ from dotenv import load_dotenv
 import os
 
 app = FastAPI()
-
 app.add_middleware(HTTPErrorHandler)
 load_dotenv()
 

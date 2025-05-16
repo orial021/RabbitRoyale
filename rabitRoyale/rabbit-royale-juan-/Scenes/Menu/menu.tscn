@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dxv8vd30spgr0"]
+[gd_scene load_steps=40 format=3 uid="uid://dxv8vd30spgr0"]
 
 [ext_resource type="Script" uid="uid://cw40javf8k3s2" path="res://Scripts/Menu/menu.gd" id="1_wv7rd"]
 [ext_resource type="PackedScene" uid="uid://dccq306hysssm" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_2.gltf" id="1_wxa3f"]
@@ -20,8 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://bd4yyupffymr0" path="res://Scenes/Menu/character_menu.tscn" id="17_0401g"]
 [ext_resource type="PackedScene" uid="uid://5kockuc15ddu" path="res://Scenes/Menu/Door.tscn" id="18_lnqkc"]
 [ext_resource type="Theme" uid="uid://cbaf64cm2n3qx" path="res://Resources/Utils/menu.tres" id="20_6j47b"]
+[ext_resource type="Script" uid="uid://vpapqos28ttx" path="res://Scripts/Menu/gui.gd" id="20_cc6hi"]
 [ext_resource type="StyleBox" uid="uid://t43ed07sxino" path="res://Resources/Utils/HoverButton.tres" id="21_m7ue0"]
 [ext_resource type="StyleBox" uid="uid://co4lgbj6366pm" path="res://Resources/Utils/enterButton.tres" id="22_ihsho"]
+[ext_resource type="Script" uid="uid://ddaut6midlvq4" path="res://Scripts/Menu/register.gd" id="24_4a7rt"]
+[ext_resource type="Script" uid="uid://dg2upoq3bjsc0" path="res://Scripts/Menu/login.gd" id="25_pcdb4"]
+[ext_resource type="Texture2D" uid="uid://xi355g67hqmx" path="res://Assets/Images/ICONO CARGA.png" id="26_4a7rt"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rte3l"]
 frequency = 0.4262
@@ -64,6 +68,34 @@ size = Vector3(1.87256, 4.16418, 1.59778)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jqvb7"]
 size = Vector3(1, 3.98132, 3.03247)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s24qi"]
+bg_color = Color(0.193951, 0.155701, 0.316094, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.208675, 0.168288, 0.337808, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.74902)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdypo"]
+bg_color = Color(0.208675, 0.168288, 0.337808, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.193951, 0.155701, 0.316094, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.811765)
+shadow_size = 10
 
 [node name="Menu" type="Node3D"]
 script = ExtResource("1_wv7rd")
@@ -190,12 +222,15 @@ shape = SubResource("BoxShape3D_jqvb7")
 transform = Transform3D(0.866026, -0.499757, -0.0155658, 0, 0.0311316, -0.999515, 0.5, 0.865606, 0.0269607, 1.94171, 0.464608, 3.39979)
 
 [node name="GUI" type="CanvasLayer" parent="."]
+script = ExtResource("20_cc6hi")
 
 [node name="Control" type="Control" parent="GUI"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("20_6j47b")
@@ -254,7 +289,172 @@ theme_override_styles/hover = ExtResource("21_m7ue0")
 theme_override_styles/normal = ExtResource("22_ihsho")
 text = "EXIT"
 
+[node name="Register" type="MarginContainer" parent="GUI/Control"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -155.5
+offset_right = 94.0
+offset_bottom = 155.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("24_4a7rt")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Control/Register"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s24qi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/Register/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Register"
+horizontal_alignment = 1
+
+[node name="UsernameRegister" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+placeholder_text = "USERNAME"
+alignment = 1
+
+[node name="PasswordRegister" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+placeholder_text = "PASSWORD"
+alignment = 1
+
+[node name="Email" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+placeholder_text = "EMAIL"
+alignment = 1
+
+[node name="Gender" type="OptionButton" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.580392, 0.572549, 0.6, 1)
+theme_override_font_sizes/font_size = 35
+selected = 0
+item_count = 3
+popup/item_0/text = "GENDER"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "MALE"
+popup/item_1/id = 1
+popup/item_2/text = "FEMALE"
+popup/item_2/id = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="RegisterButton" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.619608, 0.611765, 0.654902, 1)
+theme_override_font_sizes/font_size = 35
+text = "Register"
+
+[node name="ExitRegister" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.619608, 0.611765, 0.654902, 1)
+theme_override_font_sizes/font_size = 35
+text = "Exit"
+
+[node name="HTTPRegister" type="HTTPRequest" parent="GUI/Control/Register"]
+
+[node name="Login" type="MarginContainer" parent="GUI/Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -104.0
+offset_right = 189.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("25_pcdb4")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Control/Login"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdypo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/Login/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+text = "LOGIN"
+horizontal_alignment = 1
+
+[node name="Username" type="LineEdit" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+placeholder_text = "USERNAME"
+alignment = 1
+
+[node name="Password" type="LineEdit" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+placeholder_text = "PASSWORD"
+alignment = 1
+secret = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="Login" type="Button" parent="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.576471, 0.576471, 0.576471, 1)
+theme_override_font_sizes/font_size = 35
+text = "LOGIN"
+flat = true
+
+[node name="Register" type="Button" parent="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.576471, 0.576471, 0.576471, 1)
+theme_override_font_sizes/font_size = 35
+text = "REGISTER"
+flat = true
+
+[node name="HTTPLogin" type="HTTPRequest" parent="GUI/Control/Login"]
+
+[node name="HTTPProfile" type="HTTPRequest" parent="GUI/Control/Login"]
+
+[node name="Charge_icon" type="Sprite2D" parent="GUI/Control"]
+visible = false
+texture = ExtResource("26_4a7rt")
+
 [connection signal="body_entered" from="Settings/DoorCreate/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Enter" to="." method="_on_enter_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer/RegisterButton" to="GUI/Control/Register" method="_on_register_button_pressed"]
+[connection signal="pressed" from="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer/ExitRegister" to="GUI/Control/Register" method="_on_exit_register_pressed"]
+[connection signal="request_completed" from="GUI/Control/Register/HTTPRegister" to="GUI/Control/Register" method="_on_http_register_request_completed"]
+[connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/Login" to="GUI/Control/Login" method="_on_login_pressed"]
+[connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/Register" to="." method="_on_register_pressed"]
