@@ -30,3 +30,6 @@ var matches_played : int
 var match_id : int
 var get_ready : bool = false
 var is_online:bool=false
+
+func _ready() -> void:
+	headers.push_back("Content-Type: application/json")

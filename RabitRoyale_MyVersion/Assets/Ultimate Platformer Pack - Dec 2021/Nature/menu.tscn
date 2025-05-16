@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://5t75brqtyga3"]
+[gd_scene load_steps=35 format=3 uid="uid://5t75brqtyga3"]
 
 [ext_resource type="PackedScene" uid="uid://dx8k42pe5r54s" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_1.gltf" id="1_g8i7c"]
 [ext_resource type="Script" uid="uid://cnan1kjj8b77h" path="res://Scripts/MENU/menu.gd" id="1_ix2cr"]
@@ -18,6 +18,11 @@
 [ext_resource type="Theme" uid="uid://cbaf64cm2n3qx" path="res://Resources/Utils/menu.tres" id="16_jqn0i"]
 [ext_resource type="StyleBox" uid="uid://co4lgbj6366pm" path="res://Resources/Utils/enterButton.tres" id="17_ssii2"]
 [ext_resource type="StyleBox" uid="uid://t43ed07sxino" path="res://Resources/Utils/HoverButton.tres" id="18_lpwac"]
+[ext_resource type="Script" uid="uid://b1ka1345lohi6" path="res://Scripts/MENU/register.gd" id="19_2ty7b"]
+[ext_resource type="StyleBox" uid="uid://cncxefubyplug" path="res://Resources/Utils/LINEEDIT.tres" id="20_7kmoa"]
+[ext_resource type="StyleBox" uid="uid://nsrwxvp62hej" path="res://Resources/Utils/panelContainer.tres" id="20_osnjy"]
+[ext_resource type="Script" uid="uid://qqcjrjc2pio2" path="res://Scripts/MENU/login.gd" id="22_lbask"]
+[ext_resource type="Texture2D" uid="uid://xi355g67hqmx" path="res://Assets/Images/ICONO CARGA.png" id="23_h4kcq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l6llh"]
 seed = 7
@@ -193,10 +198,12 @@ theme = ExtResource("16_jqn0i")
 
 [node name="MarginContainer" type="MarginContainer" parent="GUI/Control"]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_right = 521.0
-grow_vertical = 2
+offset_top = -465.0
+offset_right = 328.0
+grow_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/MarginContainer"]
 layout_mode = 2
@@ -238,7 +245,149 @@ theme_override_styles/pressed = ExtResource("18_lpwac")
 theme_override_styles/normal = ExtResource("17_ssii2")
 text = "EXIT"
 
+[node name="Register" type="MarginContainer" parent="GUI/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_right = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_2ty7b")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Control/Register"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("20_osnjy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/Register/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Register"
+
+[node name="usernameRegister" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("20_7kmoa")
+placeholder_text = "USERNAME"
+
+[node name="passwordRegister" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("20_7kmoa")
+placeholder_text = "PASSWORD"
+
+[node name="email" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("20_7kmoa")
+placeholder_text = "EMAIL"
+
+[node name="Gender" type="OptionButton" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("20_7kmoa")
+selected = 0
+item_count = 3
+popup/item_0/text = "GENDER"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "FEMALE"
+popup/item_1/id = 1
+popup/item_2/text = "MALE"
+popup/item_2/id = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 120
+
+[node name="Register" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "register"
+
+[node name="Exit" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "exit"
+
+[node name="HTTPRegister" type="HTTPRequest" parent="GUI/Control/Register"]
+
+[node name="Login" type="MarginContainer" parent="GUI/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.5
+offset_top = -244.5
+offset_right = 199.5
+offset_bottom = 244.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("22_lbask")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Control/Login"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("20_osnjy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/Login/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Login
+"
+
+[node name="Username" type="LineEdit" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("20_7kmoa")
+placeholder_text = "username"
+
+[node name="Password" type="LineEdit" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("20_7kmoa")
+placeholder_text = "Password"
+secret = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="login" type="Button" parent="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Login"
+
+[node name="registro" type="Button" parent="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "registro"
+
+[node name="HTTPLogin" type="HTTPRequest" parent="GUI/Control/Login"]
+
+[node name="HTTPProfile" type="HTTPRequest" parent="GUI/Control/Login"]
+
+[node name="Charge_icon" type="Sprite2D" parent="GUI/Control"]
+visible = false
+position = Vector2(608, 349)
+texture = ExtResource("23_h4kcq")
+
 [connection signal="body_entered" from="settings/DoorCreate/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Enter" to="." method="_on_enter_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer/Register" to="GUI/Control/Register" method="_on_register_pressed"]
+[connection signal="request_completed" from="GUI/Control/Register/HTTPRegister" to="GUI/Control/Register" method="_on_http_register_request_completed"]
+[connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/login" to="GUI/Control/Login" method="_on_login_pressed"]
+[connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/registro" to="." method="_on_registro_pressed"]
