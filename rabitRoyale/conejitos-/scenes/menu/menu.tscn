@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ybw2t1jprbq0"]
+[gd_scene load_steps=41 format=3 uid="uid://ybw2t1jprbq0"]
 
 [ext_resource type="Script" uid="uid://cjm40eufu1it7" path="res://Scripts/menu.gd" id="1_k48pe"]
 [ext_resource type="PackedScene" uid="uid://n34c2ynkw7hs" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_2.gltf" id="2_f2fum"]
@@ -13,8 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://dptjjgmqhpqq7" path="res://scenes/menu/character_menu.tscn" id="11_f2fum"]
 [ext_resource type="PackedScene" uid="uid://3nrirmrmcsgm" path="res://scenes/menu/door_2.tscn" id="11_kaijy"]
 [ext_resource type="Theme" uid="uid://cbaf64cm2n3qx" path="res://Resources/Utils/menu.tres" id="13_rcuxh"]
+[ext_resource type="Script" uid="uid://blly1i1ngwcyn" path="res://Scripts/gui.gd" id="13_rrod7"]
 [ext_resource type="StyleBox" uid="uid://t43ed07sxino" path="res://Resources/Utils/HoverButton.tres" id="14_64m6r"]
 [ext_resource type="StyleBox" uid="uid://co4lgbj6366pm" path="res://Resources/Utils/enterButton.tres" id="15_64m6r"]
+[ext_resource type="Script" uid="uid://c21m6ckld0763" path="res://Scripts/register.gd" id="17_faisu"]
+[ext_resource type="Script" uid="uid://dfivr3nwsww5p" path="res://Scripts/login.gd" id="18_t2e6u"]
+[ext_resource type="Texture2D" uid="uid://xi355g67hqmx" path="res://Assets/Images/ICONO CARGA.png" id="19_fb4qf"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_faisu"]
 noise_type = 4
@@ -51,6 +55,84 @@ size = Vector3(1.55003, 5.74353, 3.15978)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcuxh"]
 size = Vector3(2.87341, 5.52853, 1.0083)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riv3r"]
+bg_color = Color(0.659001, 0.243479, 0.839396, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="FontFile" id="FontFile_ns7vx"]
+cache/0/48/0/ascent = 0.0
+cache/0/48/0/descent = 0.0
+cache/0/48/0/underline_position = 0.0
+cache/0/48/0/underline_thickness = 0.0
+cache/0/48/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0fu0"]
+bg_color = Color(0.367349, 0.00944855, 0.500149, 0.956863)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pafgo"]
+bg_color = Color(0.368627, 0.00784314, 0.501961, 0.956863)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uryge"]
+bg_color = Color(0.368627, 0.00784314, 0.501961, 0.956863)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b18gb"]
+bg_color = Color(0.368627, 0.00784314, 0.501961, 0.956863)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50dkp"]
+bg_color = Color(0.368627, 0.00784314, 0.501961, 0.956863)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp2xe"]
+bg_color = Color(0.368627, 0.00784314, 0.501961, 0.956863)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="FontFile" id="FontFile_02wpe"]
+cache/0/48/0/ascent = 0.0
+cache/0/48/0/descent = 0.0
+cache/0/48/0/underline_position = 0.0
+cache/0/48/0/underline_thickness = 0.0
+cache/0/48/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7gsn"]
+bg_color = Color(0.381071, 0.000941702, 0.302597, 1)
 
 [node name="Menu" type="Node3D"]
 script = ExtResource("1_k48pe")
@@ -153,6 +235,7 @@ shape = SubResource("BoxShape3D_rcuxh")
 transform = Transform3D(0.999758, 0.0219507, 0.000400788, 1.43635e-09, 0.0182552, -0.999833, -0.0219542, 0.999592, 0.0182508, 0.58646, 0.817309, 5.65826)
 
 [node name="GUI" type="CanvasLayer" parent="."]
+script = ExtResource("13_rrod7")
 
 [node name="Control" type="Control" parent="GUI"]
 layout_mode = 3
@@ -182,7 +265,7 @@ theme_override_constants/separation = 50
 [node name="Label" type="Label" parent="GUI/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "CONEJITOS 
+text = "CONEJOS
 MORTIFEROS"
 horizontal_alignment = 1
 
@@ -211,7 +294,145 @@ theme_override_styles/hover = ExtResource("14_64m6r")
 theme_override_styles/normal = ExtResource("15_64m6r")
 text = "EXIT"
 
+[node name="register" type="MarginContainer" parent="GUI/Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -215.5
+offset_right = 218.0
+offset_bottom = 215.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_faisu")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Control/register"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_riv3r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/register/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/register/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontFile_ns7vx")
+text = "REGISTER"
+horizontal_alignment = 1
+
+[node name="usernameregister" type="LineEdit" parent="GUI/Control/register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_a0fu0")
+placeholder_text = "USERNAME"
+
+[node name="passwordregister" type="LineEdit" parent="GUI/Control/register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pafgo")
+placeholder_text = "PASSWORD"
+
+[node name="email" type="LineEdit" parent="GUI/Control/register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_uryge")
+placeholder_text = "EMAIL"
+
+[node name="Gender" type="OptionButton" parent="GUI/Control/register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_b18gb")
+selected = 0
+item_count = 3
+popup/item_0/text = "GENDER"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "FEMALE"
+popup/item_1/id = 1
+popup/item_2/text = "MALE"
+popup/item_2/id = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/register/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 68
+
+[node name="register" type="Button" parent="GUI/Control/register/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_50dkp")
+text = "REGISTER"
+
+[node name="exitregister" type="Button" parent="GUI/Control/register/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_qp2xe")
+text = "EXIT"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="GUI/Control/register"]
+
+[node name="login" type="MarginContainer" parent="GUI/Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 454.0
+offset_top = 193.0
+offset_right = 843.0
+offset_bottom = 495.0
+script = ExtResource("18_t2e6u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/login"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/login/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontFile_02wpe")
+text = "LOGIN"
+horizontal_alignment = 1
+
+[node name="username" type="LineEdit" parent="GUI/Control/login/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_t7gsn")
+placeholder_text = "username"
+
+[node name="password" type="LineEdit" parent="GUI/Control/login/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "password"
+secret = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/login/VBoxContainer"]
+layout_mode = 2
+
+[node name="Login" type="Button" parent="GUI/Control/login/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "LOGIN"
+
+[node name="register" type="Button" parent="GUI/Control/login/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "REGISTER"
+
+[node name="HTTPLogin" type="HTTPRequest" parent="GUI/Control/login"]
+
+[node name="HTTPProfile" type="HTTPRequest" parent="GUI/Control/login"]
+
+[node name="charge_icon" type="Sprite2D" parent="GUI/Control"]
+visible = false
+position = Vector2(742, 399)
+texture = ExtResource("19_fb4qf")
+
 [connection signal="body_entered" from="settings/Doorcreate/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/enter" to="." method="_on_enter_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="GUI/Control/register/PanelContainer/VBoxContainer/HBoxContainer/exitregister" to="GUI/Control/register" method="_on_exitregister_pressed"]
+[connection signal="request_completed" from="GUI/Control/register/HTTPRequest" to="GUI/Control/register" method="_on_http_request_request_completed"]
+[connection signal="pressed" from="GUI/Control/login/VBoxContainer/HBoxContainer/Login" to="GUI/Control/login" method="_on_login_pressed"]
+[connection signal="pressed" from="GUI/Control/login/VBoxContainer/HBoxContainer/register" to="." method="_on_register_pressed"]

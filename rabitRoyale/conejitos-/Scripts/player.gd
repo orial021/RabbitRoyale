@@ -55,7 +55,6 @@ func _physics_process(delta: float) -> void:
 	if can_move:
 		HEAD.rotation.x = clamp(HEAD.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 		if not is_dead:
-			print("jhv")
 			$head/Label.text= username + ": " + str(lives)
 			anim_ctrl()
 			motion_ctrl(delta)

@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var door_create: Node3D = $settings/Doorcreate
 @onready var door_join: Node3D = $settings/Doorjoin
+@onready var player: CharacterMenu = $Character_menu
 var enterGame : bool = false
 
 func _ready() -> void:
@@ -25,10 +26,22 @@ func _on_enter_pressed() -> void:
 	door_create.open()
 	door_join.open()
 	$Character_menu.anim("wave")
+	var tween : Tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+	tween.tween_property($GUI/Control/MarginContainer, "scale", Vector2(1.1, 1.1), 0.2)
+	tween.tween_property($GUI/Control/MarginContainer, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5)
+	tween.tween_callback($GUI/Control/MarginContainer.hide)
+	tween.tween_property(%login, "modulate", Color(1.0, 1.0, 1.0, 1.0), 1.0)
 	
-func _on_options_pressed() -> void:
-	pass
+
 
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_register_pressed() -> void:
+	var tween : Tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+	tween.tween_property(%Login, "modulate", Color.TRANSPARENT, 1.0)
+	tween.tween_callback(%Login.hide)
+	tween.tween_callback(%register.show)
+	tween.tween_property(%register, "modulate", Color.WHITE, 1.0)

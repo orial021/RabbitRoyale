@@ -15,8 +15,7 @@ func get_axis() -> Vector2:
 	axis.y = int(Input.is_action_pressed("ui_up")) - int(Input.is_action_pressed("ui_down"))
 	return axis.normalized()
 	
-	const HOST = "http://localhost:8000/"
-
+const HOST = "https://23w2sfqz-8000.use2.devtunnels.ms/"
 var token : String
 var headers = PackedStringArray()
 var id : String
@@ -29,3 +28,7 @@ var wins : int
 var matches_played : int
 var match_id : int
 var get_ready : bool = false
+
+func _ready() -> void:
+	headers.push_back("Content-Type: application/json")
+	
