@@ -34,6 +34,9 @@ func motion_ctrl() -> void:
 		rot.y = angle
 		set_rotation(rot)
 	
+func anim(anim_name) -> void:
+	$AnimationPlayer.play(anim_name)
+	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Wave":
 		can_move = true

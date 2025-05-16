@@ -14,6 +14,7 @@ func get_axis() -> Vector2:
 	return axis.normalized()
 
 const HOST = "http://localhost:8000/"
+#const HOST = "https://www.rabbitroyale.io/"
 var token : String
 var headers = PackedStringArray()
 var id : String
@@ -27,4 +28,7 @@ var wins : int
 var matches_played : int
 var match_id : int
 var get_ready : bool = false
-var is_online : bool = true
+var is_online : bool = false
+
+func _ready():
+	headers.push_back("Content-Type: application/json")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b2epop7vfcv2b"]
+[gd_scene load_steps=27 format=3 uid="uid://b2epop7vfcv2b"]
 
 [ext_resource type="Script" uid="uid://bgetprrg1k4ar" path="res://Scripts/Menu/menu.gd" id="1_m6csd"]
 [ext_resource type="PackedScene" uid="uid://2mnhuh6pymar" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Tree_Fruit.gltf" id="1_x5f3s"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="8_uwxxs"]
 [ext_resource type="PackedScene" uid="uid://cl7tjrxuyixxb" path="res://Scenes/Menu/door.tscn" id="9_i081d"]
 [ext_resource type="PackedScene" uid="uid://bkosbbmx8lrx1" path="res://Scenes/Menu/character_menu.tscn" id="9_qwfkq"]
+[ext_resource type="Theme" uid="uid://cbaf64cm2n3qx" path="res://Resources/Utils/menu.tres" id="13_3fcxt"]
+[ext_resource type="Script" uid="uid://3p46i40i3f8c" path="res://Scripts/Menu/register.gd" id="13_u2ioa"]
+[ext_resource type="Script" uid="uid://cxx6040ei0phf" path="res://Scripts/Menu/login.gd" id="14_wxa3f"]
+[ext_resource type="Texture2D" uid="uid://xi355g67hqmx" path="res://Assets/Images/ICONO CARGA.png" id="15_0401g"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3fcxt"]
 noise_type = 2
@@ -44,6 +48,15 @@ sky = SubResource("Sky_m6csd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qok0p"]
 size = Vector3(1, 4.63098, 4.1571)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2ioa"]
+bg_color = Color(0.215686, 0.6, 0.6, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(1.86507e-07, 0.196788, 0.140699, 1)
+border_blend = true
 
 [node name="Menu" type="Node3D"]
 script = ExtResource("1_m6csd")
@@ -158,4 +171,189 @@ debug_color = Color(0, 0.6, 0.701961, 1)
 [node name="Character_menu" parent="." instance=ExtResource("9_qwfkq")]
 transform = Transform3D(0.999435, -0.0336258, 1.46986e-09, -2.42625e-15, -4.37114e-08, -1, 0.0336258, 0.999435, -4.36867e-08, 1.08847, 0.602607, 4.72512)
 
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("13_3fcxt")
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -657.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="GUI/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RABBIT
+ROYALE"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="start" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "START"
+
+[node name="Options" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="Exit" type="Button" parent="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Register" type="MarginContainer" parent="GUI/Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -247.0
+offset_right = 202.0
+offset_bottom = 247.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_u2ioa")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Control/Register"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u2ioa")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/Register/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "REGISTER"
+horizontal_alignment = 1
+
+[node name="usernameRegister" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "USERNAME"
+
+[node name="passwordRegister" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "PASSWORD"
+secret = true
+
+[node name="email" type="LineEdit" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "EMAIL"
+
+[node name="Gender" type="OptionButton" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "GENDER"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "FEMALE"
+popup/item_1/id = 1
+popup/item_2/text = "MALE"
+popup/item_2/id = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/Register/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="RegisterButton" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "REGISTER"
+
+[node name="ExitRegister" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "EXIT"
+
+[node name="HTTPRegister" type="HTTPRequest" parent="GUI/Control/Register"]
+
+[node name="Login" type="MarginContainer" parent="GUI/Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.5
+offset_top = -152.0
+offset_right = 212.5
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_wxa3f")
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI/Control/Login"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/Login/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "LOGIN"
+horizontal_alignment = 1
+
+[node name="Username" type="LineEdit" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "USERNAME"
+
+[node name="Password" type="LineEdit" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "PASSWORD"
+secret = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/Login/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Login" type="Button" parent="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "LOGIN"
+
+[node name="Register" type="Button" parent="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "REGISTER"
+
+[node name="HTTPLogin" type="HTTPRequest" parent="GUI/Control/Login"]
+
+[node name="HTTPProfile" type="HTTPRequest" parent="GUI/Control/Login"]
+
+[node name="Charge_icon" type="Sprite2D" parent="GUI/Control"]
+visible = false
+texture = ExtResource("15_0401g")
+
 [connection signal="body_entered" from="Settings/DoorCreate/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/start" to="." method="_on_enter_pressed"]
+[connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer/RegisterButton" to="GUI/Control/Register" method="_on_register_button_pressed"]
+[connection signal="request_completed" from="GUI/Control/Register/HTTPRegister" to="GUI/Control/Register" method="_on_http_register_request_completed"]
+[connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/Login" to="GUI/Control/Login" method="_on_login_pressed"]
+[connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/Register" to="." method="_on_register_pressed"]

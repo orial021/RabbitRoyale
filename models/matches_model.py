@@ -10,10 +10,7 @@ class Match(Model):
     map_name = fields.CharField(max_length=100, default="Normal")
     kills = fields.IntField(null=True)
     deads = fields.IntField(null=True)
-    players = fields.JSONField(
-        null=True,
-        default=dict
-        )
+    players = fields.JSONField(null=True,default=dict)
     creator = fields.CharField(max_length=100, null=True)
     
     created_at = fields.DatetimeField(auto_now_add=True)
