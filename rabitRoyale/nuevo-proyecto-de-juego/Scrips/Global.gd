@@ -29,3 +29,6 @@ var matches_played : int
 var match_id : int
 var get_ready : bool = false
 var is_online : bool = true
+
+func  _ready():
+	headers.push_back("content-Type: application/json")
