@@ -28,6 +28,24 @@ func _on_registrer_pressed() -> void:
 	http_register.request(endpoint, GLOBAL.headers, HTTPClient.METHOD_POST, json_data)
 	
 
-func _on_http_register_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
-	$"../Sprite2D".hidden()
+func _on_http_register_request_completed(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
+	$"../Sprite2D".hide()
+	if response_code == 200:
+		var tween : Tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+		tween.tween_property(%Register, "modulate", Color.TRANSPARENT, 1.0)
+		tween.tween_callback(disable_register_Button)
+		tween.tween_callback(%login.show)
+		tween.tween_property(%login, "modulate", Color.WHITE, 1.0)
+		
+func disable_register_Button() -> void:
+	%REGISTER.disabled = true
+	
+func _on_exit_pressed() -> void:
+	var tween : Tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+	tween.tween_property(%Register, "modulate", Color.TRANSPARENT, 1.0)
+	tween.tween_callback(%Register.hide)
+	tween.tween_callback(%login.show)
+	tween.tween_property(%login, "modulate", Color.WHITE, 1.0)
+	
+	
 	
