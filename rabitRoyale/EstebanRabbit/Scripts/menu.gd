@@ -4,6 +4,7 @@ extends Node3D
 @onready var player: Charactermenu  = $Character_menu
 var enterGame : bool = false
 
+
 func _ready() -> void:
 	ResourceLoader.load_threaded_get("res://Scenes/level.tscn")
 

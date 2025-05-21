@@ -31,4 +31,4 @@ var match_id : int
 var get_ready : bool = false
 
 func _ready() -> void:
-	headers.push_back("Content-Type: applocation/json")
+	headers.push_back("Content-Type: application/json")
