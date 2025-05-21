@@ -12,11 +12,12 @@ func _process(delta: float) -> void:
 		pass
 	else:
 		var scene_load_status = ResourceLoader.load_threaded_get_status("res://Scenes/level.tscn")
-		if scene_load_status == ResourceLoader.THREAD_LOAD_FAILED:
+		if scene_load_status == ResourceLoader.THREAD_LOAD_LOADED:
 			get_tree().call_deferred("change_scene_to_packed", ResourceLoader.load_threaded_get("res://Scenes/level.tscn"))
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	enter_game = true
+	if body is CharacterMenu:
+		enter_game = true
 	
 func _on_Enter_pressed() -> void:
 	door_create.open()

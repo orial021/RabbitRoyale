@@ -373,6 +373,7 @@ theme_override_constants/separation = 32
 alignment = 1
 
 [node name="RegisterButton" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontFile_wxa3f")
 theme_override_font_sizes/font_size = 64
@@ -459,3 +460,5 @@ texture = ExtResource("18_lnqkc")
 [connection signal="request_completed" from="GUI/Control/Register/HTTPRegister" to="GUI/Control/Register" method="_on_http_register_request_completed"]
 [connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/Login" to="GUI/Control/Login" method="_on_login_pressed"]
 [connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/Register" to="." method="_on_register_pressed"]
+[connection signal="request_completed" from="GUI/Control/Login/HTTPLogin" to="GUI/Control/Login" method="_on_http_login_request_completed"]
+[connection signal="request_completed" from="GUI/Control/Login/HTTPProfile" to="GUI/Control/Login" method="_on_http_profile_request_completed"]
