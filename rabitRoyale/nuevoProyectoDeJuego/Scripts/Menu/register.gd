@@ -28,6 +28,20 @@ func _on_register_button_pressed() -> void:
 	endpoint = str(GLOBAL.HOST) + "user/create"
 	$HTTPRegister.request(endpoint, GLOBAL.headers, HTTPClient.METHOD_POST, json_data)
 
-func _on_http_register_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+func _on_http_register_request_completed(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	$"../Charge_icon".hide()
-	
+	if response_code == 200:
+		var tween : Tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+		tween.tween_property(%Register, "modulate", Color.TRANSPARENT, 1.0)
+		tween.tween_callback(disable_register_Button)
+		tween.tween_callback(%Login.show)
+		tween.tween_property(%Login, "modulate", Color.WHITE, 1.0)
+		
+func disable_register_Button() -> void:
+	$PanelContainer/VBoxContainer/HBoxContainer/RegisterButton.disabled = true
+		
+		
+		
+		
+		
+		
