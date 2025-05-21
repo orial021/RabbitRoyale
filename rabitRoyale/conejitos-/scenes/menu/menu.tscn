@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ybw2t1jprbq0"]
+[gd_scene load_steps=19 format=3 uid="uid://ybw2t1jprbq0"]
 
 [ext_resource type="Script" uid="uid://cjm40eufu1it7" path="res://Scripts/menu.gd" id="1_k48pe"]
 [ext_resource type="PackedScene" uid="uid://n34c2ynkw7hs" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/RockPlatforms_2.gltf" id="2_f2fum"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dx8k42pe5r54s" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_1.gltf" id="8_2j8sj"]
 [ext_resource type="PackedScene" uid="uid://dccq306hysssm" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Grass_2.gltf" id="9_55a8x"]
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="10_rrod7"]
+[ext_resource type="PackedScene" uid="uid://dptjjgmqhpqq7" path="res://scenes/menu/character_menu.tscn" id="11_f2fum"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_faisu"]
 noise_type = 4
@@ -72,6 +73,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5068, -1.55789, 4.19685)
 [node name="Grass_22" parent="ornament" instance=ExtResource("9_55a8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.67147, -1.53985, 6.83147)
 
+[node name="RockPlatforms_13" parent="ornament" instance=ExtResource("5_rcuxh")]
+transform = Transform3D(0.0399533, 0, 0.648771, 0, 0.65, 0, -0.648771, 0, 0.0399533, -5.20557, -1.02178, -6.93406)
+
 [node name="settings" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="settings"]
@@ -79,3 +83,9 @@ environment = SubResource("Environment_pafgo")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="settings"]
 transform = Transform3D(-0.284271, -0.940603, -0.185625, 0.787566, -0.33951, 0.51427, -0.546745, -3.34323e-09, 0.837299, 0, 6.48484, 0.0204515)
+
+[node name="Camera3D" type="Camera3D" parent="settings"]
+transform = Transform3D(0.717555, -0.199122, 0.667432, 7.66352e-09, 0.958263, 0.285889, -0.696502, -0.205141, 0.687606, 9.15026, 3.97206, 9.46717)
+
+[node name="Character_menu" parent="." instance=ExtResource("11_f2fum")]
+transform = Transform3D(0.691412, 0.72234, 0.0131887, 1.43635e-09, 0.0182552, -0.999833, -0.72246, 0.691297, 0.0126219, 4.18232, 0.817309, 4.55491)
