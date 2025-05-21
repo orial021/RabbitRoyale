@@ -1,8 +1,9 @@
-[gd_scene load_steps=60 format=4 uid="uid://be6lr0eprme43"]
+[gd_scene load_steps=61 format=4 uid="uid://be6lr0eprme43"]
 
 [ext_resource type="Script" uid="uid://bj3g6vqj0f6jd" path="res://Scripts/player.gd" id="1_6t5aa"]
 [ext_resource type="AudioStream" uid="uid://bpsw773cc7byp" path="res://Assets/Sounds/Footstep_Boot_Concrete-002.wav" id="1_cvnsp"]
 [ext_resource type="AudioStream" uid="uid://c14ubqbruc2jt" path="res://Assets/Sounds/Shotgun_Shot-002.wav" id="2_6t5aa"]
+[ext_resource type="Script" uid="uid://dxi00t0llpglw" path="res://Scripts/Player/animation_treeplayer.gd" id="4_vgqql"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_daywd"]
 resource_name = "Black"
@@ -5010,17 +5011,17 @@ states/Jump/node = SubResource("AnimationNodeAnimation_8erm5")
 states/Jump/position = Vector2(431, 318.646)
 states/Jump_Land/node = SubResource("AnimationNodeAnimation_f1ek2")
 states/Jump_Land/position = Vector2(134, 318.646)
-states/Run_Gun/node = SubResource("AnimationNodeAnimation_tx1dd")
-states/Run_Gun/position = Vector2(431, -88)
+states/Run/node = SubResource("AnimationNodeAnimation_tx1dd")
+states/Run/position = Vector2(431, -88)
 states/Run_Shoot/node = SubResource("AnimationNodeAnimation_gymyn")
 states/Run_Shoot/position = Vector2(431, -236)
 states/Wave/node = SubResource("AnimationNodeAnimation_pu2lt")
 states/Wave/position = Vector2(329, 100)
-transitions = ["Start", "Wave", SubResource("AnimationNodeStateMachineTransition_ukyrk"), "Idle", "Run_Gun", SubResource("AnimationNodeStateMachineTransition_7dp3o"), "Run_Gun", "Idle", SubResource("AnimationNodeStateMachineTransition_h4iuc"), "Run_Gun", "Run_Shoot", SubResource("AnimationNodeStateMachineTransition_fd4e3"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_qqcod"), "Jump_Land", "Idle", SubResource("AnimationNodeStateMachineTransition_igrcy"), "Run_Shoot", "Run_Gun", SubResource("AnimationNodeStateMachineTransition_fs7ks"), "Wave", "Idle", SubResource("AnimationNodeStateMachineTransition_l6n3p"), "Jump", "Jump_Land", SubResource("AnimationNodeStateMachineTransition_olqyp")]
-graph_offset = Vector2(-4.03181, 5.62132)
+transitions = ["Start", "Wave", SubResource("AnimationNodeStateMachineTransition_ukyrk"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_7dp3o"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_h4iuc"), "Run", "Run_Shoot", SubResource("AnimationNodeStateMachineTransition_fd4e3"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_qqcod"), "Jump_Land", "Idle", SubResource("AnimationNodeStateMachineTransition_igrcy"), "Run_Shoot", "Run", SubResource("AnimationNodeStateMachineTransition_fs7ks"), "Wave", "Idle", SubResource("AnimationNodeStateMachineTransition_l6n3p"), "Jump", "Jump_Land", SubResource("AnimationNodeStateMachineTransition_olqyp")]
+graph_offset = Vector2(-17.0318, -188.379)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6t5aa"]
-graph_offset = Vector2(-229.226, 126.548)
+graph_offset = Vector2(-244, 17.1818)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_vgqql")
 nodes/Animation/position = Vector2(80.9214, 331.421)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6t5aa")
@@ -5324,3 +5325,4 @@ parameters/Death/request = 0
 parameters/Hurt/active = false
 parameters/Hurt/internal_active = false
 parameters/Hurt/request = 0
+script = ExtResource("4_vgqql")

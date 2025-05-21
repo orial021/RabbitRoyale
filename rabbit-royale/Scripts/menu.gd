@@ -18,7 +18,9 @@ func _process(delta: float) -> void:
 			get_tree().call_deferred("change_scene_to_packed", ResourceLoader.load_threaded_get("res://Scenes/level.tscn"))
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	enterGame = true
+	if body is CharacterMenu:
+		print("entrando")
+		enterGame = true
 
 func _on_entré_pressed() -> void:
 	player.anim("Wave")

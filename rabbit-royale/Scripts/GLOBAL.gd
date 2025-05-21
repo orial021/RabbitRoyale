@@ -16,7 +16,7 @@ func get_axis() -> Vector2:
 var is_online: bool = false
 var username : String = ""
 
-const HOST = "https://23w2sfqz-8000.use2.devtunnels.ms/"
+const HOST = "http://localhost/"
 #const HOST = "https://23w2sfqz-8000.use2.devtunnels.ms/"
 var token : String
 var headers = PackedStringArray()

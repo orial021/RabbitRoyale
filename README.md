@@ -13,7 +13,7 @@ Este proyecto utiliza Tortoise ORM y Aerich para la gestión de la base de datos
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/orial021/RabbitRoyale.git
+   git clone https://github.com/orial021/RabbitRoyale.git -b manuel-b
    cd RabbitRoyale
    git checkout -b manuel-b
    git add .
