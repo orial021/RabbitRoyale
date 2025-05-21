@@ -190,8 +190,13 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 191.0
+offset_top = 103.0
+offset_right = 191.0
+offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.7, 0.7)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("16_jqn0i")
@@ -246,14 +251,18 @@ theme_override_styles/normal = ExtResource("17_ssii2")
 text = "EXIT"
 
 [node name="Register" type="MarginContainer" parent="GUI/Control"]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -94.0
-offset_right = 94.0
+anchor_bottom = 0.5
+offset_left = -221.5
+offset_top = -314.0
+offset_right = 221.5
+offset_bottom = 314.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_2ty7b")
@@ -310,7 +319,8 @@ popup/item_2/id = 2
 layout_mode = 2
 theme_override_constants/separation = 120
 
-[node name="Register" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="RegisteBr" type="Button" parent="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "register"
@@ -322,6 +332,7 @@ text = "exit"
 [node name="HTTPRegister" type="HTTPRequest" parent="GUI/Control/Register"]
 
 [node name="Login" type="MarginContainer" parent="GUI/Control"]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -367,10 +378,12 @@ secret = true
 layout_mode = 2
 
 [node name="login" type="Button" parent="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Login"
 
 [node name="registro" type="Button" parent="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "registro"
 
@@ -387,7 +400,9 @@ texture = ExtResource("23_h4kcq")
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Enter" to="." method="_on_enter_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer/Register" to="GUI/Control/Register" method="_on_register_pressed"]
+[connection signal="pressed" from="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer/RegisteBr" to="GUI/Control/Register" method="_on_register_pressed"]
 [connection signal="request_completed" from="GUI/Control/Register/HTTPRegister" to="GUI/Control/Register" method="_on_http_register_request_completed"]
 [connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/login" to="GUI/Control/Login" method="_on_login_pressed"]
 [connection signal="pressed" from="GUI/Control/Login/PanelContainer/VBoxContainer/HBoxContainer/registro" to="." method="_on_registro_pressed"]
+[connection signal="request_completed" from="GUI/Control/Login/HTTPLogin" to="GUI/Control/Login" method="_on_http_login_request_completed"]
+[connection signal="request_completed" from="GUI/Control/Login/HTTPProfile" to="GUI/Control/Login" method="_on_http_profile_request_completed"]

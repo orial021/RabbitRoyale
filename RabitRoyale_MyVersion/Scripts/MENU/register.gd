@@ -25,7 +25,7 @@ func _on_register_pressed() -> void:
 	password=%passwordRegister.text
 	email = %email.text
 	var option_button = %Gender
-	gender = option_button.get_item_text(option_button.selected).to_lowe
+	gender = option_button.get_item_text(option_button.selected).to_lower()
 
 	data = {
 		"username" : username,
@@ -39,5 +39,15 @@ func _on_register_pressed() -> void:
 	register.request(endpoint, Global.headers, HTTPClient.METHOD_POST, json_data)
 
 
-func _on_http_register_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
-	$"../Charge_icon".hide()
+func _on_http_register_request_completed(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
+	if response_code==200:
+		$"../Charge_icon".hide()
+		var tween : Tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+		tween.tween_property(%Register, "modulate", Color.TRANSPARENT, 1.0)
+		tween.tween_callback(disable_register_Button)
+		tween.tween_callback(%Login.show)
+		tween.tween_property(%Login, "modulate", Color.WHITE, 1.0)
+		
+		
+func disable_register_Button() -> void:
+	%RegisteBr.disabled=true

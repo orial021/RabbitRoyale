@@ -16,21 +16,21 @@ func _process(delta: float) -> void:
 func motion_ctrl()->void:
 	'''MOVIMIENTO'''
 	velocity.y-=GRAVITY
-	velocity.x=Global.get_axixs().x*SPEED
-	velocity.z=Global.get_axixs().y* -SPEED
+	velocity.x=Global.get_axis().x*SPEED
+	velocity.z=Global.get_axis().y* -SPEED
 
 	'''ANIMACIONES'''
 	match is_on_floor():
 		true:
-			if Global.get_axixs() != Vector2.ZERO:
+			if Global.get_axis() != Vector2.ZERO:
 				$AnimationPlayer.play("Walk")
 			else:
 				$AnimationPlayer.play("Idle")
 				
 
 	'''Rotacion'''
-	if Global.get_axixs() != Vector2.ZERO:
-		angle=atan2(Global.get_axixs().x, -Global.get_axixs().y)
+	if Global.get_axis() != Vector2.ZERO:
+		angle=atan2(Global.get_axis().x, -Global.get_axis().y)
 		rot=get_rotation()
 		rot.y=angle
 		set_rotation(rot)
@@ -42,5 +42,5 @@ func anim(anim_name : String)->void:
 
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name=="wave":
+	if anim_name=="Wave":
 		can_move=true
