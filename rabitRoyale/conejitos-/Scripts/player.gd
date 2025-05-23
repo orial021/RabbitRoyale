@@ -27,18 +27,21 @@ func _enter_tree() -> void:
 	
 func _ready() -> void:
 	if not is_multiplayer_authority():
+		print("no tiene autorizacion")
 		set_physics_process(false)
 		set_process(false)
 		set_process_unhandled_input(false)
 		set_process_input(false)
+		return
 		
+	print("tiene autorizacion")
+	$head/Camera3D.current = true
 	id = Global.id
 	username= Global.username
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	HEAD.set_rotation_degrees(Vector3.ZERO)
 	
-
-func _Input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE and event.is_action_pressed("ui_shot"):
@@ -67,6 +70,7 @@ func _physics_process(delta: float) -> void:
 			motion_ctrl(delta)
 		if velocity.y < -500:
 			lives = 1
+			set_global_position(Vector3(0, 2, 0))
 	if is_dead:
 		if not is_respawning:
 			is_respawning = true

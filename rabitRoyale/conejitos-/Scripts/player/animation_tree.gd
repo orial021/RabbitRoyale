@@ -67,8 +67,6 @@ func state_machine() -> void:
 			if Input.is_action_pressed("ui_shot"):
 				run_shoot()
 				
-				
-		
 		ANIMS.RUN:
 			current_animation_state = ANIMS.RUN
 			if Global.get_axis() == Vector2.ZERO:
@@ -90,11 +88,11 @@ func state_machine() -> void:
 			if player.is_on_floor():
 				idle()
 		
-		ANIMS.RUN_SHOT:
-			current_animation_state = ANIMS.RUN_SHOT
+		ANIMS.RUN_SHOOT:
+			current_animation_state = ANIMS.RUN_SHOOT
 			
-		ANIMS.SHOT:
-			current_animation_state = ANIMS.SHOT
+		ANIMS.SHOOT:
+			current_animation_state = ANIMS.SHOOT
 			
 			
 			

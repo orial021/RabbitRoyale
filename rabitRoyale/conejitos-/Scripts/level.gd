@@ -10,11 +10,8 @@ func _ready() -> void:
 	if DisplayServer.get_name() == "headless":
 		on_host.call_deferred()
 	if Global.player_type == "host":
-		print("host")
 		on_host()
 	else:
-		
-		print("client")
 		on_join()
 		
 		
@@ -38,4 +35,4 @@ func create_player(peer_id: int) -> void:
 	var player_instance = player.instantiate()
 	player_instance.name = str(peer_id)
 	add_child(player_instance)
-	player_instance.set_global_position(path.get_globlal_position())
+	#player_instance.set_global_position(path.get_global_position())

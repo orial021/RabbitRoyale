@@ -28,7 +28,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func _on_enter_pressed() -> void:
 	door_create.open()
 	door_join.open()
-	$Character_menu.anim("wave")
+	$Character_menu.anim("Wave")
 	var tween : Tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 	tween.tween_property($GUI/Control/MarginContainer, "scale", Vector2(1.1, 1.1), 0.2)
 	tween.tween_property($GUI/Control/MarginContainer, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5)
