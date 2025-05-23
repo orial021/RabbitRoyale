@@ -12,7 +12,8 @@ func _ready() -> void:
 	player=get_parent()
 	
 func _process(delta: float) -> void:
-	state_machine()
+	if player.is_multiplayer_authority():
+		state_machine()
 
 func wave()->void:
 	_state_machine.travel(ANIMS.WAVE)
