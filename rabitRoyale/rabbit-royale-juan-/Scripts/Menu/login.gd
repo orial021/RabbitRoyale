@@ -1,5 +1,6 @@
 extends MarginContainer
 
+@onready var player: CharacterMenu = $"../../../CharacterMenu"
 @onready var http_login: HTTPRequest = $HTTPLogin
 @onready var http_profile: HTTPRequest = $HTTPProfile
 var json = JSON.new()

@@ -2,6 +2,7 @@ extends MarginContainer
 
 @onready var register: HTTPRequest = $HTTPRegister
 
+
 var username: String
 var password: String
 var email: String
@@ -20,6 +21,7 @@ func _on_exit_register_pressed() -> void:
 
 func _on_register_button_pressed() -> void:
 	$"../Charge_icon".show()
+	
 	username = %UsernameRegister.text
 	password = %PasswordRegister.text
 	email = %Email.text

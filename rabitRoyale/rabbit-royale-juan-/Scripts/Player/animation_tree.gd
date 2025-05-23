@@ -13,7 +13,8 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	state_machine()
+	if player.is_multiplayer_authority():
+		state_machine()
 
 func wave():
 	_state_machine.travel(ANIMS.WAVE)
@@ -63,7 +64,7 @@ func state_machine() -> void:
 					run()
 				else:
 					walk()
-			if Input.is_action_pressed("ui_accept"):
+			if Input.is_action_pressed("ui_jump"):
 				jump()
 			if Input.is_action_pressed("ui_shot"):
 				shoot()
@@ -71,7 +72,7 @@ func state_machine() -> void:
 			current_animation_state = ANIMS.RUN
 			if GLOBAL.get_axis() == Vector2.ZERO:
 				idle()
-			if Input.is_action_pressed("ui_accept"):
+			if Input.is_action_pressed("ui_jump"):
 				jump()
 			if Input.is_action_pressed("ui_shot"):
 				run_shoot()
@@ -89,3 +90,28 @@ func state_machine() -> void:
 			current_animation_state = ANIMS.RUN_SHOOT
 		ANIMS.SHOOT:
 			current_animation_state = ANIMS.SHOOT
+
+func _on_animation_started(anim_name: StringName) -> void:
+	match anim_name:
+		ANIMS.WAVE:
+			player.can_move = false
+		ANIMS.HURT:
+			
+			player.can_move = false
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	match anim_name:
+		ANIMS.WAVE:
+			player.can_move = true
+		ANIMS.HURT:
+			set(_hurt_path, false)
+			player.can_move = true
+			player.velocity.y = 0
+			player.velocity.x = 0
+			if player.lives <= 0:
+				player.is_vulnerable = false
+				player.is_dead = true
+				death()
+		ANIMS.DEATH:
+			set(_death_path, false)
+		
