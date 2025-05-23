@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkrixau76ftrg"]
+[gd_scene load_steps=11 format=3 uid="uid://dkrixau76ftrg"]
 
+[ext_resource type="Script" uid="uid://c2a325uts05as" path="res://Scripts/level.gd" id="1_81xng"]
 [ext_resource type="Texture2D" uid="uid://c2o1ho5lfy5d4" path="res://addons/kenney_prototype_textures/green/texture_09.png" id="1_k5f4k"]
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="2_6phgx"]
-[ext_resource type="PackedScene" uid="uid://fdrajyq5m5hf" path="res://Scenes/player.tscn" id="3_6phgx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_81xng"]
 size = Vector3(40, 1, 40)
@@ -24,7 +24,16 @@ sky_material = SubResource("PanoramaSkyMaterial_8c0lf")
 background_mode = 2
 sky = SubResource("Sky_i081d")
 
+[sub_resource type="Curve3D" id="Curve3D_6phgx"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -17.6558, 0, -17.2249, 0, 0, 0, 0, 0, 0, -18.1895, 0, 18.1753, 0, 0, 0, 0, 0, 0, 17.5072, 0, 18.1753, 0, 0, 0, 0, 0, 0, 17.0328, 0, -18.233),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
 [node name="Level" type="Node3D"]
+script = ExtResource("1_81xng")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_81xng")
@@ -45,5 +54,13 @@ environment = SubResource("Environment_754fn")
 transform = Transform3D(-0.74935, 0.261314, 0.608433, 0.610546, 0.628356, 0.482081, -0.256338, 0.732724, -0.630403, 0, 8.74461, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("3_6phgx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.750301, 0)
+[node name="Spawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://fdrajyq5m5hf")
+spawn_path = NodePath("..")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+curve = SubResource("Curve3D_6phgx")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.999886, 0, 0.0150736, 0, 1, 0, -0.0150736, 0, -0.999886, -17.6558, 0, -17.2249)
