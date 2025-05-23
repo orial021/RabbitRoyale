@@ -30,7 +30,7 @@ func profile (bearer : String) -> void:
 
 
 func _on_http_login_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
-	$GUI/Control/Change_icon.hide()
+	$"../Change_icon".hide()
 	if response_code == 200:
 		var body_string = body.get_string_from_utf8()
 		var body_parsed = json.parse(body_string)
@@ -56,4 +56,4 @@ func _on_http_profile_request_completed(result: int, response_code: int, headers
 			Global.matches_played = data["matches_played"]
 			Global.deads = data["deads"]
 			print(data)
-			%LoginContainer.hide()
+			%login.hide()

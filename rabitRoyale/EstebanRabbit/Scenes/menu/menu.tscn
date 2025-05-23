@@ -162,7 +162,7 @@ shape = SubResource("BoxShape3D_qok0p")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="Character_menu" parent="." instance=ExtResource("9_qwfkq")]
-transform = Transform3D(0.999435, -0.0336258, 1.46986e-09, -2.42625e-15, -4.37114e-08, -1, 0.0336258, 0.999435, -4.36867e-08, 1.08847, 0.602607, 4.72512)
+transform = Transform3D(0.5, 2.18557e-08, 0.866025, 0.866025, -3.78552e-08, -0.5, 2.18557e-08, 1, -3.78552e-08, 1.20344, 0.484849, 4.58387)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 script = ExtResource("12_fpwaj")
@@ -356,6 +356,7 @@ visible = false
 position = Vector2(659, 374)
 texture = ExtResource("18_mdmk3")
 
+[connection signal="body_entered" from="Settings/DoorJoin/Area3D2" to="." method="_on_area_join_entered"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/enter" to="." method="_on_enter_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]

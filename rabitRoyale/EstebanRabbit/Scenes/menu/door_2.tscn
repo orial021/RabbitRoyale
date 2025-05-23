@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://bqj0kmee5q0q0"]
+[gd_scene load_steps=11 format=4 uid="uid://bqj0kmee5q0q0"]
 
 [ext_resource type="Script" uid="uid://c7wqssgduimb7" path="res://Scripts/door_2.gd" id="1_u0yx5"]
+[ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="2_8royt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3kid"]
 resource_name = "Door_Metal"
@@ -151,5 +152,10 @@ mesh = SubResource("ArrayMesh_nxr4n")
 skeleton = NodePath("")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0113931, 1.87712, -0.273388)
+pixel_size = 0.0085
+texture = ExtResource("2_8royt")
+hframes = 20
+vframes = 7
 
 [node name="Label3D" type="Label3D" parent="."]

@@ -36,7 +36,7 @@ func _on_http_register_request_completed(result: int, response_code: int, _heade
 	$"../Change_icon".hide()
 	if response_code == 200:
 		var tween : Tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
-		tween.tween_property(%RegisterContainer, "modulate", Color.TRANSPARENT, 1.0)
+		tween.tween_property(%Register, "modulate", Color.TRANSPARENT, 1.0)
 		tween.tween_callback(disable_register_Button)
 		tween.tween_callback(%login.show)
 		tween.tween_property(%Login, "modulate", Color.WHITE, 1.0)
