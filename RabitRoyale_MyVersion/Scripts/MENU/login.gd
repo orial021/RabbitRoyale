@@ -16,7 +16,7 @@ func _on_login_pressed() -> void:
 	endpoint = Global.HOST +"auth/login"
 	var headers =PackedStringArray()
 	headers.push_back("Content-type: application/x-www-form-urlencoded")
-	http_login.request(endpoint,headers,HTTPClient.METHOD_POST,data)
+	http_login.request(endpoint, headers, HTTPClient.METHOD_POST, data)
 	
 
 
@@ -26,11 +26,11 @@ func _on_http_login_request_completed(result: int, response_code: int, headers: 
 		var body_string = body.get_string_from_utf8()
 		var body_parsed = json.parse(body_string)
 		if body_parsed == OK:
-			var data=json.get_data()
+			var data = json.get_data()
 			#Global.token=data["acces_Token"]
 			profile(data["access_token"])
 		
-func profile(bearer:String)->void:
+func profile(bearer : String)->void:
 	endpoint=Global.HOST + "auth/profile"
 	var bearerHeaders=PackedStringArray()
 	bearerHeaders.push_back("Authorization: Bearer " + bearer)

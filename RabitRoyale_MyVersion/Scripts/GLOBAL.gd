@@ -33,3 +33,7 @@ var is_online:bool=false
 
 func _ready() -> void:
 	headers.push_back("Content-Type: application/json")
+	
+var player_type:String
+var multipeerHost:String
+var PORT=12345

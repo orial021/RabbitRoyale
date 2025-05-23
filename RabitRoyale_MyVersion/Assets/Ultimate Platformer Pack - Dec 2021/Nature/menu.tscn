@@ -397,6 +397,7 @@ position = Vector2(608, 349)
 texture = ExtResource("23_h4kcq")
 
 [connection signal="body_entered" from="settings/DoorCreate/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="settings/DoorJoin/Area3D" to="." method="_on_area_3d_join_entered"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Enter" to="." method="_on_enter_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]

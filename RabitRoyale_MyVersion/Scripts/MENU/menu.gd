@@ -23,6 +23,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is CharacterMenu:
 		print("entrandi")
 		enterGame=true
+		Global.player_type="host"
 	
 
 
@@ -50,3 +51,10 @@ func _on_registro_pressed() -> void:
 	tween.tween_callback(%Login.hide)
 	tween.tween_callback(%Register.show)
 	tween.tween_property(%Register, "modulate", Color.WHITE, 1.0)
+
+
+func _on_area_3d_join_entered(body: Node3D) -> void:
+		if body is CharacterMenu:
+			print("entrandi")
+			enterGame=true
+			Global.player_type="client"
