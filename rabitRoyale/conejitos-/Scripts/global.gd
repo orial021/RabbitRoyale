@@ -15,7 +15,7 @@ func get_axis() -> Vector2:
 	axis.y = int(Input.is_action_pressed("ui_up")) - int(Input.is_action_pressed("ui_down"))
 	return axis.normalized()
 	
-const HOST = "https://23w2sfqz-8000.use2.devtunnels.ms/"
+const HOST = "http://localhost:8000/"
 var token : String
 var headers = PackedStringArray()
 var id : String
@@ -32,3 +32,7 @@ var get_ready : bool = false
 func _ready() -> void:
 	headers.push_back("Content-Type: application/json")
 	
+
+var player_type :String
+var multipeerHost :String
+const port = 12345

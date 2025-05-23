@@ -1,0 +1,16 @@
+class_name playerAnimation extends Resource
+
+const WAVE = "Wave"
+const IDLE = "Idle"
+const RUN = "Run"
+const JUMP = "Jump"
+const JUMP_IDLE = "Jump_Idle"
+const JUMP_LAND = "Jump_Land"
+const SHOOT = "Shoot"
+const RUN_SHOOT = "Run_Shoot"
+const HURT = "HitReact"
+const JUMP_SHOT = "Jump_Shoot"
+const DEATH = "Death"
+const DEATH_POSE = "Death_Pose"
+const IDLE_SHOOT ="Idle_Shoot"
+const WALK = "Walk_Gun"

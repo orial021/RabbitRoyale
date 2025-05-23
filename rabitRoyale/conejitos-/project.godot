@@ -73,6 +73,10 @@ cance={
 "deadzone": 0.2,
 "events": []
 }
+ui_jump={
+"deadzone": 0.2,
+"events": []
+}
 
 [layer_names]
 

@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="1_w7c3h"]
 [ext_resource type="Texture2D" uid="uid://c0j2du5as4p7h" path="res://addons/kenney_prototype_textures/green/texture_11.png" id="2_w8frs"]
-[ext_resource type="PackedScene" uid="uid://bogt71v8xpunv" path="res://scenes/player.tscn" id="3_w8frs"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mx8sn"]
 panorama = ExtResource("1_w7c3h")
@@ -24,6 +23,14 @@ uv1_triplanar = true
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b121j"]
 points = PackedVector3Array(-20, -0.5, -20, -20, 0.5, -20, 20, -0.5, -20, -20, -0.5, 20, -20, 0.5, 20, 20, 0.5, -20, 20, -0.5, 20, 20, 0.5, 20)
 
+[sub_resource type="Curve3D" id="Curve3D_w7c3h"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -18.7698, 0, -18.7276, 0, 0, 0, 0, 0, 0, 18.9094, 0, -18.9043, 0, 0, 0, 0, 0, 0, 18.7328, 0, 18.8338, 0, 0, 0, 0, 0, 0, -18.9464, 0, 19.0104),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
 [node name="Level" type="Node3D"]
 
 [node name="settings" type="Node3D" parent="."]
@@ -43,5 +50,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_klq6b")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_b121j")
 
-[node name="Player" parent="." instance=ExtResource("3_w8frs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60378, 0)
+[node name="spawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bogt71v8xpunv")
+spawn_path = NodePath("..")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+curve = SubResource("Curve3D_w7c3h")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.00468749, 0, -0.999989, 0, 1, 0, 0.999989, 0, 0.00468749, -18.7698, 0, -18.7276)
