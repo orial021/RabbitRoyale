@@ -8,6 +8,7 @@ var lives : int = 5
 var time : int = -1
 var sheep_dead : bool = true
 
+
 func get_axis() -> Vector2:
 	axis.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	axis.y = int(Input.is_action_pressed("ui_up")) - int(Input.is_action_pressed("ui_down"))
@@ -16,7 +17,7 @@ func get_axis() -> Vector2:
 var is_online: bool = false
 var username : String = ""
 
-const HOST = "http://localhost/"
+const HOST = "http://localhost:8000/"
 #const HOST = "https://23w2sfqz-8000.use2.devtunnels.ms/"
 var token : String
 var headers = PackedStringArray()
@@ -34,3 +35,6 @@ var get_ready : bool = false
 func _ready():
 	headers.push_back("Content-Type: application/json")
 	
+var player_type : String
+var multipeerHost : String
+const PORT = 12345

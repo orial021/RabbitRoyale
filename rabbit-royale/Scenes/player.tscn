@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://be6lr0eprme43"]
+[gd_scene load_steps=62 format=4 uid="uid://be6lr0eprme43"]
 
 [ext_resource type="Script" uid="uid://bj3g6vqj0f6jd" path="res://Scripts/player.gd" id="1_6t5aa"]
 [ext_resource type="AudioStream" uid="uid://bpsw773cc7byp" path="res://Assets/Sounds/Footstep_Boot_Concrete-002.wav" id="1_cvnsp"]
@@ -5021,7 +5021,7 @@ transitions = ["Start", "Wave", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-17.0318, -188.379)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6t5aa"]
-graph_offset = Vector2(-244, 17.1818)
+graph_offset = Vector2(-220, 319)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_vgqql")
 nodes/Animation/position = Vector2(80.9214, 331.421)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6t5aa")
@@ -5034,6 +5034,32 @@ nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_cvnsp")
 nodes/StateMachine/position = Vector2(0, 100)
 nodes/output/position = Vector2(840, 340)
 node_connections = [&"Death", 0, &"Hurt", &"Death", 1, &"Animation 2", &"Hurt", 0, &"StateMachine", &"Hurt", 1, &"Animation", &"output", 0, &"Death"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vgqql"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Head:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:kills")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:deads")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath(".:username")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath(".:lives")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath(".:is_vulnerable")
+properties/7/spawn = true
+properties/7/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_6t5aa")
@@ -5326,3 +5352,9 @@ parameters/Hurt/active = false
 parameters/Hurt/internal_active = false
 parameters/Hurt/request = 0
 script = ExtResource("4_vgqql")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_vgqql")
+
+[connection signal="animation_finished" from="AnimationTree" to="AnimationTree" method="_on_animation_finished"]
+[connection signal="animation_started" from="AnimationTree" to="AnimationTree" method="_on_animation_started"]

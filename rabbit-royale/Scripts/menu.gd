@@ -19,8 +19,13 @@ func _process(delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is CharacterMenu:
-		print("entrando")
 		enterGame = true
+		Global.player_type = "host"
+
+func _on_area_bod_entered(body: Node3D) -> void:
+	if body is CharacterMenu:
+		enterGame = true
+		Global.player_type = "client"
 
 func _on_entré_pressed() -> void:
 	player.anim("Wave")
