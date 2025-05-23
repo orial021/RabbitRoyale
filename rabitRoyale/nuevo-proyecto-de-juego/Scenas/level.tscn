@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dh281oqehsc7y"]
+[gd_scene load_steps=11 format=3 uid="uid://dh281oqehsc7y"]
 
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="1_oioc7"]
+[ext_resource type="Script" uid="uid://cqs71ot8lfhqq" path="res://Scrips/level.gd" id="1_trg4v"]
 [ext_resource type="Texture2D" uid="uid://qu57gp28m4fh" path="res://addons/kenney_prototype_textures/green/texture_09.png" id="2_3nfp7"]
-[ext_resource type="PackedScene" uid="uid://bxga7376tc8bx" path="res://Scenas/player.tscn" id="3_trg4v"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3nfp7"]
 panorama = ExtResource("1_oioc7")
@@ -24,7 +24,16 @@ uv1_triplanar = true
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rdvgw"]
 points = PackedVector3Array(-20, -0.5, -20, -20, 0.5, -20, 20, -0.5, -20, -20, -0.5, 20, -20, 0.5, 20, 20, 0.5, -20, 20, -0.5, 20, 20, 0.5, 20)
 
+[sub_resource type="Curve3D" id="Curve3D_28att"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -17.8938, 0, -18.0175, 0, 0, 0, 0, 0, 0, -17.2883, 0, 17.7059, 0, 0, 0, 0, 0, 0, 17.9053, 0, 18.0087, 0, 0, 0, 0, 0, 0, 18.0566, 0, -18.6986),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
 [node name="level" type="Node3D"]
+script = ExtResource("1_trg4v")
 
 [node name="settings" type="Node3D" parent="."]
 
@@ -43,5 +52,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_trg4v")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_rdvgw")
 
-[node name="Player" parent="." instance=ExtResource("3_trg4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.456881, 0)
+[node name="Spawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bxga7376tc8bx")
+spawn_path = NodePath("..")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+curve = SubResource("Curve3D_28att")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.999856, 0, -0.0169466, 0, 1, 0, 0.0169466, 0, -0.999856, -17.8938, 0, -18.0175)

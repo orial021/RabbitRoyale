@@ -20,11 +20,14 @@ func _process(delta: float) -> void:
 		
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if not enterGam:
-		pass
-	else:
-		var scene_loud_status = ResourceLoader.load_threaded_get_status("res://Scenas/level.tscn")
-		
+	if body is CharacterMenu:
+		enterGame = true
+		GLOBAL.player_type = "host"
+
+func _on_area_join_entered(body: Node3D) -> void:
+	if body is CharacterMenu:
+		enterGame = true
+		GLOBAL.player_type = "client"
 
 func _on_enter_pressed() -> void:
 	door_create.open()

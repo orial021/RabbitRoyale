@@ -22,7 +22,7 @@ func _on_login_pressed() -> void:
 
 
 func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
-	$"../Sprite2D".hidden()
+	$"../Sprite2D".hide()
 	if response_code == 200:
 		var body_string = body.get_string_from_utf8()
 		var body_parsed = json.parse(body_string)

@@ -614,6 +614,7 @@ visible = false
 texture = ExtResource("27_g18rc")
 
 [connection signal="body_entered" from="Settings/Door_Create/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Settings/Door_Join/Area3D2" to="." method="_on_area_join_entered"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Enter" to="." method="_on_enter_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Option" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
