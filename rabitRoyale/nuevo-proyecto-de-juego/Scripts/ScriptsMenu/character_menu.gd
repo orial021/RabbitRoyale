@@ -11,7 +11,6 @@ const JUMP = 26
 func _process(delta: float) -> void:
 	if can_move: 
 		motion_ctrl()
-		
 	move_and_slide()
 		
 func motion_ctrl() -> void:

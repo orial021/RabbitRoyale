@@ -18,7 +18,6 @@ func _on_register_button_pressed() -> void:
 	email = %Email.text
 	var option_button = %Gender
 	gender = option_button.get_item_text(option_button.selected).to_lower()
-	
 	data = {
 		"username" : username,
 		"password" : password,
@@ -26,7 +25,6 @@ func _on_register_button_pressed() -> void:
 		"gender" : gender,
 		"date_of_birth": "2025-04-08T03:30:02.490Z"
 	}
-	
 	var json_data = JSON.stringify(data)
 	endpoint = str(Global.HOST) + "user/create"
 	$HTTPRegister.request(endpoint, Global.headers, HTTPClient.METHOD_POST, json_data)
@@ -40,7 +38,7 @@ func _on_http_register_request_completed(result: int, response_code: int, _heade
 		tween.tween_callback(%Login.show)
 		tween.tween_property(%Login, "modulate", Color.WHITE, 1.0)
 		
-		
 func disable_register_Button() -> void:
 	%RegisterButton.disabled = true
+	%Gender.disabled = true
 		

@@ -52,3 +52,4 @@ func _on_http_profile_request_completed(result: int, response_code: int, headers
 			print(data)
 			%Login.hide()
 			$"../Charge_icon".hide()
+			$"../../../Character_Menu".anim("Wave")

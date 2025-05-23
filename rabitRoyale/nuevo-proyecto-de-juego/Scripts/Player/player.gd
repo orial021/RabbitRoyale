@@ -24,8 +24,14 @@ const JUMP_FORCE = 40
 
 func _enter_tree() -> void:
 	Global.is_online = true
+	set_multiplayer_authority(int(name))
 	
 func _ready() -> void:
+	if not is_multiplayer_authority():
+		set_physics_process(false)
+		set_process(false)
+		set_process_unhandled_input(false)
+		set_process_input(false)
 	id = Global.id
 	username = Global.username
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -83,8 +89,9 @@ func motion_ctrl(delta) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		HEAD.rotation_degrees.x -= event.relative.y * -mouse_sensitivity
+		HEAD.rotation_degrees.x -= event.relative.y * mouse_sensitivity
 		if not is_dead:
 			rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		else:
 			HEAD.rotation_degrees.y -= event.relative.x * mouse_sensitivity
+			
