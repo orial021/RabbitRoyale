@@ -172,6 +172,7 @@ debug_color = Color(0, 0.6, 0.701961, 1)
 transform = Transform3D(0.999435, -0.0336258, 1.46986e-09, -2.42625e-15, -4.37114e-08, -1, 0.0336258, 0.999435, -4.36867e-08, 1.08847, 0.602607, 4.72512)
 
 [node name="GUI" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="Control" type="Control" parent="GUI"]
 layout_mode = 3
@@ -351,6 +352,7 @@ visible = false
 texture = ExtResource("15_0401g")
 
 [connection signal="body_entered" from="Settings/DoorCreate/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Settings/DoorJoin/Area3D2" to="." method="_on_area_join_entered"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/start" to="." method="_on_enter_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="GUI/Control/Register/PanelContainer/VBoxContainer/HBoxContainer/RegisterButton" to="GUI/Control/Register" method="_on_register_button_pressed"]

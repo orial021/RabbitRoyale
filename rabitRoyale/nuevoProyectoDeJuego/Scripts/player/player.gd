@@ -24,8 +24,15 @@ const JUMP_FORCE = 40
 
 func _enter_tree() -> void:
 	GLOBAL.is_online = true
+	set_multiplayer_authority(int(name))
 	
 func _ready() -> void:
+	if not is_multiplayer_authority():
+		set_physics_process(false)
+		set_process(false)
+		set_process_unhandled_input(false)
+		set_process_input(false)
+		
 	id = GLOBAL.id
 	username = GLOBAL.username
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
