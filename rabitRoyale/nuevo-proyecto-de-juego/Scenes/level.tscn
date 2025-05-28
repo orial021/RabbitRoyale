@@ -54,7 +54,7 @@ mesh = SubResource("BoxMesh_81xng")
 shape = SubResource("ConvexPolygonShape3D_6phgx")
 
 [node name="Spawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://dot1uu60khixe")
+_spawnable_scenes = PackedStringArray("uid://dot1uu60khixe", "uid://cwcbbw0jo0jaf")
 spawn_path = NodePath("..")
 
 [node name="Path3D" type="Path3D" parent="."]

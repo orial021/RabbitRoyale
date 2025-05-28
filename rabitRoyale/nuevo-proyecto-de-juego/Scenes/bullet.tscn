@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://cwcbbw0jo0jaf"]
+
+[ext_resource type="Script" uid="uid://dqsys230lag66" path="res://Scripts/Player/bullet.gd" id="1_xjght"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4mw4s"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xjght"]
+noise_type = 2
+frequency = 0.0269
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oduel"]
+noise = SubResource("FastNoiseLite_xjght")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ycag2"]
+noise_type = 2
+frequency = 0.0586
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6afsh"]
+noise = SubResource("FastNoiseLite_ycag2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odot3"]
+albedo_color = Color(0.478256, 0.671113, 0.968339, 1)
+albedo_texture = SubResource("NoiseTexture2D_oduel")
+metallic = 0.21
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.0784314, 0.372549, 1, 1)
+emission_energy_multiplier = 1.84
+emission_texture = SubResource("NoiseTexture2D_6afsh")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t8o6v"]
+radius = 0.2
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qttmj"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="bullet" type="Area3D"]
+script = ExtResource("1_xjght")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_4mw4s")
+surface_material_override/0 = SubResource("StandardMaterial3D_odot3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_t8o6v")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_qttmj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
