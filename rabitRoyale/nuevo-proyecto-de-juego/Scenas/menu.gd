@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 		pass
 	else:
 		var scene_load_status = ResourceLoader.load_threaded_get_status("res://Scenas/level.tscn") 
-		if scene_load_status == ResourceLoader.THREAD_LOAD_FAILED:
+		if scene_load_status == ResourceLoader.THREAD_LOAD_LOADED:
 			get_tree().call_deferred("change_scene_to_packed", ResourceLoader.load_threaded_get("res://Scenas/level.tscn"))
 		
 		

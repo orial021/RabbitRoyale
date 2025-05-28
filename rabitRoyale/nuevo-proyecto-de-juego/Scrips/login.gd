@@ -13,7 +13,9 @@ func _on_login_pressed() -> void:
 	$"../Sprite2D".visible = true
 	GLOBAL.username = %USERNAME.text
 	password = %PASSWORD.text
+	
 	var data = "username=" + GLOBAL.username + "&password=" + password
+	print(data)
 	endpoint = GLOBAL.HOST + "auth/login"
 	var headers = PackedStringArray()
 	headers.push_back("Content-Type: application/x-www-from-urlencoded")
@@ -29,6 +31,12 @@ func _on_http_request_request_completed(result: int, response_code: int, headers
 		if body_parsed == OK:
 			var data = json.get_data()
 			profile(data["access_token"])
+	else:
+		var body_string = body.get_string_from_utf8()
+		var body_parsed = json.parse(body_string)
+		if body_parsed == OK:
+			var data = json.get_data()
+			print(data)
 			
 func profile(Bearer : String) -> void:
 	endpoint = GLOBAL.HOST + "aut/profile"
