@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://bnvuj33udqd51"]
+
+[ext_resource type="Script" uid="uid://cpi3cfef8wf8q" path="res://Scenes/bullet.gd" id="1_xjght"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4mw4s"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xjght"]
+frequency = 0.0394
+offset = Vector3(-16.9, 51.95, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oduel"]
+width = 503
+noise = SubResource("FastNoiseLite_xjght")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ycag2"]
+frequency = 0.1205
+offset = Vector3(-13.15, 953.49, 722.38)
+fractal_octaves = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6afsh"]
+noise = SubResource("FastNoiseLite_ycag2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odot3"]
+albedo_color = Color(1, 0.278431, 0, 1)
+albedo_texture = SubResource("NoiseTexture2D_oduel")
+metallic = 0.58
+metallic_specular = 0.25
+roughness_texture = SubResource("NoiseTexture2D_6afsh")
+emission_enabled = true
+emission = Color(0.921569, 1, 0, 1)
+emission_energy_multiplier = 4.18
+emission_operator = 1
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.05
+subsurf_scatter_skin_mode = true
+backlight_enabled = true
+backlight = Color(0.25316, 0.687165, 1, 1)
+refraction_enabled = true
+refraction_scale = 0.01
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oduel"]
+radius = 0.4
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_t8o6v"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Bullet" type="Area3D"]
+script = ExtResource("1_xjght")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_4mw4s")
+surface_material_override/0 = SubResource("StandardMaterial3D_odot3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_oduel")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_t8o6v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
