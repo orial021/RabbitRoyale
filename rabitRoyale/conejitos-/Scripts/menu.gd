@@ -49,8 +49,6 @@ func _on_register_pressed() -> void:
 	tween.tween_property(%register, "modulate", Color.WHITE, 1.0)
 
 
-
-
 func _on_area_3d_2_body_entered(body: Node3D) -> void:
 	if body is CharacterMenu:
 		Global.player_type = "client"

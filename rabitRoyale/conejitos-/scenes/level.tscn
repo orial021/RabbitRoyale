@@ -53,7 +53,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_klq6b")
 shape = SubResource("ConvexPolygonShape3D_b121j")
 
 [node name="spawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://bogt71v8xpunv")
+_spawnable_scenes = PackedStringArray("uid://bogt71v8xpunv", "uid://ug0aang8qyh1")
 spawn_path = NodePath("..")
 
 [node name="Path3D" type="Path3D" parent="."]
