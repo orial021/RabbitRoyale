@@ -23,6 +23,7 @@ Este proyecto utiliza Tortoise ORM y Aerich para la gestión de la base de datos
    git config --global user.name "Manuel Barrera"
    git clone https://github.com/orial021/RabbitRoyale.git -b manuel-b
    git switch manuel-b
+   uvicorn main:app
    ```
 
 2. Instala las dependencias:

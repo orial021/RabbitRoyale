@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2qjn5uoejnl5"]
+
+[ext_resource type="Script" uid="uid://cdb73gjrkplos" path="res://Scripts/bullet.gd" id="1_xjght"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mw4s"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 1
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.815686, 0.470588, 0.337255, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(0.372549, 0.87451, 0.133333, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xjght"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oduel"]
+radius = 0.2
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ycag2"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Bullet" type="Area3D"]
+script = ExtResource("1_xjght")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_4mw4s")
+mesh = SubResource("SphereMesh_xjght")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_oduel")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ycag2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

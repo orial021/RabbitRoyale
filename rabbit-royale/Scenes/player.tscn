@@ -1,9 +1,11 @@
-[gd_scene load_steps=62 format=4 uid="uid://be6lr0eprme43"]
+[gd_scene load_steps=64 format=4 uid="uid://be6lr0eprme43"]
 
 [ext_resource type="Script" uid="uid://bj3g6vqj0f6jd" path="res://Scripts/player.gd" id="1_6t5aa"]
 [ext_resource type="AudioStream" uid="uid://bpsw773cc7byp" path="res://Assets/Sounds/Footstep_Boot_Concrete-002.wav" id="1_cvnsp"]
 [ext_resource type="AudioStream" uid="uid://c14ubqbruc2jt" path="res://Assets/Sounds/Shotgun_Shot-002.wav" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://ek3l48g8le2" path="res://Assets/Images/crosshair038.png" id="2_fkybt"]
 [ext_resource type="Script" uid="uid://dxi00t0llpglw" path="res://Scripts/Player/animation_treeplayer.gd" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://cu7k4nite75jj" path="res://Scripts/player_synchronizer.gd" id="6_x3wgy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_daywd"]
 resource_name = "Black"
@@ -5327,6 +5329,14 @@ double_sided = false
 text = "USERNAME"
 font_size = 200
 
+[node name="Marker1" type="Marker3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68029, -0.795417, 1.83674)
+
+[node name="Sprite3D" type="Sprite3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+pixel_size = 0.1
+texture = ExtResource("2_fkybt")
+
 [node name="Settings" type="Node3D" parent="."]
 
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="Settings"]
@@ -5355,6 +5365,7 @@ script = ExtResource("4_vgqql")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vgqql")
+script = ExtResource("6_x3wgy")
 
 [connection signal="animation_finished" from="AnimationTree" to="AnimationTree" method="_on_animation_finished"]
 [connection signal="animation_started" from="AnimationTree" to="AnimationTree" method="_on_animation_started"]

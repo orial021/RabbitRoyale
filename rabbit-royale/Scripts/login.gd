@@ -17,7 +17,7 @@ func _on_login_pressed() -> void:
 	endpoint = Global.HOST + "auth/login"
 	var headers = PackedStringArray()
 	headers.push_back("Content-Type: application/x-www-form-urlencoded")
-	http_login.request(endpoint, headers, HTTPClient.METHOD_POST)
+	http_login.request(endpoint, headers, HTTPClient.METHOD_POST,data)
 
 func _on_http_login_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	$"../Charge_icon".hide()
