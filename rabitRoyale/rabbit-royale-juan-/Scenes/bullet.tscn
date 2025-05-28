@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1v366qmtb5rw"]
+
+[ext_resource type="Script" uid="uid://b7qbpsk1hc7k4" path="res://Scripts/bullet.gd" id="1_xjght"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4mw4s"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xjght"]
+noise_type = 4
+frequency = 0.3395
+fractal_type = 3
+fractal_octaves = 1
+fractal_ping_pong_strength = 0.8
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oduel"]
+noise = SubResource("FastNoiseLite_xjght")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycag2"]
+albedo_color = Color(0.811765, 0.729412, 0.341176, 1)
+albedo_texture = SubResource("NoiseTexture2D_oduel")
+metallic = 0.5
+metallic_specular = 0.58
+roughness = 0.25
+emission_enabled = true
+emission = Color(0.302174, 0.299598, 0.112263, 1)
+emission_energy_multiplier = 0.9
+emission_operator = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6afsh"]
+radius = 0.15
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_odot3"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Bullet" type="Area3D"]
+script = ExtResource("1_xjght")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_4mw4s")
+surface_material_override/0 = SubResource("StandardMaterial3D_ycag2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6afsh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_odot3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

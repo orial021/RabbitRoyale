@@ -3,6 +3,7 @@ class_name Player
 @onready var gui: CanvasLayer
 @onready var animations: AnimationTree =$AnimationTree
 @onready var HEAD: Node3D = $Head
+@onready var player_sync: PlayerSync = $MultiplayerSynchronizer
 @export var is_dead : bool = false
 @export var id: String
 @export var lives: int = 5
@@ -16,7 +17,7 @@ var can_shot: bool = true
 var is_respawning: bool = false
 var using_scope: bool = false
 var mouse_sensitivity : float = 0.1
-
+var bullet = preload("res://Scenes/bullet.tscn")
 const SPEED = 300
 const SCOPING_SPEED = 120
 const JUMP_FORCE = 40
@@ -31,6 +32,9 @@ func _ready() -> void:
 		set_process(false)
 		set_process_unhandled_input(false)
 		set_process_input(false)
+		return
+	
+	$Head/Camera3D.current = true
 	id = GLOBAL.id
 	username = GLOBAL.username
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -45,16 +49,31 @@ func _input(event: InputEvent) -> void:
 	if not is_dead:
 		if is_on_floor() and event.is_action_pressed("ui_jump"):
 			velocity.y = JUMP_FORCE
-		if event.is_action_pressed("ui_shot"):
-			can_shot = false
+		if event.is_action_pressed("ui_shot") and can_shot:
+			can_shot = true
 			shot_ctrl()
 		if event.is_action_pressed("ui_scope"):
 			using_scope = true
 		if event.is_action_pressed("ui_scope"):
 			using_scope = false
 
+@rpc("any_peer","call_local","reliable")
 func shot_ctrl() -> void:
-	pass
+	var bullet_instance = bullet.instantiate()
+	var direction : Vector3 = $Head/Crosshair.global_position - $Head/Marker3D.global_position
+	get_parent().add_child(bullet_instance, true)
+	bullet_instance.set_multiplayer_authority(multiplayer.get_unique_id())
+	bullet_instance.direction = direction
+	bullet_instance.set_global_position($Head/Marker3D.get_global_position())
+	bullet_instance.player_owner= self
+	
+
+@rpc("any_peer","call_local","reliable")
+func damage_ctrl(attacker_name : String = ""):
+	if not is_multiplayer_authority():
+		return
+	animations.hurt()
+	lives -= 1
 
 func _physics_process(delta: float) -> void:
 	velocity.y -= gravity
@@ -66,6 +85,8 @@ func _physics_process(delta: float) -> void:
 			motion_ctrl(delta)
 			if velocity.y < -500:
 				lives = 1
+				velocity = Vector3.ZERO
+				global_position = Vector3(0, 2, 0)
 	if is_dead:
 		if not is_respawning:
 			is_respawning = true
