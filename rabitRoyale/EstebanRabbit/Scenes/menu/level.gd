@@ -6,7 +6,7 @@ var PLAYER = preload("res://Scenes/menu/player_animate.tscn")
 var enet_peer = ENetMultiplayerPeer.new()
 
 func  _ready() -> void:
-	multiplayer.server_realy + true
+	multiplayer.server_relay = true
 	if DisplayServer.get_name() == "headless":
 		on_host.call_deferred()
 	if Global.player_type == "host":

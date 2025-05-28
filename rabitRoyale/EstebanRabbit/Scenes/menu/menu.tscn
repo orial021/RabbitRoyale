@@ -142,7 +142,7 @@ transform = Transform3D(0.433266, 0, 0.901266, 0, 1, 0, -0.901266, 0, 0.433266, 
 label = "CREAR"
 
 [node name="Area3D" type="Area3D" parent="Settings/DoorCreate"]
-transform = Transform3D(0.433266, 0, -0.901266, 0, 1, 0, 0.901266, 0, 0.433266, 3.83515, -0.418986, -0.259411)
+transform = Transform3D(0.433266, 0, -0.901266, 0, 1, 0, 0.901266, 0, 0.433266, 3.85037, -0.418986, -0.526114)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/DoorCreate/Area3D"]
 transform = Transform3D(0.906057, 0, -0.423156, 0, 1, 0, 0.423156, 0, 0.906057, -2.47734, 1.81549, 3.29869)
@@ -154,7 +154,7 @@ transform = Transform3D(0.803878, 0, 0.594795, 0, 1, 0, -0.594795, 0, 0.803878, 
 label = "UNIRSE"
 
 [node name="Area3D2" type="Area3D" parent="Settings/DoorJoin"]
-transform = Transform3D(0.803878, 0, -0.594795, 0, 1, 0, 0.594795, 0, 0.803878, -4.06716, -0.894085, -0.340979)
+transform = Transform3D(0.803878, 0, -0.594795, 0, 1, 0, 0.594795, 0, 0.803878, -3.81172, -0.894085, -0.810257)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/DoorJoin/Area3D2"]
 transform = Transform3D(0.577031, 0, -0.816722, 0, 1, 0, 0.816722, 0, 0.577031, 2.78124, 1.81549, -2.78236)
@@ -326,12 +326,12 @@ text = "LOGIN"
 [node name="Username" type="LineEdit" parent="GUI/Control/login/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "USERNAME"
+placeholder_text = "USERNAME"
 
 [node name="Password" type="LineEdit" parent="GUI/Control/login/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "PASSWORD"
+placeholder_text = "PASSWORD"
 secret = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/login/PanelContainer/VBoxContainer"]
@@ -356,6 +356,7 @@ visible = false
 position = Vector2(659, 374)
 texture = ExtResource("18_mdmk3")
 
+[connection signal="body_entered" from="Settings/DoorCreate/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Settings/DoorJoin/Area3D2" to="." method="_on_area_join_entered"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/enter" to="." method="_on_enter_pressed"]
 [connection signal="pressed" from="GUI/Control/MarginContainer/VBoxContainer/VBoxContainer/options" to="." method="_on_options_pressed"]

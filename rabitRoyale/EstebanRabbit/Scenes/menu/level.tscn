@@ -50,7 +50,7 @@ mesh = SubResource("BoxMesh_81xng")
 shape = SubResource("ConvexPolygonShape3D_81xng")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://prks2nbu4110")
+_spawnable_scenes = PackedStringArray("uid://prks2nbu4110", "uid://cneq7olrfjvb4")
 spawn_path = NodePath("..")
 
 [node name="Path3D" type="Path3D" parent="."]
@@ -58,4 +58,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 curve = SubResource("Curve3D_7gbwj")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.00710113, 0, -0.999971, 0, 1, 0, 0.999971, 0, -0.00710113, -19.2565, 0, -19.602)
+transform = Transform3D(-0.00709947, 0, -0.999971, 0, 1, 0, 0.999971, 0, -0.00709947, -19.2565, 0, -19.602)

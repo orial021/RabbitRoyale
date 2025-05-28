@@ -115,7 +115,7 @@ func _on_animation_started(anim_name: StringName) -> void:
 			player.velocity.x = 0
 			player.velocit.y = 0
 			if player.lives <= 0:
-				player.is_vulnerable = false
+				#player.is_vulnerable = false
 				player.is_dead = true
 				death()
 		ANIMS.DEATH:

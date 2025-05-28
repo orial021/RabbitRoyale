@@ -12,20 +12,19 @@ func _process(delta: float) -> void:
 	if not enterGame:
 		pass
 	else:
-		var scene_loas_status = ResourceLoader.load_threaded_get("res://Scenes/level.tscn")
-		if scene_loas_status == ResourceLoader.THREAD_LOAD_LOADED:
-			get_tree().call_deferred("change_scene_to_packed", ResourceLoader.load_threaded_get("res://Scenes/level.tscn"))
+		if Global.player_type != "":
+			get_tree().change_scene_to_file("res://Scenes/menu/level.tscn")
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if  body is Charactermenu:
+	if body is Charactermenu:
 		enterGame = true
 		Global.player_type = "host"
 
 
 
 func _on_area_join_entered(body: Node3D) -> void:
-	if  body is Charactermenu:
+	if body is Charactermenu:
 		enterGame = true
 		Global.player_type = "client"
 	
