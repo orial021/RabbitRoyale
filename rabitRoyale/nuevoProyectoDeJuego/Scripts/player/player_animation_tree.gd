@@ -44,6 +44,7 @@ func shoot() -> void:
 	_state_machine.travel(ANIMS.SHOOT)
 
 func hurt() -> void:
+	print("llega a la animacion")
 	current_animation_state = ANIMS.HURT
 	set(_hurt_path, true)
 
@@ -102,6 +103,7 @@ func _on_animation_finished(anim_name: StringName) -> void:
 		ANIMS.WAVE:
 			player.can_move = true
 		ANIMS.HURT:
+			print("termina la animacion")
 			player.can_move = true
 
 func _on_animation_started(anim_name: StringName) -> void:
@@ -109,6 +111,7 @@ func _on_animation_started(anim_name: StringName) -> void:
 		ANIMS.WAVE:
 			player.can_move = false
 		ANIMS.HURT:
+			print("inicia la animacion")
 			set(_hurt_path, false)
 			player.can_move = false
 			player.velocity.x = 0

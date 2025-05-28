@@ -55,7 +55,7 @@ transform = Transform3D(-0.74935, 0.261314, 0.608433, 0.610546, 0.628356, 0.4820
 shadow_enabled = true
 
 [node name="Spawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://fdrajyq5m5hf")
+_spawnable_scenes = PackedStringArray("uid://fdrajyq5m5hf", "uid://dl6p114p2e8he")
 spawn_path = NodePath("..")
 
 [node name="Path3D" type="Path3D" parent="."]
