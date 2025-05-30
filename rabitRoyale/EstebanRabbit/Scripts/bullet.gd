@@ -2,7 +2,7 @@ extends Area3D
 class_name Bullet
 @export var player_oaner : Player
 var direction
-const SPEED = 30
+const SPEED = 10
 
 
 func _process(delta: float) -> void:
@@ -12,9 +12,6 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	if not multiplayer.is_server():
-		return
-		
 	if body is Player and body.is_vulnerable:
 		body.damage_ctrl.rpc_id(body.get_multiplayer_authority(), player_oaner.name)
 		queue_free_ctrl.rpc()

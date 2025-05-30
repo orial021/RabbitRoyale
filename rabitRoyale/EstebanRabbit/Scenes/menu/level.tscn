@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://c7p0vib8ansvt"]
 
 [ext_resource type="Texture2D" uid="uid://ceqf60a4yumpn" path="res://Assets/Images/clouds_anime_6k.jpg" id="1_tumq0"]
-[ext_resource type="Script" uid="uid://ohs0s1fokwwo" path="res://Scenes/menu/level.gd" id="1_wgaq0"]
+[ext_resource type="Script" uid="uid://ohs0s1fokwwo" path="res://Scripts/level.gd" id="1_wgaq0"]
 [ext_resource type="Texture2D" uid="uid://cn7ov2x8dre3q" path="res://addons/kenney_prototype_textures/orange/texture_12.png" id="2_k5f4k"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_k5f4k"]

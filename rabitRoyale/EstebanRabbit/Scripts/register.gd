@@ -32,7 +32,7 @@ func _on_register_pressed() -> void:
 	http_register.request(endpoint, Global.headers, HTTPClient.METHOD_POST, json_data)
 
 
-func _on_http_register_request_completed(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
+func _on_http_register_request_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	$"../Change_icon".hide()
 	if response_code == 200:
 		var tween : Tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)

@@ -8,7 +8,7 @@ var enterGame : bool = false
 func _ready() -> void:
 	ResourceLoader.load_threaded_get("res://Scenes/level.tscn")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not enterGame:
 		pass
 	else:

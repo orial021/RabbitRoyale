@@ -1,11 +1,13 @@
-[gd_scene load_steps=66 format=4 uid="uid://prks2nbu4110"]
+[gd_scene load_steps=72 format=4 uid="uid://prks2nbu4110"]
 
 [ext_resource type="Script" uid="uid://c4s8n05anef67" path="res://Scripts/player_animate.gd" id="1_nultl"]
 [ext_resource type="AudioStream" uid="uid://bpsw773cc7byp" path="res://Assets/Sounds/Footstep_Boot_Concrete-002.wav" id="1_tlulb"]
 [ext_resource type="Script" uid="uid://cj16sfvcdr824" path="res://player_animation.gd" id="2_npksq"]
 [ext_resource type="AudioStream" uid="uid://c14ubqbruc2jt" path="res://Assets/Sounds/Shotgun_Shot-002.wav" id="2_nultl"]
+[ext_resource type="ArrayMesh" uid="uid://chicsgxnbnoqq" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/OBJ/Cloud_1.obj" id="5_7r21b"]
 [ext_resource type="Texture2D" uid="uid://ek3l48g8le2" path="res://Assets/Images/crosshair038.png" id="5_r47p2"]
-[ext_resource type="Script" uid="uid://yrgkeexddxiv" path="res://Scenes/menu/multiplayer_synchronizer.gd" id="6_thshy"]
+[ext_resource type="Script" uid="uid://yrgkeexddxiv" path="res://Scripts/multiplayer_synchronizer.gd" id="6_thshy"]
+[ext_resource type="Script" uid="uid://d0n4x3hgq0d2b" path="res://Scripts/center_container.gd" id="8_b83hc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_daywd"]
 resource_name = "Black"
@@ -332,9 +334,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cwbq5"]
-data = PackedVector3Array(1.0283, 3.6762, -0.6315, 1.1396, 3.5282, -0.536, 1.1843, 3.6292, -0.5283, 1.2443, 3.5365, -0.3302, 1.1843, 3.6292, -0.5283, 1.1396, 3.5282, -0.536, 1.0283, 3.6762, -0.6315, 1.0126, 3.5398, -0.6309, 1.1396, 3.5282, -0.536, 1.2443, 3.5365, -0.3302, 1.1396, 3.5282, -0.536, 1.1757, 3.4257, -0.4104, 1.2443, 3.5365, -0.3302, 1.1757, 3.4257, -0.4104, 1.1563, 3.3011, -0.233, 1.2443, 3.5365, -0.3302, 1.1563, 3.3011, -0.233, 1.2378, 3.4201, -0.1345, 1.1942, 3.3022, -0.0384, 1.2378, 3.4201, -0.1345, 1.1563, 3.3011, -0.233, 1.1942, 3.3022, -0.0384, 1.1563, 3.3011, -0.233, 1.1134, 3.181, -0.1615, 1.1942, 3.3022, -0.0384, 1.1134, 3.181, -0.1615, 1.0117, 3.0299, -0.1511, 1.1942, 3.3022, -0.0384, 1.0117, 3.0299, -0.1511, 1.0808, 3.1332, -0.0118, 0.8645, 2.8634, -0.0244, 1.0808, 3.1332, -0.0118, 1.0117, 3.0299, -0.1511, 0.8645, 2.8634, -0.0244, 1.0117, 3.0299, -0.1511, 0.816, 2.8129, -0.1571, 0.9611, 3.4124, -0.4925, 1.1757, 3.4257, -0.4104, 1.1396, 3.5282, -0.536, 0.9611, 3.4124, -0.4925, 1.1396, 3.5282, -0.536, 1.0126, 3.5398, -0.6309, 0.9611, 3.4124, -0.4925, 1.1563, 3.3011, -0.233, 1.1757, 3.4257, -0.4104, 1.0283, 3.6762, -0.6315, 0.8573, 3.5625, -0.6159, 1.0126, 3.5398, -0.6309, 0.9611, 3.4124, -0.4925, 1.0126, 3.5398, -0.6309, 0.8573, 3.5625, -0.6159, 1.0283, 3.6762, -0.6315, 0.8368, 3.671, -0.625, 0.8573, 3.5625, -0.6159, 0.6701, 3.6074, -0.4936, 0.8573, 3.5625, -0.6159, 0.8368, 3.671, -0.625, 0.9611, 3.4124, -0.4925, 0.8573, 3.5625, -0.6159, 0.7445, 3.4789, -0.5343, 0.6701, 3.6074, -0.4936, 0.7445, 3.4789, -0.5343, 0.8573, 3.5625, -0.6159, 0.6701, 3.6074, -0.4936, 0.6371, 3.3736, -0.3833, 0.7445, 3.4789, -0.5343, 0.6701, 3.6074, -0.4936, 0.5475, 3.5153, -0.3316, 0.6371, 3.3736, -0.3833, 0.488, 3.4242, -0.2331, 0.6371, 3.3736, -0.3833, 0.5475, 3.5153, -0.3316, 0.488, 3.4242, -0.2331, 0.5788, 3.2771, -0.3116, 0.6371, 3.3736, -0.3833, 0.488, 3.4242, -0.2331, 0.5355, 3.1425, -0.2742, 0.5788, 3.2771, -0.3116, 0.488, 3.4242, -0.2331, 0.4559, 3.2736, -0.1695, 0.5355, 3.1425, -0.2742, 0.4154, 3.0028, -0.1123, 0.5355, 3.1425, -0.2742, 0.4559, 3.2736, -0.1695, 0.4154, 3.0028, -0.1123, 0.4728, 2.9226, -0.2265, 0.5355, 3.1425, -0.2742, 0.9611, 3.4124, -0.4925, 0.7445, 3.4789, -0.5343, 0.6371, 3.3736, -0.3833, 0.9611, 3.4124, -0.4925, 0.6371, 3.3736, -0.3833, 0.8981, 3.2939, -0.3332, 0.9611, 3.4124, -0.4925, 0.8981, 3.2939, -0.3332, 1.1563, 3.3011, -0.233, 0.8478, 3.1843, -0.2701, 0.8981, 3.2939, -0.3332, 0.6371, 3.3736, -0.3833, 0.8478, 3.1843, -0.2701, 1.1563, 3.3011, -0.233, 0.8981, 3.2939, -0.3332, 0.8478, 3.1843, -0.2701, 0.6371, 3.3736, -0.3833, 0.5788, 3.2771, -0.3116, 0.8478, 3.1843, -0.2701, 1.1134, 3.181, -0.1615, 1.1563, 3.3011, -0.233, 0.8478, 3.1843, -0.2701, 0.5788, 3.2771, -0.3116, 0.5355, 3.1425, -0.2742, 0.8478, 3.1843, -0.2701, 1.0117, 3.0299, -0.1511, 1.1134, 3.181, -0.1615, 0.8478, 3.1843, -0.2701, 0.5355, 3.1425, -0.2742, 0.7753, 3.0471, -0.2533, 0.8478, 3.1843, -0.2701, 0.7753, 3.0471, -0.2533, 1.0117, 3.0299, -0.1511, 0.639, 2.856, -0.242, 0.7753, 3.0471, -0.2533, 0.5355, 3.1425, -0.2742, 0.639, 2.856, -0.242, 1.0117, 3.0299, -0.1511, 0.7753, 3.0471, -0.2533, 0.639, 2.856, -0.242, 0.5355, 3.1425, -0.2742, 0.4728, 2.9226, -0.2265, 0.639, 2.856, -0.242, 0.816, 2.8129, -0.1571, 1.0117, 3.0299, -0.1511, 1.0283, 3.6762, -0.6315, 0.854, 3.7315, -0.5313, 0.8368, 3.671, -0.625, 0.6701, 3.6074, -0.4936, 0.8368, 3.671, -0.625, 0.854, 3.7315, -0.5313, 1.0283, 3.6762, -0.6315, 1.0085, 3.7605, -0.5223, 0.854, 3.7315, -0.5313, 0.6701, 3.6074, -0.4936, 0.854, 3.7315, -0.5313, 0.7392, 3.7183, -0.4122, 0.6701, 3.6074, -0.4936, 0.7392, 3.7183, -0.4122, 0.6304, 3.6331, -0.2306, 0.6701, 3.6074, -0.4936, 0.6304, 3.6331, -0.2306, 0.5475, 3.5153, -0.3316, 0.488, 3.4242, -0.2331, 0.5475, 3.5153, -0.3316, 0.6304, 3.6331, -0.2306, 0.488, 3.4242, -0.2331, 0.6304, 3.6331, -0.2306, 0.5737, 3.5407, -0.106, 0.9533, 3.7315, -0.3314, 0.7392, 3.7183, -0.4122, 0.854, 3.7315, -0.5313, 0.9533, 3.7315, -0.3314, 0.854, 3.7315, -0.5313, 1.0085, 3.7605, -0.5223, 0.9533, 3.7315, -0.3314, 0.6304, 3.6331, -0.2306, 0.7392, 3.7183, -0.4122, 1.0283, 3.6762, -0.6315, 1.1359, 3.6972, -0.4525, 1.0085, 3.7605, -0.5223, 0.9533, 3.7315, -0.3314, 1.0085, 3.7605, -0.5223, 1.1359, 3.6972, -0.4525, 1.0283, 3.6762, -0.6315, 1.1843, 3.6292, -0.5283, 1.1359, 3.6972, -0.4525, 1.2443, 3.5365, -0.3302, 1.1359, 3.6972, -0.4525, 1.1843, 3.6292, -0.5283, 0.9533, 3.7315, -0.3314, 1.1359, 3.6972, -0.4525, 1.1694, 3.665, -0.2909, 1.2443, 3.5365, -0.3302, 1.1694, 3.665, -0.2909, 1.1359, 3.6972, -0.4525, 1.2443, 3.5365, -0.3302, 1.1466, 3.5628, -0.0853, 1.1694, 3.665, -0.2909, 1.2443, 3.5365, -0.3302, 1.2378, 3.4201, -0.1345, 1.1466, 3.5628, -0.0853, 1.1942, 3.3022, -0.0384, 1.1466, 3.5628, -0.0853, 1.2378, 3.4201, -0.1345, 0.9533, 3.7315, -0.3314, 1.1694, 3.665, -0.2909, 1.1466, 3.5628, -0.0853, 1.1942, 3.3022, -0.0384, 1.0985, 3.454, 0.036, 1.1466, 3.5628, -0.0853, 0.9533, 3.7315, -0.3314, 1.1466, 3.5628, -0.0853, 0.8871, 3.6414, -0.1329, 0.9533, 3.7315, -0.3314, 0.8871, 3.6414, -0.1329, 0.6304, 3.6331, -0.2306, 0.8345, 3.5421, -0.0014, 0.8871, 3.6414, -0.1329, 1.1466, 3.5628, -0.0853, 0.8345, 3.5421, -0.0014, 0.6304, 3.6331, -0.2306, 0.8871, 3.6414, -0.1329, 0.8345, 3.5421, -0.0014, 1.1466, 3.5628, -0.0853, 1.0985, 3.454, 0.036, 0.8345, 3.5421, -0.0014, 0.5737, 3.5407, -0.106, 0.6304, 3.6331, -0.2306, 1.1942, 3.3022, -0.0384, 0.9937, 3.2716, 0.0882, 1.0985, 3.454, 0.036, 0.8345, 3.5421, -0.0014, 1.0985, 3.454, 0.036, 0.9937, 3.2716, 0.0882, 1.1942, 3.3022, -0.0384, 1.0808, 3.1332, -0.0118, 0.9937, 3.2716, 0.0882, 0.8645, 2.8634, -0.0244, 0.9937, 3.2716, 0.0882, 1.0808, 3.1332, -0.0118, 0.8645, 2.8634, -0.0244, 0.8007, 2.9488, 0.0862, 0.9937, 3.2716, 0.0882, 0.634, 3.0203, 0.0962, 0.9937, 3.2716, 0.0882, 0.8007, 2.9488, 0.0862, 0.8345, 3.5421, -0.0014, 0.9937, 3.2716, 0.0882, 0.7614, 3.3596, 0.0721, 0.634, 3.0203, 0.0962, 0.7614, 3.3596, 0.0721, 0.9937, 3.2716, 0.0882, 0.8345, 3.5421, -0.0014, 0.5326, 3.3696, -0.0254, 0.5737, 3.5407, -0.106, 0.8345, 3.5421, -0.0014, 0.7614, 3.3596, 0.0721, 0.5326, 3.3696, -0.0254, 0.634, 3.0203, 0.0962, 0.5326, 3.3696, -0.0254, 0.7614, 3.3596, 0.0721, 0.488, 3.4242, -0.2331, 0.5737, 3.5407, -0.106, 0.5326, 3.3696, -0.0254, 0.634, 3.0203, 0.0962, 0.4703, 3.0482, 0.024, 0.5326, 3.3696, -0.0254, 0.488, 3.4242, -0.2331, 0.5326, 3.3696, -0.0254, 0.4559, 3.2736, -0.1695, 0.4154, 3.0028, -0.1123, 0.5326, 3.3696, -0.0254, 0.4703, 3.0482, 0.024, 0.4154, 3.0028, -0.1123, 0.4559, 3.2736, -0.1695, 0.5326, 3.3696, -0.0254, 0.6115, 2.9771, 0.123, 0.4393, 2.8409, 0.0906, 0.4291, 3.012, 0.0423, 0.6115, 2.9771, 0.123, 0.5559, 2.7918, 0.1644, 0.4393, 2.8409, 0.0906, 0.6115, 2.9771, 0.123, 0.6755, 2.7115, 0.1336, 0.5559, 2.7918, 0.1644, 0.6115, 2.9771, 0.123, 0.7973, 2.8963, 0.1082, 0.6755, 2.7115, 0.1336, 0.6181, 2.8035, -0.2682, 0.6919, 2.6318, -0.1263, 0.8146, 2.753, -0.1744, 0.6181, 2.8035, -0.2682, 0.5636, 2.6913, -0.2114, 0.6919, 2.6318, -0.1263, 0.6181, 2.8035, -0.2682, 0.4462, 2.7619, -0.1739, 0.5636, 2.6913, -0.2114, 0.6181, 2.8035, -0.2682, 0.4321, 2.8799, -0.2483, 0.4462, 2.7619, -0.1739, 0.3681, 2.9662, -0.1147, 0.4462, 2.7619, -0.1739, 0.4321, 2.8799, -0.2483, 0.3681, 2.9662, -0.1147, 0.4013, 2.8158, -0.0748, 0.4462, 2.7619, -0.1739, 0.3681, 2.9662, -0.1147, 0.4393, 2.8409, 0.0906, 0.4013, 2.8158, -0.0748, 0.3681, 2.9662, -0.1147, 0.4291, 3.012, 0.0423, 0.4393, 2.8409, 0.0906, 0.8685, 2.8044, -0.0215, 0.6755, 2.7115, 0.1336, 0.7973, 2.8963, 0.1082, 0.8685, 2.8044, -0.0215, 0.7226, 2.6428, -0.0144, 0.6755, 2.7115, 0.1336, 0.8685, 2.8044, -0.0215, 0.6919, 2.6318, -0.1263, 0.7226, 2.6428, -0.0144, 0.8685, 2.8044, -0.0215, 0.8146, 2.753, -0.1744, 0.6919, 2.6318, -0.1263, 0.8645, 2.8634, -0.0244, 0.8146, 2.753, -0.1744, 0.8685, 2.8044, -0.0215, 0.8645, 2.8634, -0.0244, 0.8685, 2.8044, -0.0215, 0.7973, 2.8963, 0.1082, 0.8645, 2.8634, -0.0244, 0.7973, 2.8963, 0.1082, 0.8007, 2.9488, 0.0862, 0.8645, 2.8634, -0.0244, 0.816, 2.8129, -0.1571, 0.8146, 2.753, -0.1744, 0.639, 2.856, -0.242, 0.8146, 2.753, -0.1744, 0.816, 2.8129, -0.1571, 0.639, 2.856, -0.242, 0.6181, 2.8035, -0.2682, 0.8146, 2.753, -0.1744, 0.639, 2.856, -0.242, 0.4321, 2.8799, -0.2483, 0.6181, 2.8035, -0.2682, 0.639, 2.856, -0.242, 0.4728, 2.9226, -0.2265, 0.4321, 2.8799, -0.2483, 0.4154, 3.0028, -0.1123, 0.4321, 2.8799, -0.2483, 0.4728, 2.9226, -0.2265, 0.4154, 3.0028, -0.1123, 0.3681, 2.9662, -0.1147, 0.4321, 2.8799, -0.2483, 0.4154, 3.0028, -0.1123, 0.4291, 3.012, 0.0423, 0.3681, 2.9662, -0.1147, 0.4154, 3.0028, -0.1123, 0.4703, 3.0482, 0.024, 0.4291, 3.012, 0.0423, 0.634, 3.0203, 0.0962, 0.7973, 2.8963, 0.1082, 0.6115, 2.9771, 0.123, 0.634, 3.0203, 0.0962, 0.8007, 2.9488, 0.0862, 0.7973, 2.8963, 0.1082, 0.634, 3.0203, 0.0962, 0.6115, 2.9771, 0.123, 0.4291, 3.012, 0.0423, 0.634, 3.0203, 0.0962, 0.4291, 3.012, 0.0423, 0.4703, 3.0482, 0.024, -1.0283, 3.6762, -0.6315, -1.1396, 3.5282, -0.536, -1.0126, 3.5398, -0.6309, -1.0283, 3.6762, -0.6315, -1.1843, 3.6292, -0.5283, -1.1396, 3.5282, -0.536, -1.2443, 3.5365, -0.3302, -1.1396, 3.5282, -0.536, -1.1843, 3.6292, -0.5283, -1.0283, 3.6762, -0.6315, -1.0126, 3.5398, -0.6309, -0.8573, 3.5625, -0.6159, -1.0283, 3.6762, -0.6315, -0.8573, 3.5625, -0.6159, -0.8368, 3.671, -0.625, -0.6701, 3.6074, -0.4936, -0.8368, 3.671, -0.625, -0.8573, 3.5625, -0.6159, -0.9611, 3.4124, -0.4925, -0.8573, 3.5625, -0.6159, -1.0126, 3.5398, -0.6309, -0.9611, 3.4124, -0.4925, -1.0126, 3.5398, -0.6309, -1.1396, 3.5282, -0.536, -0.6701, 3.6074, -0.4936, -0.8573, 3.5625, -0.6159, -0.7445, 3.4789, -0.5343, -0.9611, 3.4124, -0.4925, -0.7445, 3.4789, -0.5343, -0.8573, 3.5625, -0.6159, -0.6701, 3.6074, -0.4936, -0.7445, 3.4789, -0.5343, -0.6371, 3.3736, -0.3833, -0.6701, 3.6074, -0.4936, -0.6371, 3.3736, -0.3833, -0.5475, 3.5153, -0.3316, -0.488, 3.4242, -0.2331, -0.5475, 3.5153, -0.3316, -0.6371, 3.3736, -0.3833, -0.488, 3.4242, -0.2331, -0.6371, 3.3736, -0.3833, -0.5788, 3.2771, -0.3116, -0.488, 3.4242, -0.2331, -0.5788, 3.2771, -0.3116, -0.5355, 3.1425, -0.2742, -0.488, 3.4242, -0.2331, -0.5355, 3.1425, -0.2742, -0.4559, 3.2736, -0.1695, -0.4154, 3.0028, -0.1123, -0.4559, 3.2736, -0.1695, -0.5355, 3.1425, -0.2742, -0.4154, 3.0028, -0.1123, -0.5355, 3.1425, -0.2742, -0.4728, 2.9226, -0.2265, -0.9611, 3.4124, -0.4925, -0.6371, 3.3736, -0.3833, -0.7445, 3.4789, -0.5343, -0.9611, 3.4124, -0.4925, -1.1396, 3.5282, -0.536, -1.1757, 3.4257, -0.4104, -1.2443, 3.5365, -0.3302, -1.1757, 3.4257, -0.4104, -1.1396, 3.5282, -0.536, -1.2443, 3.5365, -0.3302, -1.1563, 3.3011, -0.233, -1.1757, 3.4257, -0.4104, -1.2443, 3.5365, -0.3302, -1.2378, 3.4201, -0.1345, -1.1563, 3.3011, -0.233, -1.1942, 3.3022, -0.0384, -1.1563, 3.3011, -0.233, -1.2378, 3.4201, -0.1345, -1.1942, 3.3022, -0.0384, -1.1134, 3.181, -0.1615, -1.1563, 3.3011, -0.233, -1.1942, 3.3022, -0.0384, -1.0117, 3.0299, -0.1511, -1.1134, 3.181, -0.1615, -1.1942, 3.3022, -0.0384, -1.0808, 3.1332, -0.0118, -1.0117, 3.0299, -0.1511, -0.8645, 2.8634, -0.0244, -1.0117, 3.0299, -0.1511, -1.0808, 3.1332, -0.0118, -0.8645, 2.8634, -0.0244, -0.816, 2.8129, -0.1571, -1.0117, 3.0299, -0.1511, -0.9611, 3.4124, -0.4925, -1.1757, 3.4257, -0.4104, -1.1563, 3.3011, -0.233, -0.9611, 3.4124, -0.4925, -1.1563, 3.3011, -0.233, -0.8981, 3.2939, -0.3332, -0.9611, 3.4124, -0.4925, -0.8981, 3.2939, -0.3332, -0.6371, 3.3736, -0.3833, -0.8478, 3.1843, -0.2701, -0.8981, 3.2939, -0.3332, -1.1563, 3.3011, -0.233, -0.8478, 3.1843, -0.2701, -0.6371, 3.3736, -0.3833, -0.8981, 3.2939, -0.3332, -0.8478, 3.1843, -0.2701, -1.1563, 3.3011, -0.233, -1.1134, 3.181, -0.1615, -0.8478, 3.1843, -0.2701, -0.5788, 3.2771, -0.3116, -0.6371, 3.3736, -0.3833, -0.8478, 3.1843, -0.2701, -1.1134, 3.181, -0.1615, -1.0117, 3.0299, -0.1511, -0.8478, 3.1843, -0.2701, -0.5355, 3.1425, -0.2742, -0.5788, 3.2771, -0.3116, -0.8478, 3.1843, -0.2701, -1.0117, 3.0299, -0.1511, -0.7753, 3.0471, -0.2533, -0.8478, 3.1843, -0.2701, -0.7753, 3.0471, -0.2533, -0.5355, 3.1425, -0.2742, -0.639, 2.856, -0.242, -0.7753, 3.0471, -0.2533, -1.0117, 3.0299, -0.1511, -0.639, 2.856, -0.242, -0.5355, 3.1425, -0.2742, -0.7753, 3.0471, -0.2533, -0.639, 2.856, -0.242, -1.0117, 3.0299, -0.1511, -0.816, 2.8129, -0.1571, -0.639, 2.856, -0.242, -0.4728, 2.9226, -0.2265, -0.5355, 3.1425, -0.2742, -1.0283, 3.6762, -0.6315, -0.854, 3.7315, -0.5313, -1.0085, 3.7605, -0.5223, -1.0283, 3.6762, -0.6315, -0.8368, 3.671, -0.625, -0.854, 3.7315, -0.5313, -0.6701, 3.6074, -0.4936, -0.854, 3.7315, -0.5313, -0.8368, 3.671, -0.625, -1.0283, 3.6762, -0.6315, -1.0085, 3.7605, -0.5223, -1.1359, 3.6972, -0.4525, -1.0283, 3.6762, -0.6315, -1.1359, 3.6972, -0.4525, -1.1843, 3.6292, -0.5283, -1.2443, 3.5365, -0.3302, -1.1843, 3.6292, -0.5283, -1.1359, 3.6972, -0.4525, -0.9533, 3.7315, -0.3314, -1.1359, 3.6972, -0.4525, -1.0085, 3.7605, -0.5223, -0.9533, 3.7315, -0.3314, -1.0085, 3.7605, -0.5223, -0.854, 3.7315, -0.5313, -1.2443, 3.5365, -0.3302, -1.1359, 3.6972, -0.4525, -1.1694, 3.665, -0.2909, -0.9533, 3.7315, -0.3314, -1.1694, 3.665, -0.2909, -1.1359, 3.6972, -0.4525, -1.2443, 3.5365, -0.3302, -1.1694, 3.665, -0.2909, -1.1466, 3.5628, -0.0853, -1.2443, 3.5365, -0.3302, -1.1466, 3.5628, -0.0853, -1.2378, 3.4201, -0.1345, -1.1942, 3.3022, -0.0384, -1.2378, 3.4201, -0.1345, -1.1466, 3.5628, -0.0853, -1.1942, 3.3022, -0.0384, -1.1466, 3.5628, -0.0853, -1.0985, 3.454, 0.036, -0.9533, 3.7315, -0.3314, -1.1466, 3.5628, -0.0853, -1.1694, 3.665, -0.2909, -0.9533, 3.7315, -0.3314, -0.854, 3.7315, -0.5313, -0.7392, 3.7183, -0.4122, -0.6701, 3.6074, -0.4936, -0.7392, 3.7183, -0.4122, -0.854, 3.7315, -0.5313, -0.6701, 3.6074, -0.4936, -0.6304, 3.6331, -0.2306, -0.7392, 3.7183, -0.4122, -0.6701, 3.6074, -0.4936, -0.5475, 3.5153, -0.3316, -0.6304, 3.6331, -0.2306, -0.488, 3.4242, -0.2331, -0.6304, 3.6331, -0.2306, -0.5475, 3.5153, -0.3316, -0.9533, 3.7315, -0.3314, -0.7392, 3.7183, -0.4122, -0.6304, 3.6331, -0.2306, -0.488, 3.4242, -0.2331, -0.5737, 3.5407, -0.106, -0.6304, 3.6331, -0.2306, -0.9533, 3.7315, -0.3314, -0.8871, 3.6414, -0.1329, -1.1466, 3.5628, -0.0853, -0.9533, 3.7315, -0.3314, -0.6304, 3.6331, -0.2306, -0.8871, 3.6414, -0.1329, -0.8345, 3.5421, -0.0014, -1.1466, 3.5628, -0.0853, -0.8871, 3.6414, -0.1329, -0.8345, 3.5421, -0.0014, -0.8871, 3.6414, -0.1329, -0.6304, 3.6331, -0.2306, -0.8345, 3.5421, -0.0014, -0.6304, 3.6331, -0.2306, -0.5737, 3.5407, -0.106, -0.8345, 3.5421, -0.0014, -1.0985, 3.454, 0.036, -1.1466, 3.5628, -0.0853, -0.488, 3.4242, -0.2331, -0.5326, 3.3696, -0.0254, -0.5737, 3.5407, -0.106, -0.8345, 3.5421, -0.0014, -0.5737, 3.5407, -0.106, -0.5326, 3.3696, -0.0254, -0.488, 3.4242, -0.2331, -0.4559, 3.2736, -0.1695, -0.5326, 3.3696, -0.0254, -0.4154, 3.0028, -0.1123, -0.5326, 3.3696, -0.0254, -0.4559, 3.2736, -0.1695, -0.4154, 3.0028, -0.1123, -0.4703, 3.0482, 0.024, -0.5326, 3.3696, -0.0254, -0.634, 3.0203, 0.0962, -0.5326, 3.3696, -0.0254, -0.4703, 3.0482, 0.024, -0.8345, 3.5421, -0.0014, -0.5326, 3.3696, -0.0254, -0.7614, 3.3596, 0.0721, -0.634, 3.0203, 0.0962, -0.7614, 3.3596, 0.0721, -0.5326, 3.3696, -0.0254, -0.8345, 3.5421, -0.0014, -0.9937, 3.2716, 0.0882, -1.0985, 3.454, 0.036, -0.8345, 3.5421, -0.0014, -0.7614, 3.3596, 0.0721, -0.9937, 3.2716, 0.0882, -0.634, 3.0203, 0.0962, -0.9937, 3.2716, 0.0882, -0.7614, 3.3596, 0.0721, -1.1942, 3.3022, -0.0384, -1.0985, 3.454, 0.036, -0.9937, 3.2716, 0.0882, -0.634, 3.0203, 0.0962, -0.8007, 2.9488, 0.0862, -0.9937, 3.2716, 0.0882, -1.1942, 3.3022, -0.0384, -0.9937, 3.2716, 0.0882, -1.0808, 3.1332, -0.0118, -0.8645, 2.8634, -0.0244, -0.9937, 3.2716, 0.0882, -0.8007, 2.9488, 0.0862, -0.8645, 2.8634, -0.0244, -1.0808, 3.1332, -0.0118, -0.9937, 3.2716, 0.0882, -0.6115, 2.9771, 0.123, -0.4393, 2.8409, 0.0906, -0.5559, 2.7918, 0.1644, -0.6115, 2.9771, 0.123, -0.4291, 3.012, 0.0423, -0.4393, 2.8409, 0.0906, -0.6115, 2.9771, 0.123, -0.5559, 2.7918, 0.1644, -0.6755, 2.7115, 0.1336, -0.6115, 2.9771, 0.123, -0.6755, 2.7115, 0.1336, -0.7973, 2.8963, 0.1082, -0.6181, 2.8035, -0.2682, -0.6919, 2.6318, -0.1263, -0.5636, 2.6913, -0.2114, -0.6181, 2.8035, -0.2682, -0.8146, 2.753, -0.1744, -0.6919, 2.6318, -0.1263, -0.6181, 2.8035, -0.2682, -0.5636, 2.6913, -0.2114, -0.4462, 2.7619, -0.1739, -0.6181, 2.8035, -0.2682, -0.4462, 2.7619, -0.1739, -0.4321, 2.8799, -0.2483, -0.3681, 2.9662, -0.1147, -0.4462, 2.7619, -0.1739, -0.4013, 2.8158, -0.0748, -0.3681, 2.9662, -0.1147, -0.4321, 2.8799, -0.2483, -0.4462, 2.7619, -0.1739, -0.3681, 2.9662, -0.1147, -0.4013, 2.8158, -0.0748, -0.4393, 2.8409, 0.0906, -0.3681, 2.9662, -0.1147, -0.4393, 2.8409, 0.0906, -0.4291, 3.012, 0.0423, -0.8685, 2.8044, -0.0215, -0.6755, 2.7115, 0.1336, -0.7226, 2.6428, -0.0144, -0.8685, 2.8044, -0.0215, -0.7973, 2.8963, 0.1082, -0.6755, 2.7115, 0.1336, -0.8685, 2.8044, -0.0215, -0.7226, 2.6428, -0.0144, -0.6919, 2.6318, -0.1263, -0.8685, 2.8044, -0.0215, -0.6919, 2.6318, -0.1263, -0.8146, 2.753, -0.1744, -0.8645, 2.8634, -0.0244, -0.8146, 2.753, -0.1744, -0.816, 2.8129, -0.1571, -0.639, 2.856, -0.242, -0.816, 2.8129, -0.1571, -0.8146, 2.753, -0.1744, -0.8645, 2.8634, -0.0244, -0.8685, 2.8044, -0.0215, -0.8146, 2.753, -0.1744, -0.8645, 2.8634, -0.0244, -0.7973, 2.8963, 0.1082, -0.8685, 2.8044, -0.0215, -0.8645, 2.8634, -0.0244, -0.8007, 2.9488, 0.0862, -0.7973, 2.8963, 0.1082, -0.639, 2.856, -0.242, -0.8146, 2.753, -0.1744, -0.6181, 2.8035, -0.2682, -0.639, 2.856, -0.242, -0.6181, 2.8035, -0.2682, -0.4321, 2.8799, -0.2483, -0.639, 2.856, -0.242, -0.4321, 2.8799, -0.2483, -0.4728, 2.9226, -0.2265, -0.4154, 3.0028, -0.1123, -0.4728, 2.9226, -0.2265, -0.4321, 2.8799, -0.2483, -0.4154, 3.0028, -0.1123, -0.4321, 2.8799, -0.2483, -0.3681, 2.9662, -0.1147, -0.4154, 3.0028, -0.1123, -0.3681, 2.9662, -0.1147, -0.4291, 3.012, 0.0423, -0.4154, 3.0028, -0.1123, -0.4291, 3.012, 0.0423, -0.4703, 3.0482, 0.024, -0.634, 3.0203, 0.0962, -0.7973, 2.8963, 0.1082, -0.8007, 2.9488, 0.0862, -0.634, 3.0203, 0.0962, -0.6115, 2.9771, 0.123, -0.7973, 2.8963, 0.1082, -0.634, 3.0203, 0.0962, -0.4291, 3.012, 0.0423, -0.6115, 2.9771, 0.123, -0.634, 3.0203, 0.0962, -0.4703, 3.0482, 0.024, -0.4291, 3.012, 0.0423)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25k0x"]
 resource_name = "EyeColor"
@@ -3099,38 +3098,38 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Camera3D:position")
+tracks/1/path = NodePath("Head/Camera3D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-0.0423861, 2.18616, 0.331)]
+"values": [Vector3(0, -3.14159, 0), Vector3(0, -3.14159, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/Camera3D:rotation")
+tracks/2/path = NodePath("Settings/Shoot:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.14159, -0.0383972)]
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Settings/Shoot:playing")
+tracks/3/path = NodePath("Head/Camera3D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.001),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(-0.04, 0.3, 0.33)]
 }
 
 [sub_resource type="Animation" id="Animation_4y47m"]
@@ -3639,7 +3638,7 @@ tracks/35/keys = {
 "times": PackedFloat32Array(0, 0.1333, 0.2, 0.334766, 0.708333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.227146, 2.31581, 0.331), Vector3(-0.136387, 2.10512, 0.331), Vector3(0.000803053, 2.09263, 0.331), Vector3(0.262663, 2.27937, 0.331), Vector3(-0.227146, 2.31581, 0.331)]
+"values": [Vector3(-0.227, 0, 0.331), Vector3(-0.136, 0, 0.331), Vector3(0.001, 0, 0.331), Vector3(0.263, 0, 0.331), Vector3(-0.227, 0, 0.331)]
 }
 tracks/36/type = "value"
 tracks/36/imported = false
@@ -4902,6 +4901,9 @@ tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/keys = PackedFloat32Array(0, 1, -3.55273e-15, -5.96046e-07, 3.38813e-21, 1)
 
+[sub_resource type="Animation" id="Animation_7r21b"]
+resource_name = "new_animation"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wrhm8"]
 _data = {
 &"Death": SubResource("Animation_2frg4"),
@@ -4922,7 +4924,8 @@ _data = {
 &"Walk": SubResource("Animation_8jk8q"),
 &"Walk_Gun": SubResource("Animation_0lf25"),
 &"Wave": SubResource("Animation_7hyew"),
-&"Yes": SubResource("Animation_b5m2i")
+&"Yes": SubResource("Animation_b5m2i"),
+&"new_animation": SubResource("Animation_7r21b")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nultl"]
@@ -5023,6 +5026,32 @@ node_connections = [&"Hurt", 0, &"StateMachine", &"Hurt", 1, &"Animation", &"One
 radius = 0.842153
 height = 2.94925
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncknu"]
+transparency = 1
+blend_mode = 1
+cull_mode = 1
+albedo_color = Color(0.415686, 0.419608, 1, 1)
+grow_amount = 16.0
+
+[sub_resource type="Curve" id="Curve_5qyxi"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_lbu8p"]
+curve = SubResource("Curve_5qyxi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1c8n1"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(5, 7, -8)
+radial_accel_min = 6.0
+radial_accel_max = 8.0
+radial_accel_curve = SubResource("CurveTexture_lbu8p")
+scale_min = 0.05
+scale_max = 0.3
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_npksq"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -5048,6 +5077,27 @@ properties/6/replication_mode = 1
 properties/7/path = NodePath(".:is_vulnerable")
 properties/7/spawn = true
 properties/7/replication_mode = 1
+properties/8/path = NodePath("Settings/GPUParticles3D:emitting")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("Head/Label3D:text")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("CharacterArmature/Skeleton3D/Gun/Gun:transparency")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("CharacterArmature/Skeleton3D/Arms:transparency")
+properties/11/spawn = true
+properties/11/replication_mode = 1
+properties/12/path = NodePath("CharacterArmature/Skeleton3D/Body:transparency")
+properties/12/spawn = true
+properties/12/replication_mode = 1
+properties/13/path = NodePath("CharacterArmature/Skeleton3D/Ears:transparency")
+properties/13/spawn = true
+properties/13/replication_mode = 1
+properties/14/path = NodePath("CharacterArmature/Skeleton3D/Head:transparency")
+properties/14/spawn = true
+properties/14/replication_mode = 1
 
 [node name="PlayerAnimate" type="CharacterBody3D"]
 script = ExtResource("1_nultl")
@@ -5073,7 +5123,7 @@ bones/2/name = "Body_2"
 bones/2/parent = 0
 bones/2/rest = Transform3D(1, 8.47038e-22, 2.38419e-07, -2.54109e-21, 1, 7.10539e-15, -2.38419e-07, -7.10539e-15, 1, 0.00215299, 0.590351, 0.15489)
 bones/2/enabled = true
-bones/2/position = Vector3(0.00215299, 0.633991, 0.15489)
+bones/2/position = Vector3(0.00215299, 0.675256, 0.15489)
 bones/2/rotation = Quaternion(-3.55269e-15, 1.19209e-07, -8.47034e-22, 1)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Hips"
@@ -5088,7 +5138,7 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(1, -5.92411e-08, 8.86101e-07, 3.47459e-07, 0.944335, -0.328987, -8.17286e-07, 0.328987, 0.944335, -7.18231e-11, 0.314338, -6.78867e-09)
 bones/4/enabled = true
 bones/4/position = Vector3(-7.18231e-11, 0.314338, -6.78867e-09)
-bones/4/rotation = Quaternion(0.12789, 4.39759e-07, 2.07889e-08, 0.991788)
+bones/4/rotation = Quaternion(0.0908605, 4.28871e-07, 1.36736e-07, 0.995864)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Torso"
 bones/5/parent = 4
@@ -5109,7 +5159,7 @@ bones/7/parent = 6
 bones/7/rest = Transform3D(1, 1.26529e-07, -0.00055094, 9.3145e-05, 0.985566, 0.169292, 0.000543009, -0.169292, 0.985566, -9.37053e-11, 0.133498, -1.40338e-08)
 bones/7/enabled = true
 bones/7/position = Vector3(-9.37053e-11, 0.133498, -1.40338e-08)
-bones/7/rotation = Quaternion(-0.0496973, -0.000275135, 1.36532e-05, 0.998764)
+bones/7/rotation = Quaternion(-0.0162844, -0.000275439, 4.4738e-06, 0.999867)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "Ear1.L"
 bones/8/parent = 7
@@ -5123,14 +5173,14 @@ bones/9/parent = 8
 bones/9/rest = Transform3D(0.999452, 0.0330813, -0.00138558, -0.030715, 0.941961, 0.334313, 0.0123647, -0.334088, 0.942461, 2.32758e-08, 0.3406, 1.90582e-07)
 bones/9/enabled = true
 bones/9/position = Vector3(2.32758e-08, 0.3406, 1.90582e-07)
-bones/9/rotation = Quaternion(-0.185139, -0.0104127, -0.0149459, 0.982544)
+bones/9/rotation = Quaternion(-0.24366, -0.0366518, -0.0102014, 0.969114)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "Ear3.L"
 bones/10/parent = 9
 bones/10/rest = Transform3D(0.906839, -0.241789, -0.345227, 0.421465, 0.513926, 0.74716, -0.00323391, -0.823054, 0.567953, 9.60089e-08, 0.694606, -7.54911e-08)
 bones/10/enabled = true
 bones/10/position = Vector3(9.60089e-08, 0.694606, -7.54911e-08)
-bones/10/rotation = Quaternion(-0.481419, -0.104966, 0.188581, 0.849503)
+bones/10/rotation = Quaternion(-0.553826, -0.121047, 0.178684, 0.804174)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "Ear1.R"
 bones/11/parent = 7
@@ -5144,21 +5194,21 @@ bones/12/parent = 11
 bones/12/rest = Transform3D(0.999452, -0.0330814, 0.00138551, 0.0307151, 0.941961, 0.334314, -0.0123647, -0.334088, 0.942461, -2.06484e-07, 0.3406, 8.85773e-08)
 bones/12/enabled = true
 bones/12/position = Vector3(-2.06484e-07, 0.3406, 8.85773e-08)
-bones/12/rotation = Quaternion(-0.187871, 0.0116305, 0.0147273, 0.982014)
+bones/12/rotation = Quaternion(-0.245207, 0.0373495, 0.0100744, 0.968699)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "Ear3.R"
 bones/13/parent = 12
 bones/13/rest = Transform3D(0.906839, 0.241789, 0.345226, -0.421465, 0.513926, 0.74716, 0.00323395, -0.823054, 0.567953, -2.71934e-07, 0.694606, 1.32615e-07)
 bones/13/enabled = true
 bones/13/position = Vector3(-2.71934e-07, 0.694606, 1.32615e-07)
-bones/13/rotation = Quaternion(-0.486843, 0.106171, -0.187906, 0.846406)
+bones/13/rotation = Quaternion(-0.548719, 0.119913, -0.179447, 0.807667)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/name = "Shoulder.L"
 bones/14/parent = 5
 bones/14/rest = Transform3D(0.663087, 0.746803, 0.0509987, -0.748513, 0.660915, 0.0540386, 0.0066504, -0.0740054, 0.997236, 0.13151, 0.141128, 0.0147028)
 bones/14/enabled = true
-bones/14/position = Vector3(0.141625, 0.141073, 0.0136929)
-bones/14/rotation = Quaternion(-0.0546978, 0.0558659, -0.410465, 0.908519)
+bones/14/position = Vector3(0.147066, 0.141044, 0.0131495)
+bones/14/rotation = Quaternion(-0.0651139, 0.0791897, -0.41019, 0.906219)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "UpperArm.L"
 bones/15/parent = 14
@@ -5185,22 +5235,22 @@ bones/18/name = "Shoulder.R"
 bones/18/parent = 5
 bones/18/rest = Transform3D(0.663087, -0.746803, -0.0509975, 0.748513, 0.660914, 0.0540386, -0.00665121, -0.0740045, 0.997236, -0.130234, 0.141128, 0.014703)
 bones/18/enabled = true
-bones/18/position = Vector3(-0.140348, 0.141073, 0.013693)
-bones/18/rotation = Quaternion(-0.0546975, -0.0558654, 0.410465, 0.908519)
+bones/18/position = Vector3(-0.14579, 0.141044, 0.0131497)
+bones/18/rotation = Quaternion(-0.0651135, -0.0791892, 0.41019, 0.906219)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/name = "UpperArm.R"
 bones/19/parent = 18
 bones/19/rest = Transform3D(0.0431058, -0.999069, -0.00197912, -0.0621071, -0.00465679, 0.998059, -0.997138, -0.0428992, -0.0622499, -2.52351e-08, 0.259532, -1.81781e-08)
 bones/19/enabled = true
 bones/19/position = Vector3(-2.52351e-08, 0.259532, -1.81781e-08)
-bones/19/rotation = Quaternion(0.445795, -0.53043, -0.407115, -0.59512)
+bones/19/rotation = Quaternion(0.405286, -0.53349, -0.447173, -0.592595)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/name = "LowerArm.R"
 bones/20/parent = 19
 bones/20/rest = Transform3D(0.760352, -0.422379, -0.493418, 0.440232, 0.893695, -0.0866353, 0.477558, -0.151345, 0.865467, 3.66283e-08, 0.528271, -1.00956e-07)
 bones/20/enabled = true
 bones/20/position = Vector3(3.66283e-08, 0.528271, -1.00956e-07)
-bones/20/rotation = Quaternion(0.233475, -0.394168, 0.688929, 0.561692)
+bones/20/rotation = Quaternion(0.213518, -0.42268, 0.663658, 0.579059)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "Fist.R"
 bones/21/parent = 20
@@ -5221,28 +5271,28 @@ bones/23/parent = 2
 bones/23/rest = Transform3D(0.999519, 0.0187576, 0.0247012, 0.0309454, -0.656818, -0.753416, 0.00209193, 0.753818, -0.657082, 0.53484, -0.181478, -0.191503)
 bones/23/enabled = true
 bones/23/position = Vector3(0.53484, -0.181478, -0.191503)
-bones/23/rotation = Quaternion(0.93863, 0.0164647, 0.00492549, 0.344498)
+bones/23/rotation = Quaternion(0.964028, 0.01859, 0.00262817, 0.265138)
 bones/23/scale = Vector3(1, 1, 1)
 bones/24/name = "LowerLeg.L"
 bones/24/parent = 23
 bones/24/rest = Transform3D(0.999283, -0.00606872, 0.0373586, 0.0375776, 0.0412333, -0.998443, 0.00451885, 0.999129, 0.0414319, -5.94466e-08, 0.237297, -1.55808e-08)
 bones/24/enabled = true
 bones/24/position = Vector3(-5.94466e-08, 0.237297, -1.55808e-08)
-bones/24/rotation = Quaternion(0.593999, 0.00934675, 0.0164588, 0.804243)
+bones/24/rotation = Quaternion(0.470589, 0.0068511, 0.0176441, 0.88215)
 bones/24/scale = Vector3(1, 0.999998, 1)
 bones/25/name = "UpperLeg.R"
 bones/25/parent = 2
 bones/25/rest = Transform3D(0.999519, -0.0187582, -0.0246998, -0.0309447, -0.656818, -0.753416, -0.00209052, 0.753817, -0.657083, -0.536523, -0.181478, -0.191504)
 bones/25/enabled = true
 bones/25/position = Vector3(-0.536523, -0.181478, -0.191504)
-bones/25/rotation = Quaternion(0.93863, -0.0164647, -0.00492475, 0.344498)
+bones/25/rotation = Quaternion(0.964028, -0.0185899, -0.00262744, 0.265138)
 bones/25/scale = Vector3(1, 1, 1)
 bones/26/name = "LowerLeg.R"
 bones/26/parent = 25
 bones/26/rest = Transform3D(0.999283, 0.00606869, -0.0373582, -0.0375772, 0.0412336, -0.998443, -0.00451883, 0.999129, 0.0414322, 5.028e-08, 0.237297, -1.08871e-08)
 bones/26/enabled = true
 bones/26/position = Vector3(5.028e-08, 0.237297, -1.08871e-08)
-bones/26/rotation = Quaternion(0.593999, -0.00934664, -0.0164586, 0.804243)
+bones/26/rotation = Quaternion(0.470589, -0.00685101, -0.0176439, 0.88215)
 bones/26/scale = Vector3(1, 0.999998, 1)
 bones/27/name = "PoleTarget.L"
 bones/27/parent = 0
@@ -5267,7 +5317,7 @@ bones/29/rotation = Quaternion(-3.55273e-15, -5.96046e-07, 3.38813e-21, 1)
 bones/29/scale = Vector3(1, 1, 1)
 
 [node name="Gun" type="BoneAttachment3D" parent="CharacterArmature/Skeleton3D"]
-transform = Transform3D(0.999584, 0.0156157, -0.0242695, -0.0157154, 0.999869, -0.00391635, 0.0242052, 0.00429603, 0.999698, -0.694401, 0.83121, 0.350309)
+transform = Transform3D(0.999496, 0.030625, -0.00840552, -0.0306817, 0.999507, -0.00669914, 0.00819623, 0.00695354, 0.999942, -0.698949, 0.861677, 0.340714)
 bone_name = "Gun"
 bone_idx = 22
 
@@ -5286,9 +5336,6 @@ skin = SubResource("Skin_lk8rh")
 [node name="Ears" type="MeshInstance3D" parent="CharacterArmature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_r6hxo")
 skin = SubResource("Skin_lk8rh")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterArmature/Skeleton3D"]
-shape = SubResource("ConcavePolygonShape3D_cwbq5")
 
 [node name="Head" type="MeshInstance3D" parent="CharacterArmature/Skeleton3D"]
 visibility_range_begin = 1.0
@@ -5325,12 +5372,26 @@ stream = ExtResource("1_tlulb")
 stream = ExtResource("2_nultl")
 volume_db = 80.0
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Settings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.632518, 0.653428, -1.52683)
+material_override = SubResource("StandardMaterial3D_ncknu")
+emitting = false
+amount = 10
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1c8n1")
+draw_pass_1 = ExtResource("5_7r21b")
+
+[node name="TimerRespawn" type="Timer" parent="Settings"]
+wait_time = 5.0
+one_shot = true
+
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90291, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(-0.999263, -0.0383878, 2.53518e-06, -0.0383878, 0.999263, 0, -2.53331e-06, -9.732e-08, -1, -0.0423861, 2.18616, 0.331)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.04, 0.3, 0.33)
 current = true
+fov = 100.0
 
 [node name="Label3D" type="Label3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8641, 0)
@@ -5339,15 +5400,63 @@ text = "Usename"
 font_size = 150
 
 [node name="Marker3D" type="Marker3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70616, -0.569873, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70616, -0.569873, 1.29944)
 
 [node name="Sprite3D" type="Sprite3D" parent="Head"]
-transform = Transform3D(-5, 0, 4.37114e-07, 0, 5, 0, -4.37114e-07, 0, -5, 0, 0, 30.2501)
+transform = Transform3D(-5, 0, 4.37114e-07, 0, 5, 0, -4.37114e-07, 0, -5, 0, 0, 12.3535)
+visible = false
 texture = ExtResource("5_r47p2")
+
+[node name="RayCast3D" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, -1, 100)
+collision_mask = 11
+debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_npksq")
 script = ExtResource("6_thshy")
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Control" node_paths=PackedStringArray("player")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_b83hc")
+player = NodePath("../..")
+
+[node name="Line2D" type="Line2D" parent="Control/CenterContainer"]
+points = PackedVector2Array(0, -5, 0, -35)
+width = 6.0
+
+[node name="Line2D2" type="Line2D" parent="Control/CenterContainer"]
+points = PackedVector2Array(5, 0, 36, 0)
+width = 6.0
+
+[node name="Line2D3" type="Line2D" parent="Control/CenterContainer"]
+points = PackedVector2Array(-5, 0, -35, 0)
+width = 6.0
+
+[node name="Line2D4" type="Line2D" parent="Control/CenterContainer"]
+points = PackedVector2Array(0, 5, 0, 35)
+width = 6.0
+
 [connection signal="animation_finished" from="AnimationTree" to="AnimationTree" method="_on_animation_finished"]
 [connection signal="animation_started" from="AnimationTree" to="AnimationTree" method="_on_animation_started"]
+[connection signal="timeout" from="Settings/TimerRespawn" to="." method="_on_timer_respawn_timeout"]

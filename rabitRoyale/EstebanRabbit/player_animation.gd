@@ -8,6 +8,7 @@ var current_animation_state : String
 
 @onready var player : Player
 @onready var _state_machine : AnimationNodeStateMachinePlayback = get("parameters/StateMachine/playback")
+@onready var player_sync: PlayerSync = $"../MultiplayerSynchronizer"
 
 func _ready() -> void:
 	player = get_parent()
@@ -46,6 +47,7 @@ func shoot() -> void:
 func hurt() -> void:
 	current_animation_state = ANIMS.HURT
 	set(_hurt_path, true)
+	player_sync.rpc("remote_trigger_animation")
 	
 func death() -> void:
 	current_animation_state = ANIMS.DEATH
@@ -113,7 +115,7 @@ func _on_animation_started(anim_name: StringName) -> void:
 			set(_hurt_path, false)
 			player.can_move = false
 			player.velocity.x = 0
-			player.velocit.y = 0
+			player.velocity.z = 0
 			if player.lives <= 0:
 				#player.is_vulnerable = false
 				player.is_dead = true

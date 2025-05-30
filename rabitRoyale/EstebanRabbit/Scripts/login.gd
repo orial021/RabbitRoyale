@@ -6,7 +6,7 @@ var json = JSON.new()
 var endpoint : String
 var password : String
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$"../Change_icon".rotation += 0.1
 
 func _on_login_pressed() -> void:
