@@ -31,4 +31,31 @@ func create_player(peer_id:int)->void:
 	var player = PLAYER.instantiate()
 	player.name=str(peer_id)
 	add_child(player)
+	player.velocity.x=0
+	player.velocity.z=0
 	player.set_global_position(path.get_global_position())
+	
+	player.set_global_position(path.get_global_position())
+
+@rpc("any_peer", "call_local", "reliable")
+func revive_player(player_name : String) -> void:
+	var player = get_node_or_null(player_name)
+	if player:
+		player.lives = 5
+		player.is_dead = false
+		player.can_move = true
+		player.is_vulnerable = true
+		player.velocity = Vector3.ZERO
+		player.rotation_degrees.y = 0
+		player.HEAD.rotation_degrees = Vector3.ZERO
+		player.set_global_position(path.get_global_position())
+		player.animations.active = true
+		player.animations.idle()
+		player.player_sync.remote_change_animation_estate.rpc("Idle")
+		player.full_transparency()
+	
+	
+	
+	
+	
+	
