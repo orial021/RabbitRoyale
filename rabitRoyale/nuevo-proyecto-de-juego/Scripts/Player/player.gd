@@ -4,6 +4,7 @@ class_name Player
 #region Vars and callback
 @onready var gui : CanvasLayer
 @onready var animations : AnimationTree = $AnimationTree
+@onready var player_sync : PlayerSync = $MultiplayerSynchronizer
 @onready var HEAD: Node3D = $Head
 @export var is_dead : bool = false
 @export var id : String
@@ -35,13 +36,21 @@ func _ready() -> void:
 		set_process_unhandled_input(false)
 		set_process_input(false)
 		return
-	
 	$Head/Camera3D.current = true
 	id = Global.id
 	username = Global.username
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	HEAD.set_rotation_degrees(Vector3.ZERO)
 
+func _process(delta: float) -> void:
+	$Head/Label3D.text = username + ": " + str(lives)
+	if using_scope:
+		var current_scope = $Head/Camera3D.fov
+		$Head/Camera3D.fov = lerp(current_scope, 50.0, 5 * delta)
+	else:
+		var current_scope = $Head/Camera3D.fov
+		$Head/Camera3D.fov = lerp(current_scope, 100.0, 5 * delta)
+		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -62,7 +71,11 @@ func _input(event: InputEvent) -> void:
 @rpc("any_peer", "call_local", "reliable")
 func shot_ctrl() -> void:
 	var bullet_instance = bullet.instantiate()
-	var direction : Vector3 = $Head/Sprite3D.global_position - $Head/Marker3D.global_position
+	var direction : Vector3 
+	if $Head/RayCast3D.is_colliding():
+		direction = $Head/RayCast3D.get_collision_point() - $Head/Marker3D.global_position
+	else:
+		direction = $Head/Sprite3D.global_position - $Head/Marker3D.global_position
 	get_parent().add_child(bullet_instance, true)
 	bullet_instance.set_multiplayer_authority(multiplayer.get_unique_id())
 	bullet_instance.direction = direction
@@ -89,13 +102,21 @@ func _physics_process(delta: float) -> void:
 				velocity = Vector3.ZERO
 				global_position = Vector3(0, 2, 0)
 	if is_dead:
+		$CharacterArmature/Skeleton3D/Gun/Gun.transparency = 0.5
+		$CharacterArmature/Skeleton3D/Arms.transparency = 0.5
+		$CharacterArmature/Skeleton3D/Body.transparency = 0.5
+		$CharacterArmature/Skeleton3D/Ears.transparency = 0.5
+		$CharacterArmature/Skeleton3D/Head.transparency = 0.5
 		if not is_respawning:
 			is_respawning = true
 			$Settings/TimerRespawn.start()
 	move_and_slide()
 
 func anim_ctrl() -> void:
-	pass
+	if is_on_floor() and Global.get_axis() != Vector2.ZERO and can_move:
+		$Settings/GPUParticles3D.emitting = true
+	else:
+		$Settings/GPUParticles3D.emitting = false
 
 func motion_ctrl(delta) -> void:
 	var direction = Global.get_axis().rotated(rotation.y)
@@ -117,3 +138,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			HEAD.rotation_degrees.y -= event.relative.x * mouse_sensitivity
 			
+func _on_timer_respawn_timeout() -> void:
+	if is_multiplayer_authority():
+		get_parent().revive_player.rpc(name)
+
+func full_transparency() -> void:
+	$CharacterArmature/Skeleton3D/Gun/Gun.transparency = 0
+	$CharacterArmature/Skeleton3D/Arms.transparency = 0
+	$CharacterArmature/Skeleton3D/Body.transparency = 0
+	$CharacterArmature/Skeleton3D/Ears.transparency = 0
+	$CharacterArmature/Skeleton3D/Head.transparency = 0

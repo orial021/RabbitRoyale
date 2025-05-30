@@ -29,7 +29,26 @@ func on_join()-> void:
 	multiplayer.multiplayer_peer = enet_peer
 	
 func create_player(peer_id: int) -> void:
-	var player = PLAYER.instantiate()
-	player.name = str(peer_id)
-	add_child(player)
-	player.set_global_position(path.get_global_position())
+	var player_instance = PLAYER.instantiate()
+	player_instance.name = str(peer_id)
+	add_child(player_instance)
+	player_instance.velocity.x = 0
+	player_instance.velocity.z = 0
+	player_instance.set_global_position(path.get_global_position())
+	
+@rpc("any_peer","call_local","reliable")
+func revive_player(player_name : String) -> void:
+	var player  = get_node_or_null(player_name)
+	if player:
+		player.lives = 5
+		player.is_dead = false
+		player.can_move = false
+		player.is_vulnerable = true
+		player.velocity = Vector3.ZERO
+		player.rotation_degrees.y = 0
+		player.HEAD.rotation_degrees = Vector3.ZERO
+		player.set_global_position(path.get_global_position())
+		player.animations.active = true
+		player.animations.idle()
+		player.player_sync.remote_change_animation_state.rpc("Idle")
+		

@@ -9,12 +9,9 @@ func _process(delta: float) -> void:
 		global_position += direction * SPEED * delta
 
 func _on_body_entered(body: Node3D) -> void:
-	if not multiplayer.is_server():
-		return
-		
 	if body is Player and body.is_vulnerable:
 		body.damage_ctrl.rpc_id(body.get_multiplayer_authority(), player_owner.name)
-		queue_free_ctrl.rpc()
+		rpc_id(1, "queue_free_ctrl")
 		
 func _on_timer_timeout() -> void:
 	if multiplayer.is_server():
