@@ -1,11 +1,13 @@
-[gd_scene load_steps=64 format=4 uid="uid://be6lr0eprme43"]
+[gd_scene load_steps=70 format=4 uid="uid://be6lr0eprme43"]
 
 [ext_resource type="Script" uid="uid://bj3g6vqj0f6jd" path="res://Scripts/player.gd" id="1_6t5aa"]
 [ext_resource type="AudioStream" uid="uid://bpsw773cc7byp" path="res://Assets/Sounds/Footstep_Boot_Concrete-002.wav" id="1_cvnsp"]
 [ext_resource type="AudioStream" uid="uid://c14ubqbruc2jt" path="res://Assets/Sounds/Shotgun_Shot-002.wav" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://ek3l48g8le2" path="res://Assets/Images/crosshair038.png" id="2_fkybt"]
 [ext_resource type="Script" uid="uid://dxi00t0llpglw" path="res://Scripts/Player/animation_treeplayer.gd" id="4_vgqql"]
+[ext_resource type="ArrayMesh" uid="uid://chicsgxnbnoqq" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/OBJ/Cloud_1.obj" id="5_8erm5"]
 [ext_resource type="Script" uid="uid://cu7k4nite75jj" path="res://Scripts/player_synchronizer.gd" id="6_x3wgy"]
+[ext_resource type="Script" uid="uid://0mqeu1rbd2au" path="res://Scripts/cross_hair.gd" id="8_f1ek2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_daywd"]
 resource_name = "Black"
@@ -4949,6 +4951,36 @@ _data = {
 radius = 0.898041
 height = 2.88065
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx1dd"]
+transparency = 3
+alpha_hash_scale = 2.0
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.244776, 0.244776, 0.244776, 0.831373)
+
+[sub_resource type="Curve" id="Curve_gymyn"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pu2lt"]
+curve = SubResource("Curve_gymyn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ukyrk"]
+lifetime_randomness = 1.0
+emission_shape_scale = Vector3(1, 0.05, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 15, -50)
+radial_accel_min = 6.0
+radial_accel_max = 8.0
+radial_accel_curve = SubResource("CurveTexture_pu2lt")
+scale_min = 0.03
+scale_max = 0.5
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6t5aa"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vgqql"]
@@ -5023,7 +5055,6 @@ transitions = ["Start", "Wave", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-17.0318, -188.379)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6t5aa"]
-graph_offset = Vector2(-220, 319)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_vgqql")
 nodes/Animation/position = Vector2(80.9214, 331.421)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6t5aa")
@@ -5049,19 +5080,40 @@ properties/2/spawn = true
 properties/2/replication_mode = 1
 properties/3/path = NodePath(".:kills")
 properties/3/spawn = true
-properties/3/replication_mode = 1
+properties/3/replication_mode = 2
 properties/4/path = NodePath(".:deads")
 properties/4/spawn = true
-properties/4/replication_mode = 1
+properties/4/replication_mode = 2
 properties/5/path = NodePath(".:username")
 properties/5/spawn = true
-properties/5/replication_mode = 1
+properties/5/replication_mode = 0
 properties/6/path = NodePath(".:lives")
 properties/6/spawn = true
-properties/6/replication_mode = 1
+properties/6/replication_mode = 2
 properties/7/path = NodePath(".:is_vulnerable")
 properties/7/spawn = true
-properties/7/replication_mode = 1
+properties/7/replication_mode = 2
+properties/8/path = NodePath("Head/Label3D:text")
+properties/8/spawn = true
+properties/8/replication_mode = 2
+properties/9/path = NodePath("Settings/GPUParticles3D:emitting")
+properties/9/spawn = false
+properties/9/replication_mode = 2
+properties/10/path = NodePath("CharacterArmature/Skeleton3D/Gun/Gun:transparency")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("CharacterArmature/Skeleton3D/Arms:transparency")
+properties/11/spawn = true
+properties/11/replication_mode = 1
+properties/12/path = NodePath("CharacterArmature/Skeleton3D/Body:transparency")
+properties/12/spawn = true
+properties/12/replication_mode = 1
+properties/13/path = NodePath("CharacterArmature/Skeleton3D/Ears:transparency")
+properties/13/spawn = true
+properties/13/replication_mode = 1
+properties/14/path = NodePath("CharacterArmature/Skeleton3D/Head:transparency")
+properties/14/spawn = true
+properties/14/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_6t5aa")
@@ -5321,6 +5373,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01811, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(-0.996006, -0.0155411, -0.0879188, -0.0157777, 0.999874, 0.00199662, 0.0878766, 0.0033758, -0.996126, 0, 0, 0)
 current = true
+fov = 100.0
 
 [node name="Label3D" type="Label3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27112, 0.0224049)
@@ -5333,9 +5386,14 @@ font_size = 200
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68029, -0.795417, 1.83674)
 
 [node name="Sprite3D" type="Sprite3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
-pixel_size = 0.1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.97585)
+visible = false
+pixel_size = 0.03
 texture = ExtResource("2_fkybt")
+
+[node name="RayCast3D" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, 100)
+debug_shape_custom_color = Color(0.780392, 0.458824, 0.211765, 1)
 
 [node name="Settings" type="Node3D" parent="."]
 
@@ -5350,6 +5408,17 @@ volume_db = 80.0
 max_db = 6.0
 pitch_scale = 2.27
 max_distance = 20.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Settings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0196854, -0.594071)
+material_override = SubResource("StandardMaterial3D_tx1dd")
+emitting = false
+amount = 10
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_ukyrk")
+draw_pass_1 = ExtResource("5_8erm5")
+
+[node name="TimerRespawn" type="Timer" parent="Settings"]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 callback_mode_discrete = 1
@@ -5367,5 +5436,47 @@ script = ExtResource("4_vgqql")
 replication_config = SubResource("SceneReplicationConfig_vgqql")
 script = ExtResource("6_x3wgy")
 
+[node name="CrossHair" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CrossHair" node_paths=PackedStringArray("player")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_f1ek2")
+player = NodePath("../..")
+
+[node name="Top" type="Line2D" parent="CrossHair/CenterContainer"]
+points = PackedVector2Array(0, -0.5, 0, -35)
+width = 6.0
+
+[node name="Right" type="Line2D" parent="CrossHair/CenterContainer"]
+points = PackedVector2Array(5, 0, 35, 0)
+width = 6.0
+
+[node name="Left" type="Line2D" parent="CrossHair/CenterContainer"]
+points = PackedVector2Array(-5, 0, -35, 0)
+width = 6.0
+
+[node name="Bottom" type="Line2D" parent="CrossHair/CenterContainer"]
+points = PackedVector2Array(0, 5, 0, 35)
+width = 6.0
+
+[connection signal="timeout" from="Settings/TimerRespawn" to="." method="_on_timer_respawn_timeout"]
 [connection signal="animation_finished" from="AnimationTree" to="AnimationTree" method="_on_animation_finished"]
 [connection signal="animation_started" from="AnimationTree" to="AnimationTree" method="_on_animation_started"]

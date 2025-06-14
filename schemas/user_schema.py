@@ -5,9 +5,9 @@ import uuid
 from enum import Enum
 
 class GenderEnum(Enum):
-    MALE = "caballero heroico"
-    FEMALE = "caballera heroica"
-    OTHER = "helicoptero de asalto apache"
+    MALE = "male"
+    FEMALE = "female"
+    OTHER = "other"
 
 class User(BaseModel):
     id : uuid.UUID
